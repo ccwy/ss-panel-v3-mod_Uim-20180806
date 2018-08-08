@@ -4,8 +4,8 @@
 {include file='user/main.tpl'}
 
 
-<script src="//cdn.staticfile.org/canvasjs/1.7.0/canvasjs.js"></script>
-<script src="//cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script src="/theme/material/js/canvasjs.js"></script>
+<script src="/theme/material/js/jquery.min.js"></script>
 
 	<main class="content">
 		<div class="content-header ui-content-header">
