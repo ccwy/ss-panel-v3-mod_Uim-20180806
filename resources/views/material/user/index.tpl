@@ -449,14 +449,8 @@
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="card-action">
-											<div class="card-action-btn pull-left">
-												<p><a class="reset-link btn btn-brand btn-flat waves-attach" ><span class="icon">autorenew</span>&nbsp;重置订阅链接</a></p>
-											</div>
-										</div>
-										
-										
+											
+											
 										
 										<div class="tab-pane fade " id="all_client">
 													<nav class="tab-nav margin-top-no">
@@ -495,6 +489,16 @@
 												
 												</div>
 											
+										</div>
+										
+										
+										
+										
+										</div>
+										<div class="card-action">
+											<div class="card-action-btn pull-left">
+												<p><a class="reset-link btn btn-brand btn-flat waves-attach" ><span class="icon">autorenew</span>&nbsp;重置订阅链接</a></p>
+											</div>
 										</div>
 										
 										
