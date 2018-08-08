@@ -199,6 +199,11 @@
 												<li {if !$ssr_prefer}class="active"{/if}>
 													<a class="waves-attach" data-toggle="tab" href="#all_ss"><i class="icon icon-lg">flight_takeoff</i>&nbsp;Shadowsocks</a>
 												</li>
+												
+												<li >
+													<a class="waves-attach" data-toggle="tab" href="#all_client"><i class="icon icon-lg">text_format</i>&nbsp;客户端&教程</a>
+												</li>
+												
 											</ul>
 										</nav>
 										<div class="card-inner">
@@ -229,9 +234,15 @@
                                                           <li>
 																<a class="waves-attach" data-toggle="tab" href="#all_ssr_game"><i class="icon icon-lg">videogame_asset</i>&nbsp;游戏端</a>
 															</li>
+															{*
              												<li>
 																<a class="waves-attach" data-toggle="tab" href="#all_ssr_info"><i class="icon icon-lg">info_outline</i>&nbsp;连接信息</a>
 															</li>
+															*}
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_ssr_by"><i class="icon icon-lg">dvr</i>&nbsp;备用导入</a>
+															</li>
+															
 														</ul>
 													</nav>
 
@@ -302,6 +313,7 @@
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口节点订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$baseUrl}/link/{$ssr_sub_token}?mu=1" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=1">点击拷贝订阅地址</button><br></p>
                                                       <p><a href="/user/announcement">点击这里查看游戏客户端傻瓜式教程</a></p>
 													</div>
+													{*
                                                   <div class="tab-pane fade" id="all_ssr_info">
 														{$user = URL::getSSRConnectInfo($pre_user)}
 														{$ssr_url_all = URL::getAllUrl($pre_user, 0, 0)}
@@ -335,6 +347,26 @@
 															<p>请注意，在当前状态下您的 SSR 订阅链接已经失效，您无法通过此种方式导入节点。</p>
 														{/if}
 													</div>
+													*}
+													
+												   <div class="tab-pane fade" id="all_ssr_by">
+												   <p class="card-heading">备用导入节点方式汇总</p>
+												   <p>Windows客户端备用导入节点方式：<br>
+												   (1)下载<a href="/user/getpcconf?is_mu=0&is_ss=0">这个（普通端口）</a>或者<a href="/user/getpcconf?is_mu=1&is_ss=0">这个（443端口）</a>，右键小飞机 服务器 -- 从配置文件导入服务器，选择这个文件。<br>
+												   (2)点击<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这里（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ssr_url_all_mu}">这个（443端口）</a>，然后右键小飞机 -- 从剪贴板复制地址。
+												   </p>
+												   <p>MAC客户端备用导入节点方式：<br>
+												   (1)然后下载<a href="/user/getpcconf?is_mu=0&is_ss=0">这个(普通端口)</a>或者<a  href="/user/getpcconf?is_mu=1&is_ss=0">这个（443端口）</a>，运行程序，小飞机上右键 服务器列表 子菜单 的 “导入服务器配置文件...” 导入这个文件，就可以批量添加节点了。</p>
+														
+												   <p>Android客户端备用导入节点方式：<br>
+												   (1)在手机上默认浏览器中点击<a href="{$ssr_url_all}">这个链接（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个链接（443端口）</a>，然后点击确定，批量添加完节点。
+												   </p>
+												   
+												   <p>Shadowrocket备用导入节点方式：<br>
+												   (1)在 Safari 中点击<a href="{$ssr_url_all}">这个（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个（443端口）</a>，然后点击确定，就可以批量添加节点了。</p>
+                                                     
+													</div> 
+
 
 
 												</div>
@@ -423,6 +455,50 @@
 												<p><a class="reset-link btn btn-brand btn-flat waves-attach" ><span class="icon">autorenew</span>&nbsp;重置订阅链接</a></p>
 											</div>
 										</div>
+										
+										
+										
+										<div class="tab-pane fade " id="all_client">
+													<nav class="tab-nav margin-top-no">
+														<ul class="nav nav-list">
+														
+															<li class="active">
+																<a class="waves-attach" data-toggle="tab" href="#all_clien"><i class="icon icon-lg">text_format</i>&nbsp;客户端&教程</a>
+															</li>
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_shadowrocket"><i class="icon icon-lg">laptop_mac</i>&nbsp;小火箭下载</a>
+															</li>
+														</ul>
+													</nav>
+															
+															<div class="tab-pane fade active in" id="all_clien">
+															<p class="card-heading">教程及客户端下载</p>
+											<p>客户端教程：<a href="{$config["jiaocheng1"]}" target="_blank">{$config["jiaocheng1"]}</a><br>客户端下载：<a href="http://t.cn/RYHO1hn" target="_blank">http://t.cn/RYHO1hn</a>
+                                          <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt">pac下载</a>，鼠标右键另存为即可直接下载</p>
+											
+															
+															</div>
+															
+															
+												<div class="tab-pane fade" id="all_shadowrocket">
+													<p class="card-heading">美区IOS系统小火箭(Shadowrocket)下载账号：</p>
+														{if $user->class >=23}
+															
+											<p>账号： {$config["iosinfo"]}</p>
+											<p>密码： {$config["iospasswd"]}</p>
+											{else}
+											<h5><font color="red">为减少账号出现异常，导致需要经常改密码，现账号仅对年付SVIP用户共享，其他用户请自行前往APP Store中国区以外的区进行购买使用，此App价格介绍：美区价格在2.88美元左右，换算成人民币价格在18元左右，其他区价格差不多，请自行前往购买使用</font></h5>	
+											{/if}
+											<p>使用方法：登陆APP Store后请搜索Shadowrocket，或者在已购记录里面找到Shadowrocket，然后点击下载安装就行；
+											<br>注意：下载完软件，请立即退出登录，为确保账号不被锁定，此账号不定期更新密码。
+											<br><font color="red">关于隐私：为了您的隐私安全，禁止使用此账号登录icloud，登陆icloud可能会自动上传通讯录和照片等隐私，并且会有被锁机和抹掉手机数据的风险，如您不听劝告，后果自负。</font></p>	
+												
+												</div>
+											
+										</div>
+										
+										
+												
 									</div>
 
 								</div>
