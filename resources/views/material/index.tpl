@@ -31,11 +31,27 @@
 						<div class="content">
 							<div class="inner">
                                   <p>用户：<code>{$user->user_name}</code>
-                                    等级：{if $user->class!=0}
-											<code>VIP{$user->class}</code>
-                                          {else}
-                                             <code>免费</code>
-                                              {/if}
+                                    等级：{if $user->class==0}
+                                          <code>未激活</code>
+                                         {elseif $user->class==5}
+                                         <code>年付VIP</code>
+										 {elseif $user->class==16}
+										 <code>永久会员</code>
+										 {elseif $user->class==17}
+										 <code>月付VIP</code>										 
+										 {elseif $user->class==18}
+										 <code>月付VIP</code>
+										 {elseif $user->class==19}
+										 <code>月付VIP</code>
+										 {elseif $user->class==22}
+										 <code>半年付VIP</code>
+										 {elseif $user->class==23}
+										 <code>年付SVIP</code>										 
+									
+										 {else}
+										 <code>未激活</code>
+										 {/if}
+										 
                                     过期时间：{if $user->class_expire!="1989-06-04 00:05:00"}
 											    <code>{$user->class_expire}</code>
                                           {else}
@@ -50,8 +66,10 @@
 							<ul>
                                 <li><a href="#1">简介</a></li>
 					            <li><a href="/user">用户中心</a></li>
+								<li><a href="/toos">用户协议</a></li>
+								<li><a href="/cous">联系我们</a></li>
 								<li><a href="/user/logout">退出登录</a></li>
-								<li><a href="#5">下载</a></li>
+								<!-- <li><a href="#5">下载</a></li> -->
                         </ul>
 						</nav>
                               {else}
@@ -82,7 +100,10 @@
                       <!--标签1开始-->
                       <article id="1">
                       <h2 class="major">简介</h2>
-                      <p>「ホワイトアルバムの季節」が、また、やってきた。</p></article>
+                      <h3 align="center">云霄阁</h3>
+					  <p>中国式的比萨斜塔——福建省上杭县中都镇云霄阁始建于1522—1566年间（明嘉靖年间），属于外斜内正的建筑结构。游客无论从哪一个角度观察该楼，楼均向相反的方向倾斜，400多年来无人能解其中之奥秘。</p>
+					  <p>云霄阁于1582年（明万历十年）重修，距今己有400多年历史，系土木结构，呈迭式塔形，共七层，高20多米。底层分前后两座：前堂为夫人宫，门前有联云：“黄鹤归来带得松花香丈室，白云飞去放开明月照禅心”。后堂为仙师殿，供奉仙师菩萨，有联云“佛地有尘风自扫，禅寺无锁月常关”。第二层为观音殿，奉观音佛像，有联曰“紫金山清源山不如此处神灵救灾更快，禅林寺义合寺总是共个菩萨求福在诚”。第三层为玄天帝殿，第四层为北帝祖师殿，第五层天后圣母殿，第六层为魁星点斗殿，第七层为钟鼓。</p>
+					  </article>
 					  <!--
 					  简介修改示例: 
 					  <p> 123</p>
@@ -151,7 +172,7 @@
                               </div>
                      <!-- 版权底部 -->
                       <footer id="footer">
-                   <p class="copyright">&copy;2015-{date("Y")} {$config["appName"]}</p>
+                   <p class="copyright">&copy;2015-{date("Y")} {$config["appName"]}      <a href="/fstaffs">STAFF</a>    <a class="Keep Right" href="/toos">用户协议(TOS)</a></p>
                       </footer>
               <!-- 版权结束 -->
 			 </div>

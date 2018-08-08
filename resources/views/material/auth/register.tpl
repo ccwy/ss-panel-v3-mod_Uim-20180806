@@ -26,6 +26,7 @@
 								<div class="card-inner">
 
 
+								{*
 										<div class="form-group form-group-label">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
@@ -34,6 +35,7 @@
 												</div>
 											</div>
 										</div>
+								*}		
 
 										<div class="form-group form-group-label">
 											<div class="row">
@@ -88,6 +90,7 @@
 											</div>
 										</div>
 
+										{*
 										<div class="form-group form-group-label">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
@@ -96,6 +99,7 @@
 												</div>
 											</div>
 										</div>
+										
 
 
 										<div class="form-group form-group-label">
@@ -122,6 +126,7 @@
 												</div>
 											</div>
 										</div>
+										*}
 
 
 										{if $enable_invite_code == 'true'}
@@ -185,7 +190,7 @@
 										{include file='reg_tos.tpl'}
 									</div>
 									<div class="modal-footer">
-										<p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我不同意</button>
+										<p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我拒绝</button>
                                           <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" id="reg" type="button">我同意</button>
                                       </p>
 									</div>

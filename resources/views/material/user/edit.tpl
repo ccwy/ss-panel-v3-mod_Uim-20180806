@@ -60,6 +60,8 @@
 									<div class="card-inner">
 										<p class="card-heading">节点连接密码修改</p>
 										<p>当前连接密码：<code id="ajax-user-passwd">{$user->passwd}</code><button class="kaobei copy-text btn btn-subscription" type="button" data-clipboard-text="{$user->passwd}">点击拷贝</button></p>
+										<p><font color="red">连接密码只能是大写字母、小写字母、数字，连接密码需大于8位，小于26位；
+										<br>改完连接密码后请更新客户端服务器的连接密码或者重新导入配置文件！</font></p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="sspwd">新连接密码</label>
 											<input class="form-control" id="sspwd" type="text">
@@ -106,6 +108,7 @@
 							</div>
 						</div>  
 
+						{*
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -156,6 +159,7 @@
 								</div>
 							</div>
 						</div>
+						*}
 
 
 
@@ -218,6 +222,7 @@
 
 
 
+						{*
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -242,12 +247,14 @@
 								</div>
 							</div>
 						</div> 
+						*}
 </div>
 					</div>  
 
 
 					<div class="col-lg-6 col-md-6">
 
+					{*
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -336,6 +343,7 @@
 								</div>
 							</div>
 						</div>    
+						*}
 
 						{if $config['port_price']>=0 || $config['port_price_specify']>=0}
 						<div class="card margin-bottom-no">
@@ -344,14 +352,22 @@
 									{if $config['port_price']>=0}
 									<div class="card-inner">
 										<p class="card-heading">重置端口</p>
-										<p>对号码不满意？来摇号吧～！</p>
-										<p>随机更换一个端口使用，价格：<code>{$config['port_price']}</code>元/次</p>
-										<p>重置后1分钟内生效</p>
+									{*	<p>对号码不满意？来摇号吧～！</p>
+										<p>随机更换一个端口使用，价格：<code>{$config['port_price']}</code>元/次</p> 
+										<p>重置后1分钟内生效</p> *}
+										<p>注意：重置端口立即生效，随机生成新的端口，请及时更新节点信息，否则可能无法使用任何节点；
+										</p>
+										{if $user->port >= 10500}
+										<p><font color="red">您当前端口可能会导致部分节点无法使用，请点击下面重置端口按钮，完成端口重置。</font></p>
+										{else}
+										<p><font color="red">您的端口在正常使用范围内，无需重置。</font></p>
+										{/if}
 										<p>当前端口：<code id="ajax-user-port">{$user->port}</code></p>
 									</div>
 									<div class="card-action">
 										<div class="card-action-btn pull-left">
-											<button class="btn btn-flat waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;摇号</button>
+											{* <button class="btn btn-flat waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;摇号</button>*}
+											<button class="btn btn-brand waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;重置端口</button>
 										</div>
 									</div>
 									{/if}

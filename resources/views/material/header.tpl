@@ -86,6 +86,14 @@
 				     <a  href="/password/reset"><i class="icon icon-lg">security</i>&nbsp;重置密码</a>
 					</li>
 
+					<li>
+				     <a  href="/toos"><i class="icon icon-lg">text_format</i>&nbsp;用户协议</a>
+					</li>
+					
+					<li>
+						<a  href="/cous"><i class="icon icon-lg">email</i>&nbsp;联系我们</a>
+					</li>
+
                   <li>
                     <div class="divcss5">
     					<img  src="/images/Ambassador-menu.png" width="230" height="300"/>

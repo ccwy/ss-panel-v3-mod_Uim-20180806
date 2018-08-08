@@ -12,6 +12,7 @@
 								<div class="card-header">
 									<div class="card-inner">
 										<h1 class="card-heading">重置密码</h1>
+										<p style=" text-align:center;">QQ邮箱可能无法收到重置密码邮件，请<a href="/cous">联系我们</a>处理</p>
 									</div>
 								</div>
 								<div class="card-inner">
@@ -34,7 +35,7 @@
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
 													<button id="reset" type="submit" class="btn btn-block btn-brand waves-attach waves-light">重置密码</button>
-													<a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a>
+													<p><a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a></p>
 												</div>
 											</div>
 										</div>
@@ -45,7 +46,16 @@
 							</div>
 						</div>				
 										
-								
+						<div class="clearfix">
+							<p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach" href="/auth/login">登录</a></p>
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/cous">联系我们</a></p>		
+						<!--	{if $config['regiestrs'] == 'true'}
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/auth/register">注册账号</a></p>
+							{else} 							
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/cous">联系我们</a></p>							
+							 {/if} -->
+						</div>
+						
 						{include file='dialog.tpl'}
 						
 						<div aria-hidden="true" class="modal modal-va-middle fade" id="email_nrcy_modal" role="dialog" tabindex="-1">
