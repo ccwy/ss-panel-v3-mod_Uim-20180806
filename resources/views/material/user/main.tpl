@@ -11,8 +11,10 @@
 	<!-- css -->
 	<link href="/theme/material/css/base.min.css" rel="stylesheet">
 	<link href="/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Material+Icons">
+	<!--<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">-->
+	<link href="/theme/material/css/roboto.css" rel="stylesheet">
+	<!--<link href="https://fonts.loli.net/css?family=Material+Icons">-->
+	<link href="/theme/material/css/icon.css" rel="stylesheet">
 
  <style>
     body {
@@ -349,11 +351,13 @@
 							</li>
 
 
+							{*
 							<li>
 								<a href="/user/profile">
 									<i class="icon icon-lg">account_box</i>&nbsp;账户信息
 								</a>
 							</li>
+							*}
 
 							<li>
 								<a href="/user/edit">
@@ -404,6 +408,7 @@
 								</a>
 							</li>
 
+							{*
 							<li>
 								<a href="/user/lookingglass">
 									<i class="icon icon-lg">visibility</i>&nbsp;延迟检测
@@ -412,6 +417,7 @@
 									<i class="icon icon-lg">start</i>&nbsp;使用教程
 								</a>
 							</li>
+							*}
 						</ul>
 
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_detect">审计</a>

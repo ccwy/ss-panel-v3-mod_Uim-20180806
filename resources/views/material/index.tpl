@@ -85,12 +85,13 @@
                       </div>	
                               <nav>
 							<ul>
-                               <li><a href="#1">简介</a></li>
-								<li><a href="/auth/login">登录</a></li>
-								<li><a href="/auth/register">注册</a></li>
-                              	<li><a href="#5">下载</a></li>
-                              
-                           </ul>
+                                <li><a href="#1">简介</a></li>
+					            <li><a href="/user">用户中心</a></li>
+								<li><a href="/toos">用户协议</a></li>
+								<li><a href="/cous">联系我们</a></li>
+								<li><a href="/user/logout">退出登录</a></li>
+								<!-- <li><a href="#5">下载</a></li> -->
+                        </ul>
 						</nav>
                               {/if}
 
