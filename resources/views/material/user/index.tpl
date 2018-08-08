@@ -16,6 +16,7 @@
 			<section class="content-inner margin-top-no">
 				<div class="ui-card-wrap">
 
+				{if $user->class !=0}
 						<div class="col-lg-6 col-md-6">
 
 							<div class="card">
@@ -49,13 +50,73 @@
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading"><i class="icon icon-md">account_circle</i>账号使用情况</p>
 										<dl class="dl-horizontal">
-											<p><dt>帐号等级</dt>
-                                              {if $user->class!=0}
-											<dd><i class="icon icon-md t4-text">stars</i>&nbsp;<code>VIP{$user->class}</code></dd>
-                                          {else}
-                                              <dd><i class="icon icon-md t4-text">stars</i>&nbsp;免费</dd>
-                                              {/if}
+										<p><dt>邮箱帐号</dt>
+                                              
+											<dd><i class="icon icon-md t4-text">email</i>&nbsp;{$user->email}</dd>
+                                          
                                           </p>
+										 <p><dt>余额</dt>
+											<dd><i class="icon icon-md">monetization_on</i>&nbsp;<code>{$user->money}</code> CNY   ; <a href="/user/code">点我充值</a></dd> </p>
+											
+											<p><dt>帐号等级</dt>
+                                              {if $user->class ==0}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;未激活</dd>											  
+											  {elseif $user->class ==16}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;永久会员</dd>
+											  {elseif $user->class==17}											  
+                                              <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP1</dd>
+                                              {elseif $user->class==18}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP2</dd>
+											  {elseif $user->class==19}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP3</dd>
+											  {elseif $user->class==20}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP4</dd>
+											  {elseif $user->class==21}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP5</dd>
+											  {elseif $user->class==22}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;月付VIP6</dd>
+											  {elseif $user->class==23}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP1</dd>
+											  {elseif $user->class==24}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP2</dd>
+											  {elseif $user->class==25}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP3</dd>
+											  {elseif $user->class==26}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP4</dd>
+											  {elseif $user->class==5}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付VIP</dd>
+											
+                                          {else}
+                                              <dd><i class="icon icon-md t4-text">stars</i>&nbsp;未知等级</dd>
+											  
+                                              {/if}
+                                          
+											{*
+											<p><dt>帐号过期时间</dt>
+											  <dd><i class="icon icon-md">event</i>&nbsp;{$user->expire_in}</dd>
+                                            </p>
+                                            <p><dt>账号有效期</dt>
+                                              <i class="icon icon-md">event</i>
+                                              <span class="label-account-expire">剩余</span>
+											  <code><span id="days-account-expire"></span></code>
+											  <span class="label-account-expire">天</span>
+                                           </p>
+										   *}
+
+											<p><dt>速度限制</dt>
+											{if $user->node_speedlimit!=0}
+											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;<code>{$user->node_speedlimit}</code>Mbps</dd>
+											{else}
+											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;不限速</dd>
+											{/if}</p>
+                                           <p><dt>在线设备数</dt>
+										    {if $user->node_connector!=0}
+											<dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / {$user->node_connector}</dd>
+											{else}
+                                            <dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / 不限制 </dd>
+											{/if}
+											</p>
+											</p>
 
 											<p><dt>等级过期时间</dt>
                                               {if $user->class_expire!="1989-06-04 00:05:00"}
@@ -71,37 +132,23 @@
                                               <span class="label-level-expire">天</span>
                                             </p>
 
-											<p><dt>帐号过期时间</dt>
-											  <dd><i class="icon icon-md">event</i>&nbsp;{$user->expire_in}</dd>
-                                            </p>
-                                            <p><dt>账号有效期</dt>
-                                              <i class="icon icon-md">event</i>
-                                              <span class="label-account-expire">剩余</span>
-											  <code><span id="days-account-expire"></span></code>
-											  <span class="label-account-expire">天</span>
-                                           </p>
-
-											<p><dt>速度限制</dt>
-											{if $user->node_speedlimit!=0}
-											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;<code>{$user->node_speedlimit}</code>Mbps</dd>
-											{else}
-											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;不限速</dd>
-											{/if}</p>
-                                           <p><dt>在线设备数</dt>
-										    {if $user->node_connector!=0}
-											<dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / {$user->node_connector}</dd>
-											{else}
-                                            <dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / 不限制 </dd>
+											<p><dt>帐号注册时间</dt>
+											<dd><i class="icon icon-md">event</i>&nbsp;{$user->reg_date}</dd>	
+											</p>
+											
+											{if $user->auto_reset_day > 0}
+                                          	<p><dt>重置流量</dt>											
+											<dd><i class="icon icon-md">event</i>&nbsp;每月 {$user->auto_reset_day} 日，流量重置为  {$user->auto_reset_bandwidth} GB</dd>																				
 											{/if}
 											</p>
-											<p><dt>余额</dt>
-											<dd><i class="icon icon-md">monetization_on</i>&nbsp;<code>{$user->money}</code> CNY</dd></p>
+											{*
 											<p><dt>上次使用</dt>
                                               {if $user->lastSsTime()!="从未使用喵"}
 											<dd><i class="icon icon-md">event</i>&nbsp;{$user->lastSsTime()}</dd>
                                           {else}
                                           <dd><i class="icon icon-md">event</i>&nbsp;从未使用</dd>
                                           {/if}</p>
+										  
                                           <p><dt>上次签到时间：</dt>
                                             <dd><i class="icon icon-md">event</i>&nbsp;{$user->lastCheckInTime()}</dd></p>
 
@@ -113,6 +160,7 @@
 											{/if}
 
 
+									
 									<div class="card-action">
 										<div class="card-action-btn pull-left">
 											{if $user->isAbleToCheckin() }
@@ -124,6 +172,7 @@
 											{/if}
 										</div>
 									</div>
+									*}
 										</dl>
 									</div>
 
@@ -475,9 +524,136 @@
 
 						{/if}
 
-						{include file='dialog.tpl'}
+						
 
 					</div>
+					
+					
+						
+						{else}
+						
+
+					
+
+
+				
+
+							<div class="card">
+								<div class="card-main">
+									<div class="card-inner margin-bottom-no">
+                                     <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告栏</p>
+									{* <p>置顶公告：
+										<br>1，用户协议(TOS)请<a href="/toos">点击查看</a>；			
+										<br>2，历史公告请到<a href="/user/announcement"/>公告面板</a>查看；
+										<br>3，本站没有任何中国境内的联系方式。<br></p> *}
+										
+										{if $ann != null}
+										<p>{$ann->content}</p>
+										{/if}
+									</div>
+
+								</div>
+							</div>
+							
+							
+							
+							<div class="card">
+								<div class="card-main">
+									<div class="card-inner margin-bottom-no">
+										<p class="card-heading"><i class="icon icon-md">account_circle</i>账号使用情况</p>
+										<dl class="dl-horizontal">
+										
+										<p><dt>邮箱</dt>
+                                              
+											<dd><i class="icon icon-md t4-text">email</i>&nbsp;{$user->email}</dd>
+                                          
+                                          </p>
+											<p><dt>帐号等级</dt>
+                                              {if $user->lastSsTime() > 0 && $user->class==0 }
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;已过期</dd>
+											  {else}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;未激活</dd>
+											  {/if}
+                                             
+                                          </p>
+										  <p><dt>余额</dt>
+											<dd><i class="icon icon-md">monetization_on</i>&nbsp;{$user->money} 元；<a href="/user/code">点我充值</a> </dd></p>
+											
+
+											<!--
+											<p><dt>帐号过期时间</dt>
+											  <dd><i class="icon icon-md">event</i>&nbsp;{$user->expire_in}</dd>
+                                            </p>
+											
+                                            <p><dt>账号有效期</dt>
+                                              <i class="icon icon-md">event</i>
+                                              <span class="label-account-expire">剩余</span>
+											  <span id="days-account-expire"></span>
+											  <span class="label-account-expire">天</span>
+                                           </p>
+										   -->
+
+											
+											{if $user->lastSsTime() > 0 && $user->class==0 }
+											<p><dt>等级过期时间</dt>
+                                              {if $user->class_expire!="1989-06-04 00:05:00"}
+											<dd><i class="icon icon-md">event</i>&nbsp;{$user->class_expire}</dd>
+                                          {else}
+                                              <dd><i class="icon icon-md">event</i>&nbsp;不过期</dd>
+                                              {/if}
+											</p>
+											{/if}
+											
+											<p><dt>账号注册时间</dt>
+											<dd><i class="icon icon-md">event</i>&nbsp;{$user->reg_date}</dd>	
+											</p>
+										</dl>
+									</div>
+
+								</div>
+							</div>
+							
+							
+							
+							{if $user->class == 0 && $user->lastSsTime() == 0 && $user->ref_by != 1766}
+							<div class="card">
+								<div class="card-main">
+									<div class="card-inner margin-bottom-no">
+									<p class="card-heading">新用户使用引导：</p>
+									
+										<p><font color="blue">注册即代表同意并遵守本站<a href="/toos">用户协议（TOS）</a>，本站不提供试用，请<a href="/user/code">点我充值</a>余额到账户，然后通过  <a href="/user/shop">商店</a> 购买激活账号，如您未能在注册后  {$config['enable_auto_clean_unused_days']}  天内完成购买，账号将自动删除，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</font></p>
+																												
+									</div>									
+								</div>
+							</div>
+							{/if}
+							
+							
+							
+							
+							{if $user->lastSsTime() > 0 && $user->class==0 }
+							<div class="card">
+								<div class="card-main">
+									<div class="card-inner margin-bottom-no">
+									<p class="card-heading">账号当前状态</p>
+										<h5><font color="blue">您的账号等级已于 {$user->class_expire} 过期，</font>为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；
+										<br><font color="blue">请注意，您的账号将在等级过期 {$config['enable_account_expire_delete_days']}  天后自动删除，</font></h5>
+										<p>如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
+																												
+									</div>									
+								</div>
+							</div>
+							{/if}
+							
+							
+
+			   	
+				
+
+				
+				{/if}				
+					{include file='dialog.tpl'}
+					
 
 
 				</div>
