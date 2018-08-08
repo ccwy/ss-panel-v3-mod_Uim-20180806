@@ -27,11 +27,24 @@
 								<div class="card-inner">
 									<div class="card-inner">
 										<p class="card-heading">说明</p>
+										{*
 										<p>您每邀请1位用户注册：</p>
 										<p>您会获得<code>{$config["invite_gift"]} G</code>流量奖励。</p>
 										<p>对方将获得<code>{$config["invite_get_money"]}</code>元奖励作为初始资金。</p>
 										<p>对方充值时您还会获得对方充值金额的 <code>{$config["code_payback"]} %</code> 的返利。</p>
 										<p class="card-heading">已获得返利：<code>{$paybacks_sum}</code> 元</p>
+										
+										<p>1，邀请码请给认识的需要的人，邀请码可用次数用完请<a href="/user/ticket/create">建立工单</a>申请，		</p>
+										<!--<p>2，剩余可邀请次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>-->
+										<p>2，您每邀请一位用户注册，对方首次充值时您就会获得对方充值金额 <code>{$config["code_payback"]} %</code> 的提成。</p>
+										*}
+										<p>3，账号状态正常用户，返利可提现到支付宝，24小时内到账（每次大于<code>100.00</code>元即可<a href="/user/ticket/create">建立工单</a>申请提现到支付宝，工单需写上收款支付宝账户，每次提现会收取提现金额 <code>2 %</code> 的手续费）；</p>
+										<p>4，账号状态正常用户，提现到帐户余额请点击下面返利提现按钮自助完成操作即可。
+										<br>
+										<br>返利金额：<code>{$user->fanli} </code> 元 
+										</p>
+										<p>返利记录：<a class="btn btn-brand waves-attach" href="/user/profile">点击查询</a> </p>    
+										<p>返利提现：<a class="btn btn-brand waves-attach" href="/user/fanli">点击提现</a></p>
 									</div>
 
 								</div>
@@ -44,16 +57,33 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
+								            	{*
 												<p class="card-heading">邀请链接</p>
 												<p>邀请他人注册时，请将以下链接发给被邀请者</p>
 												<p><a>{$config["baseUrl"]}/auth/register?code={$code->code}</a></p>
 												<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请链接</button></p>
+												*}
+												
+												<p class="card-heading">我的邀请码 {if $user->invite_num!=0}<button id="invitede" class="btn btn-brand waves-attach">重置邀请码链接</button>{/if}</p>
+												
+												<p>邀请码剩余可用次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>
+									            {if $code->code == null}
+												<p><button id="invite" class="btn btn-brand waves-attach">点击生成邀请码</button></p>
+											    {else}
+												{if $user->invite_num==0}
+												<h3>{$user->user_name}，您的邀请码已用完，如需继续邀请朋友注册，请<a href="/user/ticket/create">建立工单</a>申请添加邀请次数。</h3>
+												{else}
+												<p><a href="{$config["baseUrl"]}/auth/register?code={$code->code}">{$config["baseUrl"]}/auth/register?code={$code->code}</a></p>
+												<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请码</button></p>
+												{/if}
+												{/if}
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
+					{*
 					{if $user->class!=0}
 
 					{if $user->invite_num!=-1}
@@ -71,6 +101,7 @@
 						</div>
 					</div>
 					{/if}
+					*}
 
 					{if $config['invite_price']>=0}
 					<div class="col-lg-12 col-md-12">
@@ -113,6 +144,7 @@
 					</div>
 
 					{/if}
+					{*
 					<div class="table-responsive">
 						{$paybacks->render()}
 						<table class="table ">
@@ -136,6 +168,7 @@
                         </table>
 						{$paybacks->render()}
 					</div>
+					*}
 
 					{include file='dialog.tpl'}
 

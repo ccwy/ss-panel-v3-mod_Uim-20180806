@@ -660,19 +660,6 @@
 											<dd><i class="icon icon-md">monetization_on</i>&nbsp;{$user->money} 元；<a href="/user/code">点我充值</a> </dd></p>
 											
 
-											<!--
-											<p><dt>帐号过期时间</dt>
-											  <dd><i class="icon icon-md">event</i>&nbsp;{$user->expire_in}</dd>
-                                            </p>
-											
-                                            <p><dt>账号有效期</dt>
-                                              <i class="icon icon-md">event</i>
-                                              <span class="label-account-expire">剩余</span>
-											  <span id="days-account-expire"></span>
-											  <span class="label-account-expire">天</span>
-                                           </p>
-										   -->
-
 											
 											{if $user->lastSsTime() > 0 && $user->class==0 }
 											<p><dt>等级过期时间</dt>
