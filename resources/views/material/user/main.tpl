@@ -395,6 +395,14 @@
 									<i class="icon icon-lg">airplanemode_active</i>&nbsp;节点列表
 								</a>
 							</li>
+							
+							
+							<li>
+								<a href="/user/anyconnect">
+									<i class="icon icon-lg">router</i>&nbsp;Anyconnect
+								</a>
+							</li>
+							
 
 							<li>
 								<a href="/user/relay">
