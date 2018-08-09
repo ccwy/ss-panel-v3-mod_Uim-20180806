@@ -34,6 +34,7 @@
                   
 					
 					<div class="table-responsive">
+					<nobr>
 						{$shops->render()}
 						<table class="table ">
                             <tr>
@@ -62,6 +63,7 @@
                             {/foreach}
                         </table>
 						{$shops->render()}
+						</nobr>
 					</div>
 					
 					
