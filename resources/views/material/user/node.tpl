@@ -381,7 +381,8 @@
 
 
 
-																{*  取消在线数据显示
+																<!-- 取消显示乱七八糟 -->
+																<!-- 
 																	{if isset($point_node)}
 																	{if $point_node!=null}
 
@@ -402,7 +403,7 @@
 																		</script>
 																	{/if}
 																{/if}
-																*}
+																-->
 
 																{$point_node=null}
 															</div>
@@ -572,7 +573,8 @@
 
 
 
-																{*  取消在线数据显示
+																<!-- 取消显示乱七八糟 -->
+																<!-- 
 																	{if isset($point_node)}
 																	{if $point_node!=null}
 
@@ -593,7 +595,7 @@
 																		</script>
 																	{/if}
 																{/if}
-																*}
+																-->
 
 																{$point_node=null}
 															</div>
@@ -764,7 +766,8 @@
 
 
 
-																{*  取消在线数据显示
+																<!-- 取消显示乱七八糟 -->
+																<!-- 
 																	{if isset($point_node)}
 																	{if $point_node!=null}
 
@@ -785,7 +788,7 @@
 																		</script>
 																	{/if}
 																{/if}
-																}
+																-->
 
 																{$point_node=null}
 															</div>
