@@ -198,7 +198,7 @@ class ShopController extends AdminController
     public function bought($request, $response, $args)
     {
         $table_config['total_column'] = array("op" => "操作", "id" => "ID", 
-						"content" => "内容",
+						 "name" => "商品名称", "content" => "内容",
                         "price" => "价格", "user_id" => "用户ID",
                         "user_name" => "用户名", //"renew" => "自动续费时间", 
                        // "auto_reset_bandwidth" => "续费时是否重置流量");
@@ -270,7 +270,7 @@ class ShopController extends AdminController
     public function ajax_bought($request, $response, $args)
     {
         $datatables = new Datatables(new DatatablesHelper()); //每月是否重置流量
-        $datatables->query('Select bought.id as op,bought.id as id,shop.id as content,bought.price,user.id as user_id,user.user_name,renew,shop.auto_reset_bandwidth,shop.auto_reset_day,bought.datetime from bought,user,shop where bought.shopid = shop.id and bought.userid = user.id');
+        $datatables->query('Select bought.id as op,bought.id as id,shop.id as content,shop.name as name,bought.price,user.id as user_id,user.user_name,renew,shop.auto_reset_bandwidth,shop.auto_reset_day,bought.datetime from bought,user,shop where bought.shopid = shop.id and bought.userid = user.id');
 
         $datatables->edit('op', function ($data) {
             return '<a class="btn btn-brand-accent" '.($data['renew'] == 0 ? "disabled" : ' id="row_delete_'.$data['id'].'" href="javascript:void(0);" onClick="delete_modal_show(\''.$data['id'].'\')"').'>中止</a>';
