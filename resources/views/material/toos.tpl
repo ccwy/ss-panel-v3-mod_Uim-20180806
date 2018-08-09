@@ -24,6 +24,7 @@
 
 											<p>{$config["appName"]}，以下简称本站。</p>
               <div class="table-wrapper">
+			  <table>
 										<tbody>
 												<tr align="center">
 													<td>隐私安全</td>
