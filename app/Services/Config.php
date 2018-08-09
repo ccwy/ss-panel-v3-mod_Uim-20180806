@@ -49,9 +49,10 @@ class Config
 			"enable_flag" => self::get("enable_flag"),
 			
 			"rssresd" => self::get("rssresd"),  //rss订阅地址
-			
+			//"payurl" => self::get("payurl"),  //spay支付地址
+			//"payurl2" => self::get("payurl2"),  //码支付支付地址
 			"roudeurl" => self::get("roudeurl"),  //ssr路由器订阅地址
-			
+			"payurlma" => self::get("payurlma"),  // 充值码购买地址
 			"anyconnect" => self::get("anyconnect"),  // anyconnect vpn地址
 			"telegram1" => self::get("telegram1"),  // telegram1 通知频道地址
 			"telegram2" => self::get("telegram2"),  // telegram2 用户群地址
@@ -61,7 +62,7 @@ class Config
 			"iospasswd" => self::get("iospasswd"),  // ios小火煎下载密码
 			"jiaocheng1" => self::get("jiaocheng1"),  // 教程地址
 			"regiestrs" => self::get("regiestrs"),  // 注册开关
-			"restport" => self::get("restport"),  // 重置端口
+			"restport" => self::get("restport")  // 重置端口
 			
          ];
     }

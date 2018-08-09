@@ -65,6 +65,7 @@
 					</div>
 					{/if}
 
+					{if $config['payurlma'] != ''} 
 					<div class="col-lg-12 col-md-12">
 						<div class="card margin-bottom-no">
 							<div class="card-main">
@@ -85,6 +86,7 @@
 							</div>
 						</div>
 					</div>
+					{/if}
 					
 					<div class="col-lg-12 col-md-12">
 						<div class="card margin-bottom-no">
