@@ -33,8 +33,8 @@ class UserController extends AdminController
                             "is_enable" => "是否启用", "reg_date" => "注册时间",
                             "reg_location" => "注册IP", "auto_reset_day" => "自动重置流量日",
                             "auto_reset_bandwidth" => "自动重置流量/GB", "ref_by" => "邀请人ID", "ref_by_user_name" => "邀请人用户名");
-        $table_config['default_show_column'] = array("op", "id", "user_name", "remark", "email");
-        $table_config['ajax_url'] = 'user/ajax';
+        $table_config['default_show_column'] = array("op", "id", "user_name", "email", "money", "account_expire_in", "class", "class_expire", "online_ip_count", "last_ss_time", "used_traffic", "enable_traffic", "today_traffic", "reg_date", "reg_location", "auto_reset_day", "auto_reset_bandwidth", "ref_by", "ref_by_user_name");
+        $table_config['ajax_url'] = 'user/ajax';   //设置默认显示项 
         return $this->view()->assign('table_config', $table_config)->display('admin/user/index.tpl');
     }
 
@@ -160,7 +160,7 @@ class UserController extends AdminController
         if ($request->getParam('pass') != '') {
             $user->pass = Hash::passwordHash($request->getParam('pass'));
             Wecenter::ChangeUserName($email1, $email2, $request->getParam('pass'), $user->user_name);
-            $user->clean_link();
+           // $user->clean_link();  修复修改密码订阅地址变化问题
         }
 
         $user->auto_reset_day =  $request->getParam('auto_reset_day');
@@ -192,6 +192,11 @@ class UserController extends AdminController
         $user->ref_by = $request->getParam('ref_by');
         $user->remark = $request->getParam('remark');
         $user->money = $request->getParam('money');
+		$user->fanli = $request->getParam('fanli');  //返利
+		
+		$user->anyid = $request->getParam('anyid');		//anyid
+		$user->anypwd = $request->getParam('anypwd');  //anypwd
+
         $user->class = $request->getParam('class');
         $user->class_expire = $request->getParam('class_expire');
         $user->expire_in = $request->getParam('expire_in');
