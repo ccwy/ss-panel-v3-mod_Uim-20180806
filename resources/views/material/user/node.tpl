@@ -729,6 +729,7 @@
 																	{/if}
 
 
+																	<!--
 																	{if ($node->sort == 0 || $node->sort == 10) && $node->custom_rss == 1 && $node->mu_only != -1}
 																		{foreach $node_muport as $single_muport}
 
@@ -763,6 +764,7 @@
 																			</div>
 																		{/foreach}
 																	{/if}
+																	-->
 																	{/if}
 																{/foreach}
 
