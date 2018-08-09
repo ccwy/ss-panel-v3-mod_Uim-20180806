@@ -11,6 +11,10 @@ use App\Models\User;
 use Ozdemir\Datatables\Datatables;
 use App\Utils\DatatablesHelper;
 
+//邮件记录
+use App\Models\Emailjilu;
+use voku\helper\AntiXSS;
+
 class AnnController extends AdminController
 {
     public function index($request, $response, $args)
@@ -36,33 +40,47 @@ class AnnController extends AdminController
         $ann->markdown =  $request->getParam('markdown');
         $issend = $request->getParam('issend');
         $vip = $request->getParam('vip');
+		$idd = $request->getParam('idd');
         $users = User::all();
         if (!$ann->save()) {
             $rs['ret'] = 0;
             $rs['msg'] = "添加失败";
             return $response->getBody()->write(json_encode($rs));
         }
+       
+		//注销自动发邮件
         if ($issend == 1){
             foreach($users as $user){
-                if ($user->class >= $vip){
-                    $subject = Config::get('appName')."-公告";
+                if ($user->id >= $vip && $user->id <= $idd){
+                    $subject = Config::get('appName')." - 公告";
                     $to = $user->email;
                     $text = $ann->content;
                     try {
-                        Mail::send($to, $subject, 'news/warn.tpl', [
+                        Mail::send($to, $subject, 'news/gonggao.tpl', [
                             "user" => $user,"text" => $text
                         ], [
                         ]);
                     } catch (Exception $e) {
                         echo $e;
                     }
+						
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
                 }
             }
-        }
+        } 
 
         Telegram::SendMarkdown("新公告：".PHP_EOL.$request->getParam('markdown'));
         $rs['ret'] = 1;
-        $rs['msg'] = "公告添加成功，邮件发送成功";
+        $rs['msg'] = "公告添加成功";
         return $response->getBody()->write(json_encode($rs));
     }
 
@@ -83,6 +101,11 @@ class AnnController extends AdminController
         $ann->content =  $request->getParam('content');
         $ann->markdown =  $request->getParam('markdown');
         $ann->date =  date("Y-m-d H:i:s");
+		$issend = $request->getParam('issend');
+        $vip = $request->getParam('vip');
+		$idd = $request->getParam('idd');
+        $users = User::all();
+
 
         if (!$ann->save()) {
             $rs['ret'] = 0;
@@ -90,6 +113,35 @@ class AnnController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
+		//注销自动发邮件
+        if ($issend == 1){
+            foreach($users as $user){
+                if ($user->id >= $vip && $user->id <= $idd){
+                    $subject = Config::get('appName')." - 公告";
+                    $to = $user->email;
+                    $text = $ann->content;
+                    try {
+                        Mail::send($to, $subject, 'news/gonggao.tpl', [
+                            "user" => $user,"text" => $text
+                        ], [
+                        ]);
+                    } catch (Exception $e) {
+                        echo $e;
+                    }
+						
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
+                }
+            }
+        } 
         Telegram::SendMarkdown("公告更新：".PHP_EOL.$request->getParam('markdown'));
 
         $rs['ret'] = 1;

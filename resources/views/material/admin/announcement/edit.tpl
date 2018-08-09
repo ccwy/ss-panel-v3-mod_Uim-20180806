@@ -39,6 +39,22 @@
 					</div>
 					
 					
+					{*
+					<div class="card">
+						<div class="card-main">
+							<div class="card-inner">
+								
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-10 col-md-push-1">
+											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">修改</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					*}
 					
 					<div class="card">
 						<div class="card-main">
@@ -47,6 +63,20 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-10 col-md-push-1">
+										  <div class="form-group form-group-label">
+                                          	<label class="floating-label" for="vip">最小id</label>
+											<input class="form-control" id="vip" type="text" name="vip">
+											</div>
+											<div class="form-group form-group-label">
+                                          	<label class="floating-label" for="idd">最大id</label>
+											<input class="form-control" id="idd" type="text" name="idd">
+											</div>
+                                           <div class="checkbox switch">
+											<label for="issend">
+												<input class="access-hide" id="issend" type="checkbox" name="issend"><span class="switch-toggle"></span>是否发送邮件
+											</label>
+											</div>
+										  
 											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">修改</button>
 										</div>
 									</div>
@@ -80,13 +110,26 @@
 <script>
     $(document).ready(function () {
         function submit() {
+		
+          	if(document.getElementById('issend').checked)
+			{
+				var issend=1;
+			}
+			else
+			{
+				var issend=0;
+			}
+          
             $.ajax({
                 type: "PUT",
                 url: "/admin/announcement/{$ann->id}",
                 dataType: "json",
                 data: {
                     content: editor.getHTML(),
-					markdown: editor.getMarkdown()
+					markdown: editor.getMarkdown(),
+					vip: $("#vip").val(),
+					idd: $("#idd").val(),
+                  	issend: issend
                 },
                 success: function (data) {
                     if (data.ret) {
