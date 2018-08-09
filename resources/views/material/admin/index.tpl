@@ -19,7 +19,7 @@
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
-									<p>下面是系统运行情况简报。</p>
+									<p>下面是系统运行情况简报；用户总余额  {$sts->moneyone()} 元，用户总返利  {$sts->fanlione()} 元，付费用户  {$sts->classuseraa()}  人 ， 全站已用总流量   {$sts->ssnodeTrafficUsage()}  </p>
 								</div>
 							</div>
 						</div>
