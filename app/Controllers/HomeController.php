@@ -27,26 +27,33 @@ class HomeController extends BaseController
     {
         return $this->view()->display('index.tpl');
     }
-
+/*
     public function code()
     {
         $codes = InviteCode::where('user_id', '=', '0')->take(10)->get();
         return $this->view()->assign('codes', $codes)->display('code.tpl');
     }
-
+*/
     public function down()
     {
     }
 
-    public function tos()
+    public function toos()
     {
-        return $this->view()->display('tos.tpl');
+        return $this->view()->display('toos.tpl');
     }
     
-    public function staff()
+    public function fstaffs()
     {
-        return $this->view()->display('staff.tpl');
+        return $this->view()->display('fstaffs.tpl');
     }
+	
+	
+    public function cous()
+    {
+        return $this->view()->display('cous.tpl');
+    }
+    
     
     public function telegram($request, $response, $args)
     {

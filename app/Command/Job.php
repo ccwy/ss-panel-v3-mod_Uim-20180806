@@ -31,13 +31,19 @@ use CloudXNS\Api;
 use App\Models\Disconnect;
 use App\Models\UnblockIp;
 
+//邮件记录
+use App\Models\Emailjilu;
+use voku\helper\AntiXSS;
+
+
 class Job
 {
     public static function syncnode()
     {
         $nodes = Node::all();
         foreach ($nodes as $node) {
-            if ($node->sort==0) {
+			if ($node->node_ip != $ip && $node->sort != '9') {        
+          //  if ($node->sort==0) {  检测节点ip
                 $ip=gethostbyname($node->server);
                 $node->node_ip=$ip;
                 $node->save();
@@ -130,9 +136,9 @@ class Job
             }
         }
 
-        NodeInfoLog::where("log_time", "<", time()-86400*3)->delete();
-        NodeOnlineLog::where("log_time", "<", time()-86400*3)->delete();
-        TrafficLog::where("log_time", "<", time()-86400*3)->delete();
+        NodeInfoLog::where("log_time", "<", time()-3600)->delete();
+        NodeOnlineLog::where("log_time", "<", time()-3600)->delete();
+        TrafficLog::where("log_time", "<", time()-3600)->delete();
         DetectLog::where("datetime", "<", time()-86400*3)->delete();
         Speedtest::where("datetime", "<", time()-86400*3)->delete();
         EmailVerify::where("expire_in", "<", time()-86400*3)->delete();
@@ -177,6 +183,17 @@ class Job
                   } catch (Exception $e) {
                       echo $e->getMessage();
                   }
+				   //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
                 }
               }
             }
@@ -208,6 +225,18 @@ class Job
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
+							
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
             }
         }
 
@@ -426,6 +455,7 @@ class Job
         TelegramSession::where("datetime", "<", time()-900)->delete();
 
 
+		/*  注销自动检测新版本
         $adminUser = User::where("is_admin", "=", "1")->get();
 
         $latest_content = file_get_contents("https://raw.githubusercontent.com/NimaQu/ss-panel-v3-mod_uim/master/bootstrap.php");
@@ -463,6 +493,7 @@ class Job
                 }
             }
         }
+		*/
 
 
         //节点掉线检测
@@ -651,10 +682,12 @@ class Job
                     $user->u = 0;
                     $user->d = 0;
                     $user->last_day_t = 0;
+					$user->auto_reset_day = 0;
+					$user->auto_reset_bandwidth = 0;
 
                     $subject = Config::get('appName')."-您的用户账户已经过期了";
                     $to = $user->email;
-                    $text = "您好，系统发现您的账号已经过期了。流量已经被重置为".Config::get('enable_account_expire_reset_traffic').'GB' ;
+                    $text = "您好，系统发现您的账号已经过期了，账号已被暂停使用，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号";
                     try {
                         Mail::send($to, $subject, 'news/warn.tpl', [
                             "user" => $user,"text" => $text
@@ -663,6 +696,19 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
+											
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
                 }
             }
 
@@ -670,7 +716,7 @@ class Job
                 if (Config::get('enable_account_expire_delete')=='true') {
                     $subject = Config::get('appName')."-您的用户账户已经被删除了";
                     $to = $user->email;
-                    $text = "您好，系统发现您的账号已经过期 ".Config::get('enable_account_expire_delete_days')." 天了，帐号已经被删除。" ;
+                    $text = "您好，感谢您的支持与使用，系统发现您的账号等级已于 ".$user->class_expire." 过期，根据网站用户协议约定，账号过期 ".Config::get('enable_account_expire_delete_days')." 天以上会被系统自动删除，您的帐号现已被删除，如需继续使用，请重新注册，如有疑问，请发邮件联系管理员，Email：asmark798@gmail.com" ;
                     try {
                         Mail::send($to, $subject, 'news/warn.tpl', [
                             "user" => $user,"text" => $text
@@ -679,13 +725,131 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
+	
+         //增加邮件记录
 
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
                     $user->kill_user();
 
 
                     continue;
                 }
             }
+
+			//规避每年2月份只有28天问题
+			if ($user->auto_reset_day !=0 && $user->auto_reset_day >= 28) {
+				$user->auto_reset_day = 27;
+				
+			}
+			
+			//等级到期前2天自动发邮件提醒用户			
+			if($user->class!=0 && strtotime($user->class_expire) - time() < 2*86400 && $user->tixing == 0)
+			{				
+					
+					$subject = Config::get('appName')."-您的账号等级有效期不足 2 天啦";
+					$to = $user->email;
+					$text = "您好，系统发现您的账号等级将于 ".$user->class_expire." 过期，剩余有效期不足2天，为避免影响正常使用，请您尽快登录网站续费，如有疑问，请发工单联系管理员。";
+					try {
+						Mail::send($to, $subject, 'news/warn.tpl', [
+							"user" => $user,"text" => $text
+						], [
+						]);
+					} catch (Exception $e) {
+						echo $e->getMessage();
+					}
+								
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
+				$user->tixing =1;	
+				
+			}
+
+			
+			
+			//等级到期3天后提醒用户续费	
+			if($user->class ==0 && time() - strtotime($user->class_expire) > 3*86400 && $user->tixing == 1)
+			{				
+					
+					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
+					$to = $user->email;
+					$text = "您好，系统发现您的账号等级已于 ".$user->class_expire." 过期，账号等级已过期 3 天了，账号等级过期  ".Config::get('enable_account_expire_delete_days')."   天以上会被自动删除，为避免影响正常使用，请您尽快登录网站续费，如不打算继续使用，请忽略此邮件，如有疑问，请发工单联系管理员，谢谢！";
+					try {
+						Mail::send($to, $subject, 'news/warn.tpl', [
+							"user" => $user,"text" => $text
+						], [
+						]);
+					} catch (Exception $e) {
+						echo $e->getMessage();
+					}
+								
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
+				$user->tixing =2;	
+				
+			}
+
+			
+			
+			//等级到期删除用户前7天最后提醒
+			if($user->class ==0 && time() - strtotime($user->class_expire) > 7*86400 && $user->tixing == 2)
+			{				
+					
+					$subject = Config::get('appName')."-您的账号快要被删除啦";
+					$to = $user->email;
+					$text = "您好，系统发现您的账户等级已于 ".$user->class_expire." 过期，账号等级已过期 ".Config::get('enable_account_expire_delete_days')."  天以上了，账号即将被自动删除，如您还需要继续使用，请您尽快登录网站续费，如不打算继续使用，请忽略此邮件，如有疑问，请发工单联系管理员，谢谢！";
+					try {
+						Mail::send($to, $subject, 'news/warn.tpl', [
+							"user" => $user,"text" => $text
+						], [
+						]);
+					} catch (Exception $e) {
+						echo $e->getMessage();
+					}
+								
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
+				$user->tixing =3;	
+				
+			}
 
 
 
@@ -703,6 +867,20 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
+					
+						
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
 
                     Radius::Delete($user->email);
 
@@ -718,12 +896,13 @@ class Job
             }
 
 
+ //删除注册后3天未购买账户
             if ((int)Config::get('enable_auto_clean_unused_days')!=0 && max($user->t, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_unused_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money')) {
 
                 if (Config::get('enable_auto_clean_unused')=='true') {
                     $subject = Config::get('appName')."-您的用户账户已经被删除了";
                     $to = $user->email;
-                    $text = "您好，系统发现您的账号已经 ".Config::get('enable_auto_clean_unused_days')." 天没使用了，帐号已经被删除。" ;
+                    $text = "您好，系统发现您的账号自注册起到现在已经 ".Config::get('enable_auto_clean_unused_days')." 天了，我们发现您没有购买任何套餐使用，根据注册时的用户协议约定，系统已自动删除您的账户，如您需要购买使用，请重新注册，如有疑问，请发邮件联系，Email：asmark798@gmail.com" ;
                     try {
                         Mail::send($to, $subject, 'news/warn.tpl', [
                             "user" => $user,"text" => $text
@@ -732,6 +911,19 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
+						
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
 
                     Radius::Delete($user->email);
 
@@ -752,10 +944,13 @@ class Job
                     $user->u = 0;
                     $user->d = 0;
                     $user->last_day_t = 0;
+					$user->auto_reset_day = 0;
+					$user->auto_reset_bandwidth = 0;
+					$user->tixing =0;	
 
                     $subject = Config::get('appName')."-您的用户等级已经过期了";
                     $to = $user->email;
-                    $text = "您好，系统发现您的账号等级已经过期了。流量已经被重置为".Config::get('enable_class_expire_reset_traffic').'GB' ;
+                    $text = "您好，系统发现您的账号等级已经过期了，账号已被暂停使用，账号过期  ".Config::get('enable_account_expire_delete_days')."   天以上将自动删除，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号，如有疑问，请登陆网站发工单联系管理员，谢谢！" ;
                     try {
                         Mail::send($to, $subject, 'news/warn.tpl', [
                             "user" => $user,"text" => $text
@@ -764,6 +959,19 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
+										
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
                 }
 
                 $user->class=0;

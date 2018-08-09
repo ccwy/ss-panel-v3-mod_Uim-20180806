@@ -89,7 +89,8 @@ class PasswordController extends BaseController
         $rs['ret'] = 1;
         $rs['msg'] = '重置成功';
         
-        $user->clean_link();
+       // $user->clean_link();
+	   //修复更改密码订阅链接变化问题
         
         return $response->getBody()->write(json_encode($rs));
     }

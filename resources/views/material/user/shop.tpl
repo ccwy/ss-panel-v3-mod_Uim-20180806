@@ -23,6 +23,8 @@
 					<div class="card">
 						<div class="card-main">
 							<div class="card-inner">
+							<p><i class="icon icon-lg">monetization_on</i>&nbsp;余额：&nbsp;<font color="red" size="5">{$user->money}</font>&nbsp;元</p>
+								    <p>余额不足？您可以 <a href="/user/code">点我充值</a> 余额到账户。</p>
 								<p>商品不可叠加，新购商品会覆盖旧商品的效果</p>
 								<p>当前余额：{$user->money} 元</p>
 							</div>
@@ -35,20 +37,27 @@
 						{$shops->render()}
 						<table class="table ">
                             <tr>
+							    <th>操作</th>
                                 <th>套餐</th>
 								<th>价格</th>
 								<th>套餐详情</th>
-                              <th>操作</th>
+								<th>是否自动重置流量</th>    
+                            
                                 
                             </tr>
                             {foreach $shops as $shop}
                             <tr>
+							    <td>
+                                    <a class="btn btn-brand-accent" href="javascript:void(0);" onClick="buy('{$shop->id}',{$shop->auto_renew},{$shop->auto_reset_bandwidth})">购买</a>
+                                </td>
                                 <td>{$shop->name}</td>
 								<td>{$shop->price} 元</td>
                                 <td>{$shop->content()}</td>
-                                <td>
-                                    <a class="btn btn-brand-accent" href="javascript:void(0);" onClick="buy('{$shop->id}',{$shop->auto_renew},{$shop->auto_reset_bandwidth})">购买</a>
-                                </td>
+                                {if $shop->auto_reset_day==0}
+                                <td>不自动重置</td>
+								{else}
+								<td>自动重置流量</td>
+								{/if} 
                             </tr>
                             {/foreach}
                         </table>

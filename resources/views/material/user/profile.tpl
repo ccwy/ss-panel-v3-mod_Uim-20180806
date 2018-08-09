@@ -106,6 +106,10 @@
 									<div class="card-inner">
 										<p class="card-heading">返利记录</p>
 										<div class="card-table">
+										<p>返利金额：<code>{$user->fanli}</code> 元 ；
+										
+										<br>返利金额可提现到支付宝（每次大于<code>100.00</code>元即可<a href="/user/ticket/create">建立工单</a>申请提现到支付宝）。</p>
+										<p>返利提现到帐户：<a class="btn btn-brand waves-attach" href="/user/fanli">点击提现</a></p>
 											<div class="table-responsive">
 											{$paybacks->render()}
 												<table class="table">
@@ -114,6 +118,7 @@
 														<th>###</th>
 														<th>返利用户</th>
 														<th>返利金额</th>
+														<th>返利时间</th>
 													</tr>
 													</thead>
 													<tbody>
@@ -129,6 +134,7 @@
 															{/if}
 															</td>
 															<td>{$payback->ref_get} 元</td>
+															<td>{date('Y-m-d H:i:s',$payback->datetime)} </td>
 														</tr>
 													{/foreach}
 													</tbody>

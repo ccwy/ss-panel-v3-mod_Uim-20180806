@@ -62,6 +62,13 @@
 									<label class="floating-label" for="money">金钱</label>
 									<input class="form-control" id="money" type="text" value="{$edit_user->money}">
 								</div>
+								
+								
+								<div class="form-group form-group-label">
+									<label class="floating-label" for="fanli">返利</label>
+									<input class="form-control" id="fanli" type="text" value="{$edit_user->fanli}">
+								</div>
+
 
 								<div class="form-group form-group-label">
 									<label for="is_multi_user">
@@ -196,6 +203,17 @@
 									<input class="form-control" id="expire_in" type="text" value="{$edit_user->expire_in}">
 								</div>
 
+								
+								<div class="form-group form-group-label">
+									<label class="floating-label" for="anyid">用户anyid账号</label>
+									<input class="form-control" id="anyid" type="text" value="{$edit_user->anyid}">
+								</div>
+								
+								<div class="form-group form-group-label">
+									<label class="floating-label" for="anypwd">用户any登陆密码</label>
+									<input class="form-control" id="anypwd" type="text" value="{$edit_user->anypwd}">
+								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -335,6 +353,9 @@
 										protocol_param: $("#protocol_param").val(),
 										obfs: $("#obfs").val(),
 										obfs_param: $("#obfs_param").val(),
+										fanli: $("#fanli").val(),
+										anyid: $("#anyid").val(),
+					anypwd: $("#anypwd").val()
                 },
                 success: function (data) {
                     if (data.ret) {

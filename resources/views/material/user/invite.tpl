@@ -38,6 +38,7 @@
 										<!--<p>2，剩余可邀请次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>-->
 										<p>2，您每邀请一位用户注册，对方首次充值时您就会获得对方充值金额 <code>{$config["code_payback"]} %</code> 的提成。</p>
 										*}
+										
 										<p>3，账号状态正常用户，返利可提现到支付宝，24小时内到账（每次大于<code>100.00</code>元即可<a href="/user/ticket/create">建立工单</a>申请提现到支付宝，工单需写上收款支付宝账户，每次提现会收取提现金额 <code>2 %</code> 的手续费）；</p>
 										<p>4，账号状态正常用户，提现到帐户余额请点击下面返利提现按钮自助完成操作即可。
 										<br>
@@ -103,6 +104,7 @@
 					{/if}
 					*}
 
+					{*
 					{if $config['invite_price']>=0}
 					<div class="col-lg-12 col-md-12">
 						<div class="card margin-bottom-no">
@@ -142,8 +144,9 @@
 							</div>
 						</div>
 					</div>
+					
 
-					{/if}
+					{/if}*}
 					{*
 					<div class="table-responsive">
 						{$paybacks->render()}

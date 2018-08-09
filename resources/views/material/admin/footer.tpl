@@ -6,9 +6,9 @@
 
 	<!-- js -->
 	<script src="/theme/material/js/jquery.min.js"></script>
-	<script src="//cdn.staticfile.org/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-	<script src="//cdn.staticfile.org/datatables/1.10.13/js/jquery.dataTables.min.js"></script>
-	<script src="//cdn.staticfile.org/datatables/1.10.13/js/dataTables.material.min.js"></script>
+	<script src="/theme/material/js/jquery.validate.min.js"></script>
+	<script src="/theme/material/js/jquery.dataTables.min.js"></script>
+	<script src="/theme/material/js/dataTables.material.min.js"></script>
 	<script src="/theme/material/js/base.js"></script>
 	<script src="/theme/material/js/project.js"></script>
 	

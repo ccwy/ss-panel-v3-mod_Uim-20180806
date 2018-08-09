@@ -635,7 +635,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看V2ray节点权限，如需购买V2ray请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}

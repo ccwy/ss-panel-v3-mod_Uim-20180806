@@ -43,6 +43,9 @@ use App\Utils\Pay;
 use App\Utils\URL;
 use App\Services\Mail;
 
+//邮件记录
+use App\Models\Emailjilu;
+
 /**
  *  HomeController
  */
@@ -298,8 +301,21 @@ class UserController extends BaseController
     {
         $codepay_id=Config::get('codepay_id');//这里改成码支付ID
         $codepay_key=Config::get('codepay_key'); //这是您的通讯密钥
+		$payurl2=Config::get('payurl2'); //这是您的支付通知地址
+		$payurl3=Config::get('baseUrl'); //这是您的支付跳转地址
         $uid = $this->user->id;
         $price = $request->getParam('price');
+		
+		//codepay码支付限额
+		if ($price >= Config::get('codypaymenay')) {
+        $type = $request->getParam('type');
+		}
+		else 
+		{
+			header("Location: /auto/rechargefailed.html"); 
+			exit;
+		}
+        
         $type = $request->getParam('type');
         $url = (UserController::isHTTPS() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'];
         $data = array(
@@ -308,8 +324,8 @@ class UserController extends BaseController
             "type" => $type,//1支付宝支付 2QQ钱包 3微信支付
             "price" => $price,//金额100元
             "param" => "",//自定义参数
-            "notify_url"=> $url.'/codepay_callback',//通知地址
-            "return_url"=> $url.'/codepay_callback',//跳转地址
+            "notify_url"=> $payurl2.'/codepay_callback',//通知地址
+            "return_url"=> $payurl3.'/codepay_callback',//跳转地址
         ); //构造需要传递的参数
 
         ksort($data); //重新排序$data数组
@@ -399,10 +415,19 @@ class UserController extends BaseController
         return $response->getBody()->write(json_encode($res));
     }
 
+	//spay金额限制
     public function alipay($request, $response, $args)
     {
         $amount = $request->getQueryParams()["amount"];
+		if ($amount >= 20) {
         Pay::getGen($this->user, $amount);
+		}
+		else 
+		{
+			header("Location: /auto/rechargefailed.html"); 
+			exit;
+		}
+      //  Pay::getGen($this->user, $amount);
     }
 
 
@@ -435,8 +460,13 @@ class UserController extends BaseController
             $user->save();
 
             if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+				
+				//首次返利
+				$ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                 $gift_user=User::where("id", "=", $user->ref_by)->first();
-                $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利1
                 $gift_user->save();
 
                 $Payback=new Payback();
@@ -446,6 +476,7 @@ class UserController extends BaseController
                 $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                 $Payback->datetime=time();
                 $Payback->save();
+				}
             }
 
             $res['ret'] = 1;
@@ -1025,7 +1056,7 @@ class UserController extends BaseController
                     ->registerClass("URL", "App\Utils\URL")->display('user/edit.tpl');
     }
 
-
+//邀请码
     public function invite($request, $response, $args)
     {
         /*$pageNum = 1;
@@ -1035,15 +1066,15 @@ class UserController extends BaseController
         $codes=InviteCode::where('user_id', $this->user->id)->orderBy("created_at", "desc")->paginate(15, ['*'], 'page', $pageNum);
         $codes->setPath('/user/invite');*/
         $code=InviteCode::where('user_id', $this->user->id)->first();
-        if ($code==null) {
+       /* if ($code==null) {
             $char = Tools::genRandomChar(32);
             $code = new InviteCode();
             $code->code = $char;
             $code->user_id = $this->user->id;
             $code->save();
-        }
+        }*/
 
-        $pageNum = 1;
+       /* $pageNum = 1;
         if (isset($request->getQueryParams()["page"])) {
             $pageNum = $request->getQueryParams()["page"];
         }
@@ -1051,11 +1082,64 @@ class UserController extends BaseController
         if (!$paybacks_sum = Payback::where("ref_by", $this->user->id)->sum('ref_get')) {
             $paybacks_sum = 0;
         }
-        $paybacks->setPath('/user/invite');
+        $paybacks->setPath('/user/invite');*/
 
             return $this->view()->assign('code', $code)->assign('paybacks', $paybacks)->assign('paybacks_sum', $paybacks_sum)->display('user/invite.tpl');
     }
+	
+    public function doInvite($request, $response, $args)
+    {
+        
+		$code=InviteCode::where('user_id', $this->user->id)->first();
+		
+        if ($code != null) {
+            $res['ret'] = 0;
+            $res['msg'] = "失败";
+            return $response->getBody()->write(json_encode($res));
+        } else {
+            $char = Tools::genRandomChar(10);			
+            $code = new InviteCode();
+            $code->code = $this->user->id.$char;
+            $code->user_id = $this->user->id;
+            $code->save();
+        }
+        
+        $res['ret'] = 1;
+        $res['msg'] = "生成成功。";
+        return $this->echoJson($response, $res);
+    }
+//重置邀请码
+    public function invitede($request, $response, $args)
+    {
+        
+		$code=InviteCode::where('user_id', $this->user->id)->first();
+		
+        if ($code != null) {
+            
+			$code->delete();
+			
+			$char = Tools::genRandomChar(10);			
+            $code = new InviteCode();
+            $code->code = $this->user->id.$char;
+            $code->user_id = $this->user->id;
+            $code->save();
+			$res['ret'] = 0;
+            $res['msg'] = "重置邀请码成功";
+            return $this->echoJson($response, $res);
+        } else {
+            $char = Tools::genRandomChar(10);			
+            $code = new InviteCode();
+            $code->code = $this->user->id.$char;
+            $code->user_id = $this->user->id;
+            $code->save();
+        }
+        
+        $res['ret'] = 1;
+        $res['msg'] = "生成成功。";
+        return $this->echoJson($response, $res);
+    }
 
+/*
 	//此函数已废弃
     public function doInvite($request, $response, $args)
     {
@@ -1106,6 +1190,7 @@ class UserController extends BaseController
         $res['msg'] = "邀请次数添加成功。";  
 		return $response->getBody()->write(json_encode($res));
 	}
+	*/
 
     public function sys()
     {
@@ -1138,7 +1223,7 @@ class UserController extends BaseController
         $user->pass = $hashPwd;
         $user->save();
 
-        $user->clean_link();
+       // $user->clean_link();//修复修改密码订阅地址变化问题
 
         $res['ret'] = 1;
         $res['msg'] = "修改成功";
