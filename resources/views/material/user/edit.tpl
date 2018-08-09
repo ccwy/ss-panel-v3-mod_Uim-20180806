@@ -24,36 +24,6 @@
              
 
 
-					<div class="col-lg-6 col-md-6">
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<p class="card-heading">账号登录密码修改</p>
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="oldpwd">当前密码</label>
-											<input class="form-control" id="oldpwd" type="password">
-										</div>
-
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="pwd">新密码</label>
-											<input class="form-control" id="pwd" type="password">
-										</div>
-
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="repwd">确认新密码</label>
-											<input class="form-control" id="repwd" type="password">
-										</div>
-									</div>
-									<div class="card-action">
-										<div class="card-action-btn pull-left">
-											<button class="btn btn-flat waves-attach" id="pwd-update" ><span class="icon">check</span>&nbsp;提交</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -253,6 +223,38 @@
 
 
 					<div class="col-lg-6 col-md-6">
+					
+					
+					<div class="col-lg-6 col-md-6">
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<p class="card-heading">账号登录密码修改</p>
+										<div class="form-group form-group-label">
+											<label class="floating-label" for="oldpwd">当前密码</label>
+											<input class="form-control" id="oldpwd" type="password">
+										</div>
+
+										<div class="form-group form-group-label">
+											<label class="floating-label" for="pwd">新密码</label>
+											<input class="form-control" id="pwd" type="password">
+										</div>
+
+										<div class="form-group form-group-label">
+											<label class="floating-label" for="repwd">确认新密码</label>
+											<input class="form-control" id="repwd" type="password">
+										</div>
+									</div>
+									<div class="card-action">
+										<div class="card-action-btn pull-left">
+											<button class="btn btn-flat waves-attach" id="pwd-update" ><span class="icon">check</span>&nbsp;提交</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 
 					{*
 						<div class="card margin-bottom-no">
@@ -345,11 +347,11 @@
 						</div>    
 						*}
 
-						{if $config['port_price']>=0 || $config['port_price_specify']>=0}
+					<!--	{if $config['port_price']>=0 || $config['port_price_specify']>=0}  -->
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
-									{if $config['port_price']>=0}
+								<!--	{if $config['port_price']>=0}  -->
 									<div class="card-inner">
 										<p class="card-heading">重置端口</p>
 									{*	<p>对号码不满意？来摇号吧～！</p>
@@ -370,9 +372,9 @@
 											<button class="btn btn-brand waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;重置端口</button>
 										</div>
 									</div>
-									{/if}
+								<!--	{/if}  -->
 
-									{if $config['port_price_specify']>=0}
+								<!--	{if $config['port_price_specify']>=0}
 									<div class="card-inner">
 										<p class="card-heading">钦定端口</p>
 										<p>不想摇号？来钦定端口吧～！</p>
@@ -388,11 +390,11 @@
 											<button class="btn btn-flat waves-attach" id="portspecify" ><span class="icon">check</span>&nbsp;钦定</button>
 										</div>
 									</div>
-									{/if}
+									{/if}  -->
 								</div>
 							</div>
 						</div>
-						{/if}
+					<!--	{/if}  -->
 
 						<div class="card margin-bottom-no">
 							<div class="card-main">
