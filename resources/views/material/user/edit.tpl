@@ -168,6 +168,7 @@
 										</div>
 									</div>
 
+									{*
 									<div class="card-inner">
 										<p>当前混淆参数：<code id="ajax-user-obfs-param">{$user->obfs_param}</code></p>
 										<p>注意：如果需要兼容原版SS请留空！</p>
@@ -176,12 +177,15 @@
 											<input class="form-control" id="obfs-param" type="text">
 										</div>
 									</div>
+									*}
 
+									
 									<div class="card-action">
 										<div class="card-action-btn pull-left">
 											<button class="btn btn-flat waves-attach" id="ssr-update" ><span class="icon">check</span>&nbsp;提交</button>
 										</div>
 									</div>
+									
 								</div>
 							</div>
 						</div>  
