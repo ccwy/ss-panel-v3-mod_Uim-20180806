@@ -42,6 +42,7 @@ class Job
     {
         $nodes = Node::all();
         foreach ($nodes as $node) {
+			$ip = gethostbyname($node->server);
 			if ($node->node_ip != $ip && $node->sort != '9') {        
           //  if ($node->sort==0) {  检测节点ip
                 $ip=gethostbyname($node->server);
@@ -284,10 +285,10 @@ class Job
         
     }
 //   定时任务开启的情况下，每天自动检测有没有最新版的后端，github源来自Miku
-   /*  public static function updatedownload()
+     public static function updatedownload()
       {
-      	system('cd '.BASE_PATH."/public/ssr-download/ && git pull https://github.com/xcxnig/ssr-download.git");
-     } */
+      	system('cd '.BASE_PATH."/public/ssr-download/ && git pull");
+     } 
 
 
     public static function CheckJob()
