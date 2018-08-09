@@ -200,6 +200,10 @@
 													<a class="waves-attach" data-toggle="tab" href="#all_ss"><i class="icon icon-lg">flight_takeoff</i>&nbsp;Shadowsocks</a>
 												</li>
 												
+												<li>
+													<a class="waves-attach" data-toggle="tab" href="#all_v2ray"><i class="icon icon-lg">flight_land</i>&nbsp;v2ray</a>
+												</li>
+												
 												<li >
 													<a class="waves-attach" data-toggle="tab" href="#all_client"><i class="icon icon-lg">text_format</i>&nbsp;客户端&教程</a>
 												</li>
@@ -448,7 +452,34 @@
 														执行完毕以后就可以到路由器的设置面板里随意选择 Shadowsocks 服务器进行连接了。</p>
 													</div>
 												</div>
-											
+										
+
+
+												<div class="tab-pane fade" id="all_v2ray">
+													<nav class="tab-nav margin-top-no">
+														<ul class="nav nav-list">
+															<li class="active">
+																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_info"><i class="icon icon-lg">info_outline</i>&nbsp;连接信息</a>
+															</li>
+														</ul>
+													</nav>
+													<div class="tab-pane fade active in" id="all_v2ray_info">
+														{$v2_url_all = URL::getAllVMessUrl($user)}
+
+														<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>
+														<p>
+														<span class="icon icon-lg text-white">flash_auto</span> 
+														单端口节点订阅地址：
+														<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$baseUrl}/link/{$ssr_sub_token}?v2ray=1" readonly="true" />
+														<button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?v2ray=1">
+															点击拷贝订阅地址
+														</button>
+														<br>
+														</p>
+                                                      
+
+													</div>
+												</div>										
 											
 											
 										
