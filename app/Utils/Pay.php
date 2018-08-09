@@ -74,6 +74,10 @@ class Pay
         return '
 						<form action="/user/alipay" method="get" target="_blank" >
 							<h3>支付宝充值</h3>
+							<p>1，请输入大于20元的任意金额完成充值，付款后回到这里，请刷新本页面，充值金额会自动到账；
+							<br>2，下方充值记录仅供参考，具体以实际到账金额为准，充值完成后您可以到<a href="/user/shop">商店</a>购买任意套餐；
+							<br>3，如果充值过程中遇到问题，请<a href="/user/ticket/create">建立工单</a>联系管理员处理。</p>
+							
 							<p>充值金额:
               <select id="type" class="form-control" name="amount">
                   <option></option>
@@ -136,13 +140,18 @@ class Pay
     private static function codepay_html($user)
     {
         return '
-                        <p class="card-heading">请输入充值金额</p>
+                         <p class="card-heading">支付宝/微信充值</p>
+						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，自动到账，在下方输入充值金额，点击支付宝/微信图标，扫码支付
+						<br>2，支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
+						</p>
+						<form name="codepay" action="/user/code/codepay" method="get">
+						<!--<p class="card-heading">请输入充值金额</p>-->
                         <form name="codepay" action="/user/code/codepay" method="get">
-                            <input class="form-control" id="price" name="price" placeholder="输入充值金额后，点击你要付款的应用图标即可" autofocus="autofocus" type="number" min="0.01" max="1000" step="0.01" required="required">
+                            <input class="form-control" id="price" name="price" placeholder="输入充值金额后，点击你要付款的应用图标即可" autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required">
                             <br>
                             <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="1" ><img src="/images/alipay.jpg" width="50px" height="50px" /></button>
-                            <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="2" ><img src="/images/qqpay.jpg" width="50px" height="50px" /></button>
-                            <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="3" ><img src="/images/weixin.jpg" width="50px" height="50px" /></button>
+                          <!--  <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="2" disabled><img src="/images/qqpay.jpg" width="50px" height="50px" /></button>
+                            <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="3" disabled><img src="/images/weixin.jpg" width="50px" height="50px" /></button> -->
 
                         </form>
 ';
@@ -433,8 +442,13 @@ class Pay
                 $codeq->userid=$user->id;
                 $codeq->save();
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利2
                     $gift_user->save();
                     $Payback=new Payback();
                     $Payback->total=$_POST['total_fee'];
@@ -443,6 +457,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
             } elseif ($_POST['trade_status'] == 'TRADE_SUCCESS') {
                 //判断该笔订单是否在商户网站中已经做过处理
@@ -465,8 +480,13 @@ class Pay
                 $codeq->userid=$user->id;
                 $codeq->save();
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100))); //返利3
                     $gift_user->save();
                     $Payback=new Payback();
                     $Payback->total=$_POST['total_fee'];
@@ -475,6 +495,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
             }
               //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
@@ -522,8 +543,13 @@ class Pay
                 $codeq->userid=$user->id;
                 $codeq->save();
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100))); //返利3
                     $gift_user->save();
                     $Payback=new Payback();
                     $Payback->total=$pingback->getVirtualCurrencyAmount();
@@ -532,6 +558,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
                 echo 'OK'; // Paymentwall expects response to be OK, otherwise the pingback will be resent
                 if (Config::get('enable_donate') == 'true') {
@@ -591,8 +618,13 @@ class Pay
                 $codeq->userid=$user->id;
                 $codeq->save();
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利4
                     $gift_user->save();
                     $Payback=new Payback();
                     $Payback->total=$Money;
@@ -601,6 +633,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
                 if (Config::get('enable_donate') == 'true') {
                     if ($user->is_hide == 1) {
@@ -676,8 +709,13 @@ class Pay
                 $codeq->save();
                 //更新返利
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利5
                     $gift_user->save();
 
                     $Payback=new Payback();
@@ -687,6 +725,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
 
                 if (Config::get('enable_donate') == 'true') {
@@ -742,8 +781,13 @@ class Pay
 
                 //更新返利
                 if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+					
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
                     $gift_user=User::where("id", "=", $user->ref_by)->first();
-                    $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+                    $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利6
                     $gift_user->save();
 
                     $Payback=new Payback();
@@ -753,6 +797,7 @@ class Pay
                     $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
                     $Payback->datetime=time();
                     $Payback->save();
+					}
                 }
 
                 if (Config::get('enable_donate') == 'true') {
@@ -802,8 +847,13 @@ class Pay
         $user->save();
         //更新返利
         if ($user->ref_by!=""&&$user->ref_by!=0&&$user->ref_by!=null) {
+			
+					//首次返利
+				    $ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+				    if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
             $gift_user=User::where("id", "=", $user->ref_by)->first();
-            $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+            $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利7
             $gift_user->save();
 
             $Payback=new Payback();
@@ -813,6 +863,7 @@ class Pay
             $Payback->ref_get=$codeq->number*(Config::get('code_payback')/100);
             $Payback->datetime=time();
             $Payback->save();
+					}
         }
         exit('success'); //返回成功 不要删除哦
     }

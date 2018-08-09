@@ -176,15 +176,27 @@ class Tools
         return $dirArray;
     }
 
-
+//连接密码范围
     public static function is_validate($str)
     {
-        $pattern = "/[^A-Za-z0-9\-_\.]/";
+        $pattern = "/[^A-Za-z0-9]/";
         if (preg_match($pattern, $str)) {
             return false;
         }
         return true;
     }
+	
+	//返利禁止其他字符
+	
+	 public static function fanliss($str)
+    {
+        $patter = "/[^0-9]/";
+        if (preg_match($patter, $str)) {
+            return false;
+        }
+        return true;
+    }
+	
 
     public static function is_relay_rule_avaliable($rule, $ruleset, $node_id)
     {

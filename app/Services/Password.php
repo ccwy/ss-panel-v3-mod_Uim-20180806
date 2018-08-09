@@ -5,6 +5,10 @@ namespace App\Services;
 
 use App\Models\PasswordReset;
 use App\Utils\Tools;
+//邮件记录
+use App\Models\Emailjilu;
+use voku\helper\AntiXSS;
+use App\Models\User;
 
 /***
  * Class Password
@@ -37,6 +41,16 @@ class Password
         } catch (Exception $e) {
             return false;
         }
+		$user = User::where('email', '=', $email)->first();
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($resetUrl);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
         return true;
     }
 

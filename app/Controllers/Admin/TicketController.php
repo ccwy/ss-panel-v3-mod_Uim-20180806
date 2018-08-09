@@ -16,6 +16,9 @@ use App\Utils\DatatablesHelper;
 
 use App\Controllers\AdminController;
 
+//邮件记录
+use App\Models\Emailjilu;
+
 class TicketController extends AdminController
 {
     public function index($request, $response, $args)
@@ -58,8 +61,8 @@ class TicketController extends AdminController
             $adminUser = User::where("id", "=", $ticket_main->userid)->get();
             foreach ($adminUser as $user) {
                 $subject = Config::get('appName')."-工单被回复";
-                $to = $user->email;
-                $text = "您好，有人回复了<a href=\"".Config::get('baseUrl')."/user/ticket/".$ticket_main->id."/view\">工单</a>，请您查看。" ;
+                $to = $user->email;  //工单优化
+                $text = "您好，管理员查看并回复了工单，<a href=\"".Config::get('baseUrl')."/user/ticket/".$ticket_main->id."/view\">点击查看并回复</a>，内容如下：<br>" .$content ;
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         "user" => $user,"text" => $text
@@ -68,6 +71,16 @@ class TicketController extends AdminController
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
+			//邮件记录	
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
             }
         }
 

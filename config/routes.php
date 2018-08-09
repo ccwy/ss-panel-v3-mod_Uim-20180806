@@ -76,8 +76,9 @@ $app->post('/notify', 'App\Controllers\HomeController:notify');
 $app->post('/alipay_callback', 'App\Controllers\HomeController:pay_callback');
 $app->post('/pay_callback', 'App\Controllers\HomeController:f2fpay_pay_callback');
 $app->get('/pay_callback', 'App\Controllers\HomeController:pay_callback');
-$app->get('/tos', 'App\Controllers\HomeController:tos');
-$app->get('/staff', 'App\Controllers\HomeController:staff');
+$app->get('/toos', 'App\Controllers\HomeController:tos');  //tos
+$app->get('/fstaffs', 'App\Controllers\HomeController:staff');  //staff
+$app->get('/cous', 'App\Controllers\HomeController:cous'); //联系我们
 $app->get('/gfwlistjs', 'App\Controllers\LinkController:GetGfwlistJs');
 $app->post('/telegram_callback', 'App\Controllers\HomeController:telegram');
 $app->get('/yft/notify', 'App\Controllers\YFTPayCallBackController:yft_notify');
@@ -108,6 +109,13 @@ $app->group('/user', function () {
     $this->post('/coupon_check', 'App\Controllers\UserController:CouponCheck');
     $this->post('/buy', 'App\Controllers\UserController:buy');
 
+	  //any
+	$this->get('/anyconnect', 'App\Controllers\UserController:anyconnect');
+	
+    //fanli	 
+	$this->get('/fanli', 'App\Controllers\UserController:fanli');
+	$this->post('/fanli', 'App\Controllers\UserController:fanlipost');
+	
 
     // Relay Mange
     $this->get('/relay', 'App\Controllers\RelayController:index');
@@ -124,6 +132,8 @@ $app->group('/user', function () {
     $this->put('/ticket/{id}', 'App\Controllers\UserController:ticket_update');
 	
     $this->post('/invite', 'App\Controllers\UserController:doInvite');
+	$this->post('/invitede', 'App\Controllers\UserController:Invitede');  //重置邀请码
+	
     $this->post('/buy_invite', 'App\Controllers\UserController:buyInvite');
     $this->get('/edit', 'App\Controllers\UserController:edit');
     $this->post('/password', 'App\Controllers\UserController:updatePassword');

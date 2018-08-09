@@ -186,7 +186,7 @@ class User extends Model
         $last = $this->attributes['last_check_in_time'];
 
         $now = time();
-        if (date("Ymd", $now)!= date("Ymd", $last)) {
+        if (date("Ymd", $now) < date("Ymd", $last)) {  //禁止签到
             return true;
         }
         return false;
