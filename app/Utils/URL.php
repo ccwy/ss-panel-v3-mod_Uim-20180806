@@ -257,7 +257,8 @@ class URL
         $node_explode = explode(';', $node->server);
         $item = [
             'v'=>'2', 
-            'type'=>'none', 
+            'type'=>'none',
+            'method'=>'aes-128-gcm',		
             'host'=>'', 
             'path'=>'', 
             'tls'=>''
@@ -267,7 +268,7 @@ class URL
         $item['port'] = $node_explode[1];
         $item['id'] = $user->getUuid();
         $item['aid'] = $node_explode[3];
-		$item['method'] = 'aes-128-gcm';
+	
         if (count($node_explode) == 6) {
             $item['net'] = $node_explode[5];
         } else {
