@@ -67,7 +67,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}
@@ -224,6 +224,7 @@
 
 
 								<p class="card-heading">VIP节点</p>
+								{if $user->class > 1}
 
 											{$id=1000}
 											{foreach $node_prefix as $prefix => $nodes}
@@ -256,7 +257,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}
@@ -412,9 +413,12 @@
 												{/if}
 
 											{/foreach}
+											{else}
+											<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></h3>	
+{/if}
 
 											
-											
+								{if $user->class>=22}				
 								<p class="card-heading">SVIP节点</p>
 
 											{$id=2000}
@@ -448,7 +452,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}
@@ -570,6 +574,7 @@
 																	{/if}
 																	{/if}
 																{/foreach}
+																
 
 
 
@@ -604,10 +609,11 @@
 												{/if}
 
 											{/foreach}
+											{/if}
 
 											
 											
-											
+								{if $user->class>=30}			
 								<p class="card-heading">V2ray节点</p>
 
 											{$id=3000}
@@ -641,7 +647,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->user_name}，您无查看V2ray节点权限，如需购买V2ray请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看V2ray节点权限，如需购买V2ray请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}
@@ -809,6 +815,7 @@
 												{/if}
 
 											{/foreach}
+											{/if}
 
 											
 											
