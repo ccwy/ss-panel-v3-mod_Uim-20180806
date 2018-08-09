@@ -168,6 +168,14 @@ class RelayController extends UserController
                     ->orWhere("node_group", "=", 0);
             }
         )->where('type', 1)->where('sort', 10)->where("node_class", "<=", $user->class)->first();
+		
+		//优先级最大不能超过999
+		if ($priority > 999) {
+		$rs['ret'] = 0;
+            $rs['msg'] = "优先级过大";
+            return $response->getBody()->write(json_encode($rs));
+        }
+		
         if ($source_node == null) {
             $rs['ret'] = 0;
             $rs['msg'] = "美国的华莱士";
@@ -315,6 +323,15 @@ class RelayController extends UserController
         $source_node_id = $request->getParam('source_node');
         $port = $request->getParam('port');
         $priority = $request->getParam('priority');
+		
+		
+		//优先级最大不能超过999
+		if ($priority > 999) {
+		$rs['ret'] = 0;
+            $rs['msg'] = "优先级过大";
+            return $response->getBody()->write(json_encode($rs));
+        }
+		
 
         $source_node = Node::where('id', $source_node_id)->where(
             function ($query) use ($user) {
