@@ -460,7 +460,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1}
+																	{if $node->mu_only != 1 && $node->sort != 11}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -655,8 +655,8 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	<!--
-																	{if $node->mu_only != 1}
+																	
+																	{if $node->mu_only != 1 && $node->sort != 11}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -678,7 +678,7 @@
 																		</div>
 																	</div>
 																	{/if}
-																	-->
+																	
 
 																	{if $node->sort == 0 || $node->sort == 10}
 																		{$point_node=$node}
