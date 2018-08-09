@@ -76,8 +76,8 @@ $app->post('/notify', 'App\Controllers\HomeController:notify');
 $app->post('/alipay_callback', 'App\Controllers\HomeController:pay_callback');
 $app->post('/pay_callback', 'App\Controllers\HomeController:f2fpay_pay_callback');
 $app->get('/pay_callback', 'App\Controllers\HomeController:pay_callback');
-$app->get('/toos', 'App\Controllers\HomeController:tos');  //tos
-$app->get('/fstaffs', 'App\Controllers\HomeController:staff');  //staff
+$app->get('/toos', 'App\Controllers\HomeController:toos');  //tos
+$app->get('/fstaffs', 'App\Controllers\HomeController:fstaffs');  //staff
 $app->get('/cous', 'App\Controllers\HomeController:cous'); //联系我们
 $app->get('/gfwlistjs', 'App\Controllers\LinkController:GetGfwlistJs');
 $app->post('/telegram_callback', 'App\Controllers\HomeController:telegram');
