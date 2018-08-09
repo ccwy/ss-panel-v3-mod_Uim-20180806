@@ -9,8 +9,10 @@
 	<!-- css -->
 	<link href="/theme/material/css/base.min.css" rel="stylesheet">
 	<link href="/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Material+Icons">
+	<!-- <link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet"> -->
+	<link href="/theme/material/css/roboto.css" rel="stylesheet">
+	<!-- <link href="https://fonts.loli.net/css?family=Material+Icons"> -->
+	<link href="/theme/material/css/icon.css" rel="stylesheet">
 
 	<!-- favicon -->
 	<!-- ... -->
@@ -94,11 +96,11 @@
 						<a  href="/cous"><i class="icon icon-lg">email</i>&nbsp;联系我们</a>
 					</li>
 
-                  <li>
+                <!--  <li>
                     <div class="divcss5">
     					<img  src="/images/Ambassador-menu.png" width="230" height="300"/>
                       </div>
-					</li>
+					</li> -->
 					{/if}
 				</ul>
 			</div>
