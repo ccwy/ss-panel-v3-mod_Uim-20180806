@@ -1,9 +1,19 @@
 # robots.txt generated at http://tool.chinaz.com/robots/ 
+User-agent: sogou spider
+Disallow: /
+Crawl-delay: 120
+Disallow: /
+User-agent: *
+Disallow: /
 User-agent: Baiduspider
 Disallow: /
 User-agent: Sosospider
 Disallow: /
-User-agent: sogou spider
+User-agent: YodaoBot
+Disallow: /
+User-agent: Googlebot
+Disallow: /
+User-agent: Bingbot
 Disallow: /
 User-agent: Slurp
 Disallow: /
@@ -21,7 +31,21 @@ User-agent: Robozilla
 Disallow: /
 User-agent: Gigabot
 Disallow: /
+User-agent: googlebot-image
+Disallow: /
+User-agent: googlebot-mobile
+Disallow: /
+User-agent: yahoo-mmcrawler
+Disallow: /
+User-agent: yahoo-blogs/v3.9
+Disallow: /
 User-agent: psbot
 Disallow: /
-Crawl-delay: 120
+User-agent: Yisouspider
+Disallow: /
+User-agent: Yandex
+Disallow: /
+User-agent: YandexBot
+Disallow: /
+User-agent: googleBot
 Disallow: /

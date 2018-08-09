@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>充值失败</title>
+<style type="text/css">
+<!--
+body,td,th {
+	color: #FFFFFF;
+}
+body {
+	background-color: #0099CC;
+}
+.STYLE7 {
+	font-size: 24px;
+	font-family: "微软雅黑";
+}
+.STYLE9 {font-size: 16px}
+.STYLE12 {
+	font-size: 100px;
+	font-family: "微软雅黑";
+}
+-->
+</style></head>
+
+ <META HTTP-EQUIV="REFRESH" CONTENT="2; URL=/user/code"></META>
+  
+
+<body>
+
+<script type="text/javascript">
+	var num=6;
+	function redirect(){
+		num--;
+		document.getElementById("num").innerHTML=num;
+		if(num<0){
+			document.getElementById("num").innerHTML=0;
+			location.href="https://my.yunxiao.us/user/code";
+			exit;
+			}
+		}
+	setInterval("redirect()", 1000);
+</script>
+
+<span class="STYLE12">&nbsp;:(    充值失败！</span>
+
+<p class="STYLE7"> 　　由于您输入的充值金额小于20元，本次充值失败，未产生交易；<br />
+　　<span id="num"></span>秒后自动返回充值页面，请按页面提示操作，输入大于20元的金额重新充值。</p>
+<p class="STYLE7">　　<span class="STYLE9">如果您想了解更多信息，请登录云霄阁发工单向管理员咨询。</span></p>
+
+</body>
+
+
+
+</html>
