@@ -697,6 +697,12 @@
 																				<p>协议：<span class="label label-brand-accent">
 																					{$server_explode[2]}
 																				</span></p>
+																				
+																				
+																				<p>加密算法：<span class="label label-green">
+																					aes-128-gcm
+																				</span></p>
+																				
 
 																				<!--
 																				<p>协议参数：<span class="label label-green">
@@ -708,10 +714,6 @@
 																					{$user->getUuid()}
 																				</span></p>
 
-																				<p>加密算法：<span class="label label-green">
-																					aes-128-gcm
-																				</span></p>
-																				
 																				<p>流量比例：<span class="label label-red">
 																					{$node->traffic_rate}
 																				</span></p>
