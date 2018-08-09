@@ -257,7 +257,7 @@ class URL
         $node_explode = explode(';', $node->server);
         $item = [
             'v'=>'2', 
-            'type'=>'none', 
+            'type'=>'aes-128-gcm', 
             'host'=>'', 
             'path'=>'', 
             'tls'=>''

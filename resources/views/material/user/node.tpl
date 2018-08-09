@@ -698,9 +698,11 @@
 																					{$server_explode[2]}
 																				</span></p>
 
+																				<!--
 																				<p>协议参数：<span class="label label-green">
 																					{$server_explode[0]}
 																				</span></p>
+																				-->
 
 																				<p>用户 UUID：<span class="label label-brand">
 																					{$user->getUuid()}
