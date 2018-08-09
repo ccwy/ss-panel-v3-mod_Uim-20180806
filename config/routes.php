@@ -232,6 +232,10 @@ $app->group('/admin', function () {
     $this->get('/relay/path_search/{id}', 'App\Controllers\Admin\RelayController:path_search');
     $this->post('/relay/ajax', 'App\Controllers\Admin\RelayController:ajax_relay');
 
+	//邮件纪律
+	$this->get('/email', 'App\Controllers\AdminController:email');
+	$this->post('/email/ajax', 'App\Controllers\AdminController:ajax_email');
+	
     // Shop Mange
     $this->get('/shop', 'App\Controllers\Admin\ShopController:index');
     $this->post('/shop/ajax', 'App\Controllers\Admin\ShopController:ajax_shop');
