@@ -281,7 +281,7 @@
 		}
 
 		.page-orange .ui-content-header {
-			background-image: url(/theme/material/css/images/bg/red1.jpg);
+			background-image: url(/theme/material/css/images/bg/red.jpg);
 		}
 
 		.content-heading {
