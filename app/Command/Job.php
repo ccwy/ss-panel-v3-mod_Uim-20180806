@@ -142,8 +142,8 @@ class Job
         DetectLog::where("datetime", "<", time()-86400*3)->delete();
         Speedtest::where("datetime", "<", time()-86400*3)->delete();
         EmailVerify::where("expire_in", "<", time()-86400*3)->delete();
-		 system("rm ".BASE_PATH."/storage/*.png", $ret);
-        Telegram::Send("姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~");
+		// system("rm ".BASE_PATH."/storage/*.png", $ret);
+      //  Telegram::Send("姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~");
 
         //auto reset
         $boughts=Bought::all();
