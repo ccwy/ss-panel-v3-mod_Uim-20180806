@@ -206,9 +206,11 @@
 												</li>
 												*}
 												
+												{if $user->class >=30}
 												<li>
 													<a class="waves-attach" data-toggle="tab" href="#all_v2ray"><i class="icon icon-lg">flight_land</i>&nbsp;v2ray</a>
 												</li>
+												{/if}
 												
 												<li >
 													<a class="waves-attach" data-toggle="tab" href="#all_client"><i class="icon icon-lg">text_format</i>&nbsp;客户端&教程</a>
@@ -469,6 +471,7 @@
 										
 
 
+										{if $user->class >=30}
 												<div class="tab-pane fade" id="all_v2ray">
 													<nav class="tab-nav margin-top-no">
 														<ul class="nav nav-list">
@@ -494,7 +497,7 @@
 
 													</div>
 												</div>										
-											
+										{/if}	
 											
 										
 										<div class="tab-pane fade " id="all_client">
