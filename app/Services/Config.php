@@ -59,7 +59,7 @@ class Config
 			"connemail" => self::get("connemail"),  // 联系邮件
 			"iosinfo" => self::get("iosinfo"),  // ios小火煎下载账号
 			"iospasswd" => self::get("iospasswd"),  // ios小火煎下载密码
-			
+			"jiaocheng1" => self::get("jiaocheng1"),  // 教程地址
 			"regiestrs" => self::get("regiestrs"),  // 注册开关
 			"restport" => self::get("restport"),  // 重置端口
 			
