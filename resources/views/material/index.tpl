@@ -46,10 +46,13 @@
 										 {elseif $user->class==22}
 										 <code>半年付VIP</code>
 										 {elseif $user->class==23}
-										 <code>年付SVIP</code>										 
+										 <code>年付SVIP</code>	
+
+										 {elseif $user->class==30}
+										 <code>年付R2ray</code>	
 									
 										 {else}
-										 <code>未激活</code>
+										 <code>未知等级</code>
 										 {/if}
 										 
                                     过期时间：{if $user->class_expire!="1989-06-04 00:05:00"}

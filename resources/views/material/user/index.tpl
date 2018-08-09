@@ -83,6 +83,10 @@
 											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP3</dd>
 											  {elseif $user->class==26}
 											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP4</dd>
+											  {elseif $user->class==30}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray</dd>
+											  
+											  
 											  {elseif $user->class==5}
 											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付VIP</dd>
 											
