@@ -1084,7 +1084,8 @@ class UserController extends BaseController
         }
         $paybacks->setPath('/user/invite');*/
 
-            return $this->view()->assign('code', $code)->assign('paybacks', $paybacks)->assign('paybacks_sum', $paybacks_sum)->display('user/invite.tpl');
+            //return $this->view()->assign('code', $code)->assign('paybacks', $paybacks)->assign('paybacks_sum', $paybacks_sum)->display('user/invite.tpl');
+			return $this->view()->assign('code', $code)->display('user/invite.tpl');
     }
 	
     public function doInvite($request, $response, $args)

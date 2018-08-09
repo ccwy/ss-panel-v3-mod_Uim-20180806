@@ -182,6 +182,77 @@
 
 {include file='user/footer.tpl'}
 
+
+
+
+<script>
+	$(function(){
+		new Clipboard('.copy-text');
+	});
+
+	$(".copy-text").click(function () {
+		$("#result").modal();
+		$("#msg").html("已复制到您的剪贴板，请您继续接下来的操作。");
+	});
+
+    $(document).ready(function () {
+        $("#invite").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/user/invite",
+                dataType: "json",
+                success: function (data) {
+				if (data.ret) {
+						$("#result").modal();
+						$("#msg").html(data.msg);
+						window.setTimeout("location.href=window.location.href", {$config['jump_delay']});
+					} else {
+						$("#result").modal();
+						$("#msg").html(data.msg);
+						window.setTimeout("location.href=window.location.href", {$config['jump_delay']});
+					}
+                    
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+					$("#msg").html("发生错误：" + jqXHR.status);
+                }
+            })
+        })
+    })
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#invitede").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/user/invitede",
+                dataType: "json",
+                 success: function (data) {
+                    if (data.ret) {
+                        $("#result").modal();
+						$("#msg").html(data.msg);
+						window.setTimeout("location.href=window.location.href", {$config['jump_delay']});
+                    } else {
+                        $("#result").modal();
+						$("#msg").html(data.msg);
+						window.setTimeout("location.href=window.location.href", {$config['jump_delay']});
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+					$("#msg").html(data.msg+"     出现了一些错误。");
+                }
+            })
+        })
+    })
+</script>
+
+
+
+{*
 <script>
 	$(function(){
 		new Clipboard('.copy-text');
@@ -243,3 +314,4 @@ $(document).ready(function(){
 });
 
 </script>
+*}
