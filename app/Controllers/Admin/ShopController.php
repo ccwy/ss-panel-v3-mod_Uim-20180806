@@ -15,7 +15,8 @@ class ShopController extends AdminController
     {
         $table_config['total_column'] = array("op" => "操作", "id" => "ID", "name" => "商品名称",
                         "price" => "价格", "content" => "商品内容",
-                        "auto_renew" => "自动续费", "auto_reset_bandwidth" => "续费时是否重置流量",
+                     //   "auto_renew" => "自动续费", "auto_reset_bandwidth" => "续费时是否重置流量",
+						"auto_reset_day" => "每月是否重置流量", 
                         "status" => "状态");
         $table_config['default_show_column'] = array();
         foreach ($table_config['total_column'] as $column => $value) {
@@ -37,6 +38,7 @@ class ShopController extends AdminController
         $shop->price =  $request->getParam('price');
         $shop->auto_renew =  $request->getParam('auto_renew');
         $shop->auto_reset_bandwidth =  $request->getParam('auto_reset_bandwidth');
+		$shop->auto_reset_day =  $request->getParam('auto_reset_day'); 
 
         $content=array();
         if ($request->getParam('bandwidth')!=0) {
@@ -67,13 +69,13 @@ class ShopController extends AdminController
             $content["reset_exp"]=$request->getParam('reset_exp');
         }
 
-        //if ($request->getParam('speedlimit')!=0) {
+        if ($request->getParam('speedlimit')!=0) {
             $content["speedlimit"]=$request->getParam('speedlimit');
-        //}
+        }
 
-        //if ($request->getParam('connector')!=0) {
+        if ($request->getParam('connector')!=0) {
             $content["connector"]=$request->getParam('connector');
-        //}
+        }
 
         $shop->content=json_encode($content);
 
@@ -116,6 +118,7 @@ class ShopController extends AdminController
         }
 
         $shop->auto_reset_bandwidth =  $request->getParam('auto_reset_bandwidth');
+		$shop->auto_reset_day =  $request->getParam('auto_reset_day');  //每月是否重置流量
         $shop->status=1;
 
         $content=array();
@@ -147,13 +150,13 @@ class ShopController extends AdminController
             $content["reset_exp"]=$request->getParam('reset_exp');
         }
         
-        //if ($request->getParam('speedlimit')!=0) {
+        if ($request->getParam('speedlimit')!=0) {
             $content["speedlimit"]=$request->getParam('speedlimit');
-        //}
+        }
 
-        //if ($request->getParam('connector')!=0) {
+        if ($request->getParam('connector')!=0) {
             $content["connector"]=$request->getParam('connector');
-        //}
+        }
 
         $shop->content=json_encode($content);
 
@@ -197,8 +200,10 @@ class ShopController extends AdminController
         $table_config['total_column'] = array("op" => "操作", "id" => "ID", 
 						"datetime" => "购买日期","content" => "内容",
                         "price" => "价格", "user_id" => "用户ID",
-                        "user_name" => "用户名", "renew" => "自动续费时间", 
-                        "auto_reset_bandwidth" => "续费时是否重置流量");
+                        "user_name" => "用户名", //"renew" => "自动续费时间", 
+                       // "auto_reset_bandwidth" => "续费时是否重置流量");
+					   "auto_reset_day" => "每月是否重置流量",   
+                        "datetime" => "购买时间");
         $table_config['default_show_column'] = array();
         foreach ($table_config['total_column'] as $column => $value) {
             array_push($table_config['default_show_column'], $column);
@@ -225,7 +230,7 @@ class ShopController extends AdminController
     public function ajax_shop($request, $response, $args)
     {
         $datatables = new Datatables(new DatatablesHelper());
-        $datatables->query('Select id as op,id,name,price,content,auto_renew,auto_reset_bandwidth,status from shop');
+        $datatables->query('Select id as op,id,name,price,content,auto_renew,auto_reset_bandwidth,auto_reset_day,status from shop');
 
         $datatables->edit('op', function ($data) {
             return '<a class="btn btn-brand" href="/admin/shop/'.$data['id'].'/edit">编辑</a>
@@ -249,6 +254,11 @@ class ShopController extends AdminController
             return $data['auto_reset_bandwidth'] == 0 ? '不自动重置' : '自动重置';
         });
 
+		 //每月是否重置流量
+	    $datatables->edit('auto_reset_day', function ($data) {
+            return $data['auto_reset_day'] == 0 ? '不重置' : '重置';    
+        });
+		
         $datatables->edit('status', function ($data) {
             return $data['status'] == 1 ? '上架' : '下架';
         });
@@ -259,8 +269,8 @@ class ShopController extends AdminController
 
     public function ajax_bought($request, $response, $args)
     {
-        $datatables = new Datatables(new DatatablesHelper());
-        $datatables->query('Select bought.id as op,bought.id as id,shop.id as content,bought.price,user.id as user_id,user.user_name,renew,shop.auto_reset_bandwidth,bought.datetime from bought,user,shop where bought.shopid = shop.id and bought.userid = user.id');
+        $datatables = new Datatables(new DatatablesHelper()); //每月是否重置流量
+        $datatables->query('Select bought.id as op,bought.id as id,shop.id as content,bought.price,user.id as user_id,user.user_name,renew,shop.auto_reset_bandwidth,shop.auto_reset_day,bought.datetime from bought,user,shop where bought.shopid = shop.id and bought.userid = user.id');
 
         $datatables->edit('op', function ($data) {
             return '<a class="btn btn-brand-accent" '.($data['renew'] == 0 ? "disabled" : ' id="row_delete_'.$data['id'].'" href="javascript:void(0);" onClick="delete_modal_show(\''.$data['id'].'\')"').'>中止</a>';
@@ -277,6 +287,11 @@ class ShopController extends AdminController
             } else {
                 return date('Y-m-d H:i:s', $data['renew'])." 续费";
             }
+        });
+		
+       //每月是否重置流量
+		$datatables->edit('auto_reset_day', function ($data) {
+            return $data['auto_reset_day'] == 0 ? '不重置' : '重置';    
         });
 
         $datatables->edit('auto_reset_bandwidth', function ($data) {
