@@ -21,7 +21,7 @@
 		</div>
 		<div class="container">
 			<section class="content-inner margin-top-no">
-             
+             <div class="col-lg-6 col-md-6">
 
 
 						<div class="card margin-bottom-no">
@@ -222,7 +222,7 @@
 					</div>  
 
 
-					<div class="col-lg-6 col-md-6">
+					
 					
 					
 					<div class="col-lg-6 col-md-6">
