@@ -348,37 +348,54 @@
 								</div>
 							</div>
 						</div>
-
 						
-					<!--	{if $config['port_price']>=0 || $config['port_price_specify']>=0}  -->
+						
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
-								<!--	{if $config['port_price']>=0}  -->
 									<div class="card-inner">
 										<p class="card-heading">重置端口</p>
-									{*	<p>对号码不满意？来摇号吧～！</p>
-										<p>随机更换一个端口使用，价格：<code>{$config['port_price']}</code>元/次</p> 
-										<p>重置后1分钟内生效</p> 
-									*}
 										<p>注意：重置端口立即生效，随机生成新的端口，请及时更新节点信息，否则可能无法使用任何节点；
-										</p>
+										<br>当前端口：{$user->port}</p>
 										{if $user->port >= 10500}
 										<p><font color="red">您当前端口可能会导致部分节点无法使用，请点击下面重置端口按钮，完成端口重置。</font></p>
 										{else}
 										<p><font color="red">您的端口在正常使用范围内，无需重置。</font></p>
 										{/if}
+
+
+									</div>
+									<div class="card-action">
+										<div class="card-action-btn pull-left">
+											<button class="btn btn-brand waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;重置端口</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					<!--
+						{if $config['port_price']>=0 || $config['port_price_specify']>=0}
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									{if $config['port_price']>=0}
+									<div class="card-inner">
+										<p class="card-heading">重置端口</p>
+										<p>对号码不满意？来摇号吧～！</p>
+										<p>随机更换一个端口使用，价格：<code>{$config['port_price']}</code>元/次</p>
+										<p>重置后1分钟内生效</p>
 										<p>当前端口：<code id="ajax-user-port">{$user->port}</code></p>
 									</div>
 									<div class="card-action">
 										<div class="card-action-btn pull-left">
-											{* <button class="btn btn-flat waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;摇号</button>*}
-											<button class="btn btn-brand waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;重置端口</button>
+											<button class="btn btn-flat waves-attach" id="portreset" ><span class="icon">check</span>&nbsp;摇号</button>
 										</div>
 									</div>
-								<!--	{/if}  -->
+									{/if}
 
-								<!--	{if $config['port_price_specify']>=0}
+									{if $config['port_price_specify']>=0}
 									<div class="card-inner">
 										<p class="card-heading">钦定端口</p>
 										<p>不想摇号？来钦定端口吧～！</p>
@@ -394,11 +411,12 @@
 											<button class="btn btn-flat waves-attach" id="portspecify" ><span class="icon">check</span>&nbsp;钦定</button>
 										</div>
 									</div>
-									{/if}  -->
+									{/if}
 								</div>
 							</div>
 						</div>
-					<!--	{/if}  -->
+						{/if}
+						-->
 
 						<div class="card margin-bottom-no">
 							<div class="card-main">
