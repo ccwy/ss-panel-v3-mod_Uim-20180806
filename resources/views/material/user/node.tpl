@@ -708,6 +708,10 @@
 																					{$user->getUuid()}
 																				</span></p>
 
+																				<p>加密算法：<span class="label label-green">
+																					aes-128-gcm
+																				</span></p>
+																				
 																				<p>流量比例：<span class="label label-red">
 																					{$node->traffic_rate}
 																				</span></p>
