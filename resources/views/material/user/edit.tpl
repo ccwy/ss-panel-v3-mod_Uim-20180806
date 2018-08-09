@@ -353,7 +353,7 @@
 							</div>
 						</div>
 						
-						
+						{if $config['restport'] == 'true'}
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -377,6 +377,7 @@
 								</div>
 							</div>
 						</div>
+						{/if}
 						
 						
 					<!--

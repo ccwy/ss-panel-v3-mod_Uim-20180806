@@ -55,9 +55,11 @@
 						<li>
 							<a class="padding-right-lg waves-attach" href="/auth/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
 						</li>
+						{if $config['regiestrs'] == 'true'}
 						<li>
 							<a class="padding-right-lg waves-attach" href="/auth/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
 						</li>
+						{/if}
 					</ul>
 				{/if}
 
@@ -81,9 +83,14 @@
 					<li>
 						<a  href="/auth/login"><i class="icon icon-lg">vpn_key</i>&nbsp;登录</a>
 					</li>
+					{if $config['regiestrs'] == 'true'}
 					<li>
 						<a  href="/auth/register"><i class="icon icon-lg">person_add</i>&nbsp;注册</a>
 					</li>
+					<li>
+						<a  href="/game_pricing.html"><i class="icon icon-lg">shop</i>&nbsp;价格</a>
+					</li>
+					{/if}
                   	<li>
 				     <a  href="/password/reset"><i class="icon icon-lg">security</i>&nbsp;重置密码</a>
 					</li>

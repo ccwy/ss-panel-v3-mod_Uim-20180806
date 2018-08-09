@@ -150,9 +150,12 @@
 
                     <div class="clearfix">
                         <p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach"
-                                                              href="/password/reset">忘记密码</a></p>
-                        <p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach"
-                                                               href="/auth/register">注册帐号</a></p>
+                                                              href="/password/reset">重置密码</a></p>
+                        {if $config['regiestrs'] == 'true'}
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/auth/register">注册帐号</a></p>
+							{else}
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/cous">联系我们</a></p>
+							{/if}
                     </div>
 
 
