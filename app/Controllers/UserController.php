@@ -2070,6 +2070,14 @@ class UserController extends BaseController
         return $newResponse;
     }
 	
+	//anyconnect VPN
+	public function anyconnect($request, $response, $args)
+    {
+		
+        return $this->view()->display('user/anyconnect.tpl');
+    }
+	
+		
 	
     //返利
      public function fanli($request, $response, $args)
