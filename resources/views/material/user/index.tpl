@@ -206,7 +206,7 @@
 												</li>
 												*}
 												
-												{if $user->class >=30}
+												{if $user->class >=23}
 												<li>
 													<a class="waves-attach" data-toggle="tab" href="#all_v2ray"><i class="icon icon-lg">flight_land</i>&nbsp;v2ray</a>
 												</li>
@@ -471,7 +471,7 @@
 										
 
 
-										{if $user->class >=30}
+										{if $user->class >=23}
 												<div class="tab-pane fade" id="all_v2ray">
 													<nav class="tab-nav margin-top-no">
 														<ul class="nav nav-list">
