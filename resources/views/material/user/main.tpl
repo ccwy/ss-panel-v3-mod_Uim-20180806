@@ -281,7 +281,7 @@
 		}
 
 		.page-orange .ui-content-header {
-			background-image: url(/theme/material/css/images/bg/amber.jpg);
+			background-image: url(/theme/material/css/images/bg/red.jpg);
 		}
 
 		.content-heading {
@@ -290,7 +290,7 @@
 		}
 	</style>
 
-
+<!--  上面设置用户中心显示图片 -->
 
 
 </head>
