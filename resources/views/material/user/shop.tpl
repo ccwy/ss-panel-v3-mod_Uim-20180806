@@ -48,7 +48,7 @@
                             {foreach $shops as $shop}
                             <tr>
 							    <td>
-                                    <a class="btn btn-brand-accent" href="javascript:void(0);" onClick="buy('{$shop->id}',{$shop->auto_renew},{$shop->auto_reset_bandwidth})">购买</a>
+                                    <a class="btn btn-brand" href="javascript:void(0);" onClick="buy('{$shop->id}',{$shop->auto_renew},{$shop->auto_reset_bandwidth})">购买</a>
                                 </td>
                                 <td>{$shop->name}</td>
 								<td>{$shop->price} 元</td>

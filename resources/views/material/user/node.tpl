@@ -227,7 +227,7 @@
 
 											{$id=1000}
 											{foreach $node_prefix as $prefix => $nodes}
-										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] >=1 && $node_class[$prefix] <= 22}
+										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] >=1 }
 												{$id=$id+1}
                                                           	{foreach $nodes as $node}
 
@@ -419,7 +419,7 @@
 
 											{$id=2000}
 											{foreach $node_prefix as $prefix => $nodes}
-										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] == 23}
+										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] >= 23}
 												{$id=$id+1}
                                                           	{foreach $nodes as $node}
 
@@ -612,7 +612,7 @@
 
 											{$id=3000}
 											{foreach $node_prefix as $prefix => $nodes}
-										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] == 30}
+										{if $node_isv6[$prefix] == 0 && $node_class[$prefix] >= 30}
 												{$id=$id+1}
                                                           	{foreach $nodes as $node}
 
