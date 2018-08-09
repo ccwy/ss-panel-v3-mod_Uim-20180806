@@ -73,7 +73,7 @@
 													<label class="floating-label" for="email_code">邮箱验证码</label>
 													<input class="form-control" id="email_code" type="text" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;">
 													<button id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light">点击获取验证码</button>
-													<a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a>
+													<p><a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a></p>
 												</div>
 											</div>
 										</div>
