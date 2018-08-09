@@ -1506,7 +1506,7 @@ class UserController extends BaseController
         foreach ($adminUser as $user) {
             $subject = Config::get('appName')."-新工单被开启";
             $to = $user->email;
-            $text = "管理员您好，有人开启了新的工单，请您及时处理。。" ;
+            $text = "管理员您好，用户id： ".$this->user->id."   ，邮箱： ".$this->user->email."   ，开启了新工单，内容如下：<br>".$content ;  //工单优化
             try {
                 Mail::send($to, $subject, 'news/warn.tpl', [
                     "user" => $user,"text" => $text
@@ -1515,6 +1515,17 @@ class UserController extends BaseController
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+		//工单优化	
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $this->user->id;
+		$emailjilu->username = $this->user->user_name;
+		$emailjilu->useremail = $this->user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
         }
 
         $res['ret'] = 1;
@@ -1552,7 +1563,7 @@ class UserController extends BaseController
             foreach ($adminUser as $user) {
                 $subject = Config::get('appName')."-工单被重新开启";
                 $to = $user->email;
-                $text = "管理员您好，有人重新开启了<a href=\"".Config::get('baseUrl')."/admin/ticket/".$ticket_main->id."/view\">工单</a>，请您及时处理。" ;
+                $text = "管理员您好，用户id： ".$this->user->id."   ，邮箱： ".$this->user->email."   ，重新开启了<a href=\"".Config::get('baseUrl')."/admin/ticket/".$ticket_main->id."/view\">工单</a>，内容如下：<br>".$content ;
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         "user" => $user,"text" => $text
@@ -1561,13 +1572,24 @@ class UserController extends BaseController
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
+				
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $this->user->id;
+		$emailjilu->username = $this->user->user_name;
+		$emailjilu->useremail = $this->user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
             }
         } else {
             $adminUser = User::where("is_admin", "=", "1")->get();
             foreach ($adminUser as $user) {
                 $subject = Config::get('appName')."-工单被回复";
                 $to = $user->email;
-                $text = "管理员您好，有人回复了<a href=\"".Config::get('baseUrl')."/admin/ticket/".$ticket_main->id."/view\">工单</a>，请您及时处理。" ;
+               $text = "管理员您好，用户id： ".$this->user->id."   ，邮箱： ".$this->user->email."   ，回复了<a href=\"".Config::get('baseUrl')."/admin/ticket/".$ticket_main->id."/view\">工单</a>，内容如下：<br>".$content ;
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         "user" => $user,"text" => $text
@@ -1576,6 +1598,17 @@ class UserController extends BaseController
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
+				
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $this->user->id;
+		$emailjilu->username = $this->user->user_name;
+		$emailjilu->useremail = $this->user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
+		
             }
         }
 
@@ -1693,6 +1726,19 @@ class UserController extends BaseController
         $user->protocol = $antiXss->xss_clean($protocol);
         $user->obfs = $antiXss->xss_clean($obfs);
 		$user->obfs_param = $antiXss->xss_clean($obfs_param);
+		
+		
+		//设置混淆参数
+		if ($obfs == "plain") {
+			$user->obfs_param = '';
+		}
+		if ($obfs == "tls1.2_ticket_auth") {
+			$user->obfs_param = Config::get('reg_obfs_param');
+		}
+		if ($obfs == "tls1.2_ticket_fastauth") {
+			$user->obfs_param = Config::get('reg_obfs_param');
+		}
+
 
         if (!Tools::checkNoneProtocol($user)) {
             $res['ret'] = 0;
@@ -1790,11 +1836,35 @@ class UserController extends BaseController
     }
 
 
+	//连接密码不能小于8位
     public function updateSsPwd($request, $response, $args)
     {
         $user = Auth::getUser();
         $pwd = $request->getParam('sspwd');
 		$pwd= trim($pwd);
+
+        if ($pwd == "") {
+            $res['ret'] = 0;
+            $res['msg'] = "连接密码不能为空";
+            return $response->getBody()->write(json_encode($res));
+        }
+		
+		if (strlen($pwd) < 8) {
+            $res['ret'] = 0;
+            $res['msg'] = "密码太短啦";
+            return $response->getBody()->write(json_encode($res));
+        }
+		if (strlen($pwd) > 26) {
+            $res['ret'] = 0;
+            $res['msg'] = "密码太长啦";
+            return $response->getBody()->write(json_encode($res));
+        }
+
+        if (!Tools::is_validate($pwd)) {
+            $res['ret'] = 0;
+            $res['msg'] = "连接密码不能是大小写字母、数字以外的任何字符";
+            return $response->getBody()->write(json_encode($res));
+        }
 
         if ($pwd == "") {
             $res['ret'] = 0;
@@ -1810,6 +1880,7 @@ class UserController extends BaseController
 
         $user->updateSsPwd($pwd);
         $res['ret'] = 1;
+		$res['msg'] = "连接密码修改成功";   //连接密码修改成功提示
 
 
         Radius::Add($user, $pwd);
@@ -1998,6 +2069,69 @@ class UserController extends BaseController
         $newResponse = $response->withStatus(302)->withHeader('Location', '/user');
         return $newResponse;
     }
+	
+	
+    //返利
+     public function fanli($request, $response, $args)
+    {
+        $pageNum = 1;
+        if (isset($request->getQueryParams()["page"])) {
+            $pageNum = $request->getQueryParams()["page"];
+        }
+        $codes = Code::where('type', '<>', '-2')->where('userid', '=', $this->user->id)->orderBy('id', 'desc')->paginate(20, ['*'], 'page', $pageNum);
+        $codes->setPath('/user/fanli');
+        return $this->view()->assign('codes', $codes)->assign('pmw', Pay::getHTML($this->user))->display('user/fanli.tpl');
+    }
+
+	//返利充值
+	 public function fanlipost($request, $response, $args)
+    {
+        $fanli = $request->getParam('fanli');
+        $user = $this->user;
+
+        if ($fanli == "") {
+            $res['ret'] = 0;
+            $res['msg'] = "你填了金额了吗？";
+            return $this->echoJson($response, $res);
+        }
+		if ($fanli < 1) {
+            $res['ret'] = 0;
+            $res['msg'] = "提现金额不能小于1元";
+            return $this->echoJson($response, $res);
+        }
+				
+		 if ($fanli > $user->fanli) {
+            $res['ret'] = 0;
+            $res['msg'] = "提现金额不能大于返利金额";
+            return $this->echoJson($response, $res);
+        }
+		
+     //   if (!Tools::fanliss($fanli)) {
+     //       $res['ret'] = 0;
+     //       $res['msg'] = "非法操作！！！";
+     //       return $this->echoJson($response, $res);
+    //    }
+		
+                $codeq=new Code();
+                $codeq->code="返利提现";
+                $codeq->isused=1;
+                $codeq->type=-1;
+                $codeq->number=$fanli;
+                $codeq->usedatetime=date("Y-m-d H:i:s");
+                $codeq->userid=$user->id;
+                $codeq->save();
+
+                                        
+            $user->money=($user->money + $fanli);
+			$user->fanli=($user->fanli - $fanli);
+            $user->save();           
+            $res['ret'] = 1;
+            $res['msg'] = "返利提现到账户余额成功，提现金额".$fanli."元。";
+          
+           return $this->echoJson($response, $res);
+
+    }
+	
 	
     public function backtoadmin($request, $response, $args)
     {

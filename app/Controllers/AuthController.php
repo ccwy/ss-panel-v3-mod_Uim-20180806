@@ -254,7 +254,7 @@ class AuthController extends BaseController
             $ev->ip = $_SERVER["REMOTE_ADDR"];
             $ev->email = $email;
             $ev->code = $code;
-          //  $ev->save();
+            $ev->save();
 
             $subject = Config::get('appName') . "- 验证邮件";
 
@@ -269,7 +269,7 @@ class AuthController extends BaseController
             }
 			
 			//邮件记录
-           if ($ev->save()) {
+           
 		$antiXss = new AntiXSS();
 		$emailjilu = new Emailjilu();
 		$emailjilu->userid = 0;

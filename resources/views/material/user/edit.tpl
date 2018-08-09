@@ -794,10 +794,10 @@ $(".copy-text").click(function () {
                     if (data.ret) {
                         $("#result").modal();
 						$("#ajax-user-passwd").html($("#sspwd").val());
-						$("#msg").html("成功了");
+						$("#msg").html(data.msg);
                     } else {
                         $("#result").modal();
-						$("#msg").html("失败了");
+						$("#msg").html(data.msg);
                     }
                 },
                 error: function (jqXHR) {
