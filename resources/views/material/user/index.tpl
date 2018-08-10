@@ -84,7 +84,15 @@
 											  {elseif $user->class==26}
 											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付SVIP4</dd>
 											  {elseif $user->class==30}
-											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray</dd>
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;预售年付V2ray</dd>
+											  {elseif $user->class==31}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray1</dd>
+											  {elseif $user->class==32}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray2</dd>
+											  {elseif $user->class==33}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray3</dd>
+											  {elseif $user->class==34}
+											  <dd><i class="icon icon-md t4-text">stars</i>&nbsp;年付V2ray4</dd>
 											  
 											  
 											  {elseif $user->class==5}

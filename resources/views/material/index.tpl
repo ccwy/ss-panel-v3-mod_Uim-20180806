@@ -49,7 +49,16 @@
 										 <code>年付SVIP</code>	
 
 										 {elseif $user->class==30}
-										 <code>年付R2ray</code>	
+										 <code>预售年付V2ray</code>	
+										 {elseif $user->class==31}
+										 <code>年付V2ray1</code>	
+										 {elseif $user->class==32}
+										 <code>年付V2ray2</code>	
+										 {elseif $user->class==33}
+										 <code>年付V2ray3</code>	
+										 {elseif $user->class==34}
+										 <code>年付V2ray4</code>	
+										 
 									
 										 {else}
 										 <code>未知等级</code>
