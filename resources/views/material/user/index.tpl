@@ -744,7 +744,7 @@
 									<div class="card-inner margin-bottom-no">
 									<p class="card-heading">新用户使用引导：</p>
 									
-										<p><font color="blue">注册即代表同意并遵守本站<a href="/toos">用户协议（TOS）</a>，本站不提供试用，请<a href="/user/code">点我充值</a>余额到账户，然后通过  <a href="/user/shop">商店</a> 购买激活账号，如您未能在注册后  {$config['enable_auto_clean_unused_days']}  天内完成购买，账号将自动删除，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</font></p>
+										<p><font color="blue">1，注册即代表同意并遵守本站<a href="/toos">用户协议（TOS）</a>，<br>2，本站不提供试用,<br>3，请<a href="/user/code">点我充值</a>余额到账户，<br>4，然后通过  <a href="/user/shop">商店</a> 购买激活账号，<br>5，如您未能在注册后  {$config['enable_auto_clean_unused_days']}  天内完成购买，账号将自动删除,<br>6，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</font></p>
 																												
 									</div>									
 								</div>
@@ -759,9 +759,9 @@
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 									<p class="card-heading">账号当前状态</p>
-										<h5><font color="blue">您的账号等级已于 {$user->class_expire} 过期，</font>为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；
-										<br><font color="blue">请注意，您的账号将在等级过期 {$config['enable_account_expire_delete_days']}  天后自动删除，</font></h5>
-										<p>如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
+										<h5><font color="blue">1，您的账号等级已于 {$user->class_expire} 过期，<br>2，</font>为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；
+										<br,3，<font color="blue">请注意，您的账号将在等级过期 {$config['enable_account_expire_delete_days']}  天后自动删除，</font></h5>
+										<p>4，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
 																												
 									</div>									
 								</div>
