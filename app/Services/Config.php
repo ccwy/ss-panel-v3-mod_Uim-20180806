@@ -48,6 +48,7 @@ class Config
 			"admin_contact3" => self::get("admin_contact3"),
 			"enable_flag" => self::get("enable_flag"),
 			
+			"enable_auto_clean_unused_days" => self::get("enable_auto_clean_unused_days"),  //rss订阅地址
 			"rssresd" => self::get("rssresd"),  //rss订阅地址
 			//"payurl" => self::get("payurl"),  //spay支付地址
 			//"payurl2" => self::get("payurl2"),  //码支付支付地址
