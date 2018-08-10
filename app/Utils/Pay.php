@@ -144,9 +144,9 @@ class Pay
 						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，自动到账，在下方输入充值金额，点击支付宝/微信图标，扫码支付
 						<br>2，支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
 						</p>
-						<form name="codepay" action="/user/code/codepay" method="get">
-						<!--<p class="card-heading">请输入充值金额</p>-->
-                        <form name="codepay" action="/user/code/codepay" method="get">
+						<!-- <form name="codepay" action="/user/code/codepay" method="get">
+						<p class="card-heading">请输入充值金额</p> -->
+                        <form name="codepay" action="/user/code/codepay" method="get" target="_blank">
                             <input class="form-control" id="price" name="price" placeholder="输入充值金额后，点击你要付款的应用图标即可" autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required">
                             <br>
                             <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="1" ><img src="/images/alipay.jpg" width="50px" height="50px" /></button>
