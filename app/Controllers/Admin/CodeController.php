@@ -90,7 +90,7 @@ class CodeController extends AdminController
     public function ajax_code($request, $response, $args)
     {
         $datatables = new Datatables(new DatatablesHelper());
-        $datatables->query('Select code.id,code.code,code.type,code.number,code.isused,code.userid,code.userid,user.user_name,code.usedatetime from code,user,code.userid=user.id');
+        $datatables->query('Select code.id,code.code,code.type,code.number,code.isused,code.userid,code.userid,user.user_name,code.usedatetime from code as userid,user as id WHERE code.userid=user.id');
 
         $datatables->edit('number', function ($data) {
             switch ($data['type']) {
