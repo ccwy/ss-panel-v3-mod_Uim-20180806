@@ -42,9 +42,9 @@ class Job
     {
         $nodes = Node::all();
         foreach ($nodes as $node) {
-			$ip = gethostbyname($node->server);
-			if ($node->node_ip != $ip && $node->sort != '9') {        
-          //  if ($node->sort==0) {  检测节点ip
+			//$ip = gethostbyname($node->server);
+		//	if ($node->node_ip != $ip && $node->sort != '9') {        
+            if ($node->sort==0 || $node->sort==10) {  
                 $ip=gethostbyname($node->server);
                 $node->node_ip=$ip;
                 $node->save();
