@@ -318,7 +318,7 @@
 																				</span></p>
 																				*}
 																				
-																				<p>加密算法{推荐}：<span class="label label-green">
+																				<p>加密算法（推荐）：<span class="label label-green">
 																					aes-128-gcm
 																				</span></p>
 																				
@@ -517,7 +517,7 @@
 																				</span></p>
 																				
 																				
-																				<p>加密算法{推荐}：<span class="label label-green">
+																				<p>加密算法（推荐）：<span class="label label-green">
 																					aes-128-gcm
 																				</span></p>
 																			{*	
@@ -721,7 +721,7 @@
 																				</span></p>
 																				
 																				
-																				<p>加密算法{推荐}：<span class="label label-green">
+																				<p>加密算法（推荐）：<span class="label label-green">
 																					aes-128-gcm
 																				</span></p>
 																				
