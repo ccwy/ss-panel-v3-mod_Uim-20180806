@@ -40,11 +40,10 @@ class AdminController extends UserController
 
     public function invite($request, $response, $args)
     {
-        $table_config['total_column'] = array("id" => "ID",
+        $table_config['total_column'] = array("id" => "ID", "datetime" => "时间",
                         "total" => "原始金额", "event_user_id" => "发起用户ID",
                         "event_user_name" => "发起用户名", "ref_user_id" => "获利用户ID",
-                        "ref_user_name" => "获利用户名", "ref_get" => "获利金额",
-                        "datetime" => "时间");
+                        "ref_user_name" => "获利用户名", "ref_get" => "获利金额");
         $table_config['default_show_column'] = array();
         foreach ($table_config['total_column'] as $column => $value) {
             array_push($table_config['default_show_column'], $column);
@@ -120,11 +119,10 @@ class AdminController extends UserController
 
     public function trafficLog($request, $response, $args)
     {
-        $table_config['total_column'] = array("id" => "ID", "user_id" => "用户ID",
+        $table_config['total_column'] = array("id" => "ID", "log_time" => "记录时间", "user_id" => "用户ID",
                           "user_name" => "用户名", "node_name" => "使用节点",
                           "rate" => "倍率", "origin_traffic" => "实际使用流量",
-                          "traffic" => "结算流量",
-                          "log_time" => "记录时间");
+                          "traffic" => "结算流量");
         $table_config['default_show_column'] = array("id", "user_id",
                                   "user_name", "node_name",
                                   "rate", "origin_traffic",
