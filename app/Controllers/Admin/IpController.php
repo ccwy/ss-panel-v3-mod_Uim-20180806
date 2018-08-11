@@ -19,9 +19,9 @@ class IpController extends AdminController
 {
     public function index($request, $response, $args)
     {
-        $table_config['total_column'] = array("id" => "ID", "userid" => "用户ID",
+        $table_config['total_column'] = array("id" => "ID", "datetime" => "时间", "userid" => "用户ID",
                           "user_name" => "用户名", "ip" => "IP",
-                          "location" => "归属地", "datetime" => "时间", "type" => "类型");
+                          "location" => "归属地", "type" => "类型");
         $table_config['default_show_column'] = array();
         foreach ($table_config['total_column'] as $column => $value) {
             array_push($table_config['default_show_column'], $column);
