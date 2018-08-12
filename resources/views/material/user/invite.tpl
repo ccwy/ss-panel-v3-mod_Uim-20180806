@@ -86,7 +86,20 @@
 						</div>
 					</div>
                                     {else}
+				    <div class="col-lg-12 col-md-12">
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<p class="card-heading">注意</p>
 					<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您不是VIP用户，无法邀请他人注册，如需购买VIP请<a href="/user/shop">点击这里</a></h3>
+					                                 </div>
+							        </div>
+							</div>
+						</div>
+					</div>
+					
+					
 					{/if}
 										
 										
