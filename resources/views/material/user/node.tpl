@@ -427,7 +427,7 @@
 
 											
 											
-								<p class="card-heading">SVIP节点(含V2ray节点)</p>
+								<p class="card-heading">SVIP节点(含V2ray)</p>
 								{if $user->class > 1}
 
 											{$id=2000}
