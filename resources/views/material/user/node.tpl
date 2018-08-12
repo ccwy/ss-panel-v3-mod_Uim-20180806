@@ -426,7 +426,7 @@
 {/if}
 
 											
-								{if $user->class>=22}				
+								<!-- {if $user->class>=22} -->				
 								<p class="card-heading">SVIP节点</p>
 
 											{$id=2000}
@@ -460,7 +460,7 @@
 																		<div class="card">
 																		<div class="card-main">
 																			<div class="card-inner">
-																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看VIP节点权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
+																			<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看SVIP节点权限，如需购买SVIP请<a href="/user/shop">点击这里</a>。</b></p>
 </div></div></div>
 																			{else}
 																	{$relay_rule = null}
@@ -625,11 +625,11 @@
 												{/if}
 
 											{/foreach}
-											{/if}
+											<!-- {/if} -->
 
 											
 											
-								{if $user->class>=30}			
+								<!-- {if $user->class>=30} -->			
 								<p class="card-heading">V2ray节点</p>
 
 											{$id=3000}
@@ -831,7 +831,7 @@
 												{/if}
 
 											{/foreach}
-											{/if}
+											<!-- {/if} -->
 
 											
 											
