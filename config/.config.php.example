@@ -114,14 +114,14 @@ $System_Config['email_verify_iplimit']='10';      //单IP可请求验证码次�
 #基础
 $System_Config['checkinMin'] = '0';       //用户签到签到最少流量 单位MB
 $System_Config['checkinMax'] = '0';       //用户签到签到最多流量
-$System_Config['code_payback']='0';      //充值返利百分比
+$System_Config['code_payback']='10';      //充值返利百分比
 $System_Config['invite_gift']='0';      //邀请新用户获得流量奖励，单位G
 $System_Config['enable_bought_reset']='true';      //购买时是否重置流量
 $System_Config['enable_auto_clean_uncheck']='false';      //没签到的0级用户自动清理开关
 $System_Config['enable_auto_clean_uncheck_days']='7';      //自动清理多少天没签到的0级用户
 $System_Config['auto_clean_min_money']='1';      //自动清理时余额低于多少的0级用户会被清理
 $System_Config['enable_auto_clean_unused']='false';      //未使用的0级用户自动清理开关
-$System_Config['enable_auto_clean_unused_days']='30';	//自动清理多少天没使用的0级用户
+$System_Config['enable_auto_clean_unused_days']='3';	//自动清理多少天没使用的0级用户
 $System_Config['port_price']='-1';    //用户随机重置端口所需要的价格，价格小于0时视为不开放购买
 $System_Config['port_price_specify']='-1';    //用户指明钦定端口所需要的价格，价格小于0时视为不开放购买
 
@@ -175,12 +175,12 @@ $System_Config['enable_geetest_checkin']='false';      //启用签到验证码
 
 //支付系统设置--------------------------------------------------------------------
 #取值 codepay,doiampay,paymentwall,zfbjk,spay,f2fpay,yftpay,none,f2fpay_codepay
-$System_Config['payment_system']='codepay';
+$System_Config['payment_system']='none';
 
 #codepay码支付
 #wiki地址:https://goo.gl/dRwRDi  http://t.cn/RnsWjtB
-$System_Config['codepay_key']='sBG89Ze525lLLZdosAWHq3YNRm3ztQ';      //码支付通信密钥
-$System_Config['payurl2'] = 'https://pay.yx.edu.pl';   // 码支付通知地址，必须为这个
+
+$System_Config['payurl2'] = '';   // 码支付通知地址，必须为这个
 $System_Config['codypaymenay']='15';      //码支付最低限额
 $System_Config['codepay_id']='';      //码支付ID
 $System_Config['codepay_key']='';      //码支付通信密钥
@@ -224,7 +224,7 @@ $System_Config['pmw_widget']='m2_1';
 $System_Config['pmw_height']='350px';
 
 #alipay,spay
-$System_Config['payurl'] = 'https://pay.yx.edu.pl';    // spay支付通知地址，必须为这个
+$System_Config['payurl'] = '';    // spay支付通知地址，必须为这个
 $System_Config['alipay_id']='';
 $System_Config['alipay_key']='';
 $System_Config['amount']=[2,23,233,2333,23333];  //充值金额选项设定
