@@ -119,9 +119,9 @@ $System_Config['invite_gift']='0';      //邀请新用户获得流量奖励，�
 $System_Config['enable_bought_reset']='true';      //购买时是否重置流量
 $System_Config['enable_auto_clean_uncheck']='false';      //没签到的0级用户自动清理开关
 $System_Config['enable_auto_clean_uncheck_days']='7';      //自动清理多少天没签到的0级用户
-$System_Config['auto_clean_min_money']='1';      //自动清理时余额低于多少的0级用户会被清理
-$System_Config['enable_auto_clean_unused']='false';      //未使用的0级用户自动清理开关
-$System_Config['enable_auto_clean_unused_days']='3';	//自动清理多少天没使用的0级用户
+$System_Config['auto_clean_min_money']='0';      //自动清理时余额低于多少的0级用户会被清理
+$System_Config['enable_auto_clean_unused']='false';      //清理新注册多少天未购买用户开关
+$System_Config['enable_auto_clean_unused_days']='7';	//清理新注册多少天未购买用户开关
 $System_Config['port_price']='-1';    //用户随机重置端口所需要的价格，价格小于0时视为不开放购买
 $System_Config['port_price_specify']='-1';    //用户指明钦定端口所需要的价格，价格小于0时视为不开放购买
 
