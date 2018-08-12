@@ -26,7 +26,7 @@
 								<div class="card-inner">
 									<p class="card-heading">注意！</p>
 									
-									<p>0.1倍率即使用1000MB按照100MB流量来记录结算.</p>
+									<p>0.1倍率即使用1000MB按照100MB流量来记录结算，年付用户可使用VIP/SVIP节点，其他用户可使用VIP节点。</p>
 									<a href="javascript:void(0);" onClick="urlChange('guide',0,0,0)">如果您不知道如何查看节点的详细信息和二维码，请点我。</a>
 								</div>
 
