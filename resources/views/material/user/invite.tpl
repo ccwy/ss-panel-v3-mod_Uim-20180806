@@ -20,6 +20,7 @@
 		<div class="container">
 			<section class="content-inner margin-top-no">
 				<div class="row">
+				{if $user->class > 1}
 
 					<div class="col-lg-12 col-md-12">
 						<div class="card margin-bottom-no">
@@ -64,7 +65,7 @@
 												<p><a>{$config["baseUrl"]}/auth/register?code={$code->code}</a></p>
 												<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请链接</button></p>
 												*}
-												{if $user->class > 1}
+												
 												<p class="card-heading">我的邀请码 {if $user->invite_num!=0}<button id="invitede" class="btn btn-brand waves-attach">重置邀请码链接</button>{/if}</p>
 												
 												<p>邀请码剩余可用次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>
@@ -78,15 +79,17 @@
 												<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请码</button></p>
 												{/if}
 												{/if}
-										{else}
-												<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您不是VIP用户，无法邀请他人注册，如需购买VIP请<a href="/user/shop">点击这里</a></h3>
-										{/if}
+										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
+                                    {else}
+					<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您不是VIP用户，无法邀请他人注册，如需购买VIP请<a href="/user/shop">点击这里</a></h3>
+					{/if}
+										
+										
 					{*
 					{if $user->class!=0}
 
