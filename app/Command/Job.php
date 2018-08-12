@@ -711,7 +711,7 @@ class Job
                 }
             }
 
-            if (strtotime($user->expire_in)+((int)Config::get('enable_account_expire_delete_days')*86400)<time()) {
+            if (strtotime($user->expire_in)+((int)Config::get('enable_account_expire_delete_days')*86400)<time() && $user->class == 0 && $user->money == 0 ) {
                 if (Config::get('enable_account_expire_delete')=='true') {
                     $subject = Config::get('appName')."-您的用户账户已经被删除了";
                     $to = $user->email;
@@ -896,7 +896,7 @@ class Job
 
 
  //删除注册后3天未购买账户
-            if ((int)Config::get('enable_auto_clean_unused_days')!=0 && max($user->t, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_unused_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money')) {
+            if ((int)Config::get('enable_auto_clean_unused_days')!=0 && max($user->t, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_unused_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money') && $user->t == 0 && $user->transfer_enable == 0 && $user->lastSsTime() ==0) {
 
                 if (Config::get('enable_auto_clean_unused')=='true') {
                     $subject = Config::get('appName')."-您的用户账户已经被删除了";
