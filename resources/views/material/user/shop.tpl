@@ -40,8 +40,8 @@
                             <tr>
 							    <th>操作</th>
                                 <th>套餐</th>
-								<th>价格</th>
-								<!-- <th>套餐详情</th> -->
+								<!-- <th>价格</th>
+								<th>套餐详情</th> -->
 								<th>是否自动重置流量</th>    
                             
                                 
@@ -52,8 +52,8 @@
                                     <a class="btn btn-brand" href="javascript:void(0);" onClick="buy('{$shop->id}',{$shop->auto_renew},{$shop->auto_reset_bandwidth})">购买</a>
                                 </td>
                                 <td>{$shop->name}</td>
-								<td>{$shop->price} 元</td>
-                           <!--     <td>{$shop->content()}</td> -->
+								<!-- <td>{$shop->price} 元</td>
+                                <td>{$shop->content()}</td> -->
                                 {if $shop->auto_reset_day==0}
                                 <td>不自动重置</td>
 								{else}
