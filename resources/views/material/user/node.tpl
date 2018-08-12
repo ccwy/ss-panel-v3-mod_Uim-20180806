@@ -1,4 +1,4 @@
-﻿
+
 
 
 {include file='user/main.tpl'}
@@ -426,8 +426,9 @@
 {/if}
 
 											
-								<!-- {if $user->class>=22} -->				
+											
 								<p class="card-heading">SVIP节点</p>
+								{if $user->class > 1}
 
 											{$id=2000}
 											{foreach $node_prefix as $prefix => $nodes}
@@ -625,12 +626,18 @@
 												{/if}
 
 											{/foreach}
-											<!-- {/if} -->
+											
+											{else}
+											<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看SVIP节点权限，如需购买SVIP请<a href="/user/shop">点击这里</a>。</b></h3>	
+{/if}
+
+											
 
 											
 											
-								<!-- {if $user->class>=30} -->			
+											
 								<p class="card-heading">V2ray节点</p>
+								{if $user->class > 1}
 
 											{$id=3000}
 											{foreach $node_prefix as $prefix => $nodes}
@@ -831,7 +838,12 @@
 												{/if}
 
 											{/foreach}
-											<!-- {/if} -->
+											
+											{else}
+											<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看V2ray节点权限，如需购买V2ray请<a href="/user/shop">点击这里</a>。</b></h3>	
+{/if}
+
+											
 
 											
 											
