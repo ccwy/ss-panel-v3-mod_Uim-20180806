@@ -838,10 +838,11 @@
 												{/if}
 
 											{/foreach}
-											*}
+											
 											{else}
 											<h3 class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i> {$user->email}，您无查看V2ray节点权限，如需购买V2ray请<a href="/user/shop">点击这里</a>。</b></h3>	
-{/if}
+                                                                                       {/if}
+                                                                                         *}
 
 											
 
