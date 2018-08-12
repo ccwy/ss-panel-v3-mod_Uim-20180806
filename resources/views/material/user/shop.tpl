@@ -41,7 +41,7 @@
 							    <th>操作</th>
                                 <th>套餐</th>
 								<th>价格</th>
-								<th>套餐详情</th>
+								<!-- <th>套餐详情</th> -->
 								<th>是否自动重置流量</th>    
                             
                                 
@@ -53,7 +53,7 @@
                                 </td>
                                 <td>{$shop->name}</td>
 								<td>{$shop->price} 元</td>
-                                <td>{$shop->content()}</td>
+                           <!--     <td>{$shop->content()}</td> -->
                                 {if $shop->auto_reset_day==0}
                                 <td>不自动重置</td>
 								{else}
