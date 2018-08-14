@@ -63,7 +63,10 @@ class Config
 			"iospasswd" => self::get("iospasswd"),  // ios小火煎下载密码
 			"jiaocheng1" => self::get("jiaocheng1"),  // 教程地址
 			"regiestrs" => self::get("regiestrs"),  // 注册开关
-			"restport" => self::get("restport")  // 重置端口
+			"restport" => self::get("restport"),  // 重置端口
+		        "metodaes" => self::get("metodaes"),  // v2ray加密算法
+			"vmesstcp" => self::get("vmesstcp")  // v2ray传输协议
+		
 			
          ];
     }
