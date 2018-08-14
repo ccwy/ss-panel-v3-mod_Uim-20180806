@@ -265,7 +265,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1}
+																	{if $node->mu_only != 1 && $node->sort != 11}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -318,20 +318,20 @@
 																				</span></p>
 																				*}
 																				
-																				<p>加密算法(推荐)：<span class="label label-green">
-																					aes-128-gcm
-																				</span></p>
-																				
-
 
 																				<p>用户 UUID：<span class="label label-brand">
 																					{$user->getUuid()}
 																				</span></p>
+																	</span></p>
 
-																				<p>流量比例：<span class="label label-red">
-																					{$node->traffic_rate}
+																				<p>加密算法(推荐)：<span class="label label-green">
+																					{$config["metodaes"]}
 																				</span></p>
-
+																				
+																				<p>传输协议：<span class="label label-red">
+																					{$config["vmesstcp"]}
+																				</span></p>
+						
 																				<p>AlterId：<span class="label label-green">
 																					{$server_explode[3]}
 																				</span></p>
@@ -339,6 +339,12 @@
 																				<p>Level：<span class="label label-brand">
 																					{$server_explode[4]}
 																				</span></p>
+																				
+																			
+																				<p>流量比例：<span class="label label-red">
+																					{$node->traffic_rate}
+																				</span></p>
+			
 
 																				<p>VMess链接：
 																					<a class="copy-text" data-clipboard-text="{URL::getV2Url($user, $node)}">点击复制</a>
