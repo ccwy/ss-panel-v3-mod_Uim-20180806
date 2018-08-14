@@ -504,7 +504,7 @@
 																						<a href="javascript:void(0);" >{$node->name}</a>
 																					</p>
 																				
-																				<p>协议：<span class="label label-brand-accent">
+																				<p>协议：<span class="label label-green">
 																					{$server_explode[2]}
 																				</span></p>
 																				
