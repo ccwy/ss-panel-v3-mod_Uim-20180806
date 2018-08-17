@@ -34,23 +34,25 @@
                             <tr>
 								
                              <!--   <th>ID</th> -->
+							 <th>购买时间</th>
                                 <th>商品名称</th>
-								<!-- <th>内容</th> 
-								<th>价格</th> -->
+								<!-- <th>内容</th> -->
+								<th>价格</th> 
                               <!--  <th>续费时间</th>
 								<th>续费时重置流量</th>
                                 <th>操作</th>-->
 								<th>是否重置流量</th>
-								<th>购买时间</th>
+								
                                 
                             </tr>
                             {foreach $shops as $shop}
                             <tr>
-								
+							
+								<td>{date('Y-m-d H:i:s',$shop->datetime)}</td>
                           <!--       <td>#{$shop->id}</td> -->
                                 <td>{$shop->shop()->name}</td>
-								<!-- <td>{$shop->shop()->content()}</td>
-								<td>{$shop->price} 元</td> -->
+								<!-- <td>{$shop->shop()->content()}</td>-->
+								<td>{$shop->price} 元</td> 
 								<!--
 								{if $shop->renew==0}
                                 <td>不自动续费</td>
@@ -73,7 +75,7 @@
 								<td>已过期</td>
 								{/if}
 								{/if}
-								<td>{date('Y-m-d H:i:s',$shop->datetime)}</td>
+								
 								<!--
                               <td>
                                     <a class="btn btn-brand" {if $shop->renew==0}disabled{else} href="javascript:void(0);" onClick="delete_modal_show('{$shop->id}')"{/if}>退订</a>

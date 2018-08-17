@@ -213,7 +213,7 @@ $("#order_input").click(function () {
 				if (data.ret) {
 					$("#result").modal();
 					$("#msg").html(data.msg);
-					window.setTimeout("location.href='/user/shop'", {$config['jump_delay']});
+					window.setTimeout("location.href='/user'", {$config['jump_delay']});
 				} else {
 					$("#result").modal();
 					$("#msg").html(data.msg);
