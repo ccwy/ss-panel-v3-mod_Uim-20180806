@@ -510,16 +510,16 @@
 																						<a href="javascript:void(0);" >{$node->name}</a>
 																					</p>
 																				
-																				<p>协议：<span class="label label-green">
-																					{$server_explode[2]}
-																				</span></p>
-																				
 																				<p>地址：<span class="label label-brand-accent">
                                                                                     {$server_explode[0]}
 																				</span></p>
 
 																				<p>端口：<span class="label label-brand-red">
 																					{$server_explode[1]}
+																				</span></p>
+																				
+																				<p>协议：<span class="label label-green">
+																					{$server_explode[2]}
 																				</span></p>
 																				
 																				<p>用户 UUID：<span class="label label-brand">
