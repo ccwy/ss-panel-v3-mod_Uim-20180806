@@ -374,12 +374,13 @@
 							</li>
 
 							{/if}
+							{if $user->class >1}
                                <li>
 								<a href="/user/invite">
 									<i class="icon icon-lg">loyalty</i>&nbsp;邀请链接
 								</a>
 							</li>
-							
+							{/if}
 
 
 
