@@ -63,7 +63,6 @@ class URL
             return 3;
         }
     }
-
     public static function SSCanConnect($user, $mu_port = 0) {
         if($mu_port != 0) {
             $mu_user = User::where('port', '=', $mu_port)->where("is_multi_user", "<>", 0)->first();
@@ -78,7 +77,6 @@ class URL
             return false;
         }
     }
-
     public static function SSRCanConnect($user, $mu_port = 0) {
         if($mu_port != 0) {
             $mu_user = User::where('port', '=', $mu_port)->where("is_multi_user", "<>", 0)->first();
@@ -93,7 +91,6 @@ class URL
             return false;
         }
     }
-
     public static function getSSConnectInfo($user) {
         $new_user = clone $user;
         if(URL::CanObfsConnect($new_user->obfs) == 5) {
@@ -108,7 +105,6 @@ class URL
         $new_user->protocol = str_replace("_compatible", "", $new_user->protocol);
         return $new_user;
     }
-
     public static function getSSRConnectInfo($user) {
         $new_user = clone $user;
         if(URL::CanObfsConnect($new_user->obfs) == 4) {
@@ -219,15 +215,9 @@ class URL
     public static function getAllUrl($user, $is_mu, $is_ss = 0, $enter = 0) {
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         $return_url = '';
-      /*	if ($user->transfer_enable >0){
-      		$return_url .= URL::getUserTraffic($user).($enter == 0 ? ' ' : "\n");
-      		$return_url .= URL::getUserExpiration($user).($enter == 0 ? ' ' : "\n");
-      	}
-		*/
         foreach($items as $item) {
             $return_url .= URL::getItemUrl($item, $is_ss).($enter == 0 ? ' ' : "\n");
         }
-		
         return $return_url;
     }
     public static function getItemUrl($item, $is_ss) {
@@ -261,74 +251,21 @@ class URL
         }
     }
     public static function getV2Url($user, $node){
+        $v2url = "";
+
         $node_explode = explode(';', $node->server);
-        $item = [
-            'v'=>'2', 
-            'type'=>'none', 
-            'host'=>'', 
-            'path'=>'', 
-            'tls'=>''
-        ];
         $item['ps'] = $node->name;
         $item['add'] = $node_explode[0];
         $item['port'] = $node_explode[1];
         $item['id'] = $user->getUuid();
         $item['aid'] = $node_explode[3];
-        if (count($node_explode) == 6) {
-            $item['net'] = $node_explode[5];
-        } else {
-            $item['net'] = "tcp";
-        } 
-        return "vmess://".base64_encode((json_encode($item, JSON_UNESCAPED_UNICODE)));
+        $item['net'] = "tcp";
+        $item['type'] = "none";
+        $arr = array('v'=>'2', 'ps'=>$item['ps'], 'add'=>$item['add'], 'port'=>$item['port'], 'id'=>$item['id'], 'aid'=>$item['aid'], 'net'=>'tcp', 'type'=>'none', 'host'=>'', 'path'=>'', 'tls'=>'');
+        $v2url = "vmess://".base64_encode((json_encode($arr, JSON_UNESCAPED_UNICODE)));
+        //$v2url = "{"."\n  \"v\": \"2\",\n  \"ps\": \"".$item['ps']."\",\n  \"add\":  \"".$item['add']."\",\n  \"port\":  \"".$item['port']."\",\n  \"id\":  \"".$item['id']."\",\n  \"aid\":  \"".$item['aid']."\",\n  \"net\":  \"".$item['net']."\",\n  \"type\":  \"".$item['type']."\",\n  \"host\": \"\",\n  \"path\": \"\",\n  \"tls\": \"\"";
+        return $v2url;
     }
-
-    public static function getAllVMessUrl($user) {
-        $nodes = Node::where('sort', 11)->where(
-            function ($query) use ($user){
-                $query->where("node_group", "=", $user->node_group)
-                    ->orWhere("node_group", "=", 0);
-            }
-        )->where("type", "1")->where("node_class", "<=", $user->class)->orderBy("name")->get();
-
-        $result = "";
-
-        foreach ($nodes as $node) {
-            $result .= (URL::getV2Url($user, $node) . "\n");
-        }
-
-        return $result;
-    }
-
-	public static function getAllSSDUrl($user){
-		if (URL::SSCanConnect($user)==false){
-			return null;
-		}
-		$array_all=array();
-		$array_all['airport']=Config::get("appName");
-		$array_all['port']=$user->port;
-		$array_all['encryption']=$user->method;
-		$array_all['password']=$user->passwd;
-		$array_server=array();
-		$nodes = Node::where("type","1")->where(function ($func){
-		$func->where("sort", "=", 0)->orwhere("sort", "=", 9)->orwhere("sort", "=", 10);
-		})->get();
-		foreach($nodes as $node){
-			if($node->group!=0&&$node->group!=$user->group){
-				continue;
-			}
-			if($node->node_class>=$user->class){
-				continue;
-			}
-			$server['id']=$node->id;
-			$server['server']=$node->server;
-			$server['remarks']=$node->name;
-			$server['ratio']=$node->traffic_rate;
-			array_push($array_server,$server);
-		}
-		$array_all['servers']=$array_server;
-		return json_encode($array_all);
-	}
-
     public static function getJsonObfs($item) {
         $ss_obfs_list = Config::getSupportParam('ss_obfs');
         $plugin = "";
@@ -349,18 +286,13 @@ class URL
         $plugin = "";
         if(in_array($item['obfs'], $ss_obfs_list)) {
             if(strpos($item['obfs'], 'http') !== FALSE) {
-                $plugin .= "obfs=http";
-            }
-			else {
-                $plugin .= "obfs=tls";
+                $plugin .= ",obfs=http";
+            } else {
+                $plugin .= ",obfs=tls";
             }
             if($item['obfs_param'] != '') {
                 $plugin .= ",obfs-host=".$item['obfs_param'];
             }
-			else {
-				$plugin .= ",obfs-host=wns.windows.com";
-			}
-
         }
         return $plugin;
     }
@@ -427,15 +359,4 @@ class URL
         $new_user = clone $user;
         return $new_user;
     }
-	/*
-	public static function getUserTraffic($user){
-		$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("剩余流量：".number_format(($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100,2)."% ".$user->unusedTraffic())."&group=".Tools::base64_url_encode(Config::get('appName'));
-      		return "ssr://".Tools::base64_url_encode($ssurl);
-	}
-  
-  	public static function getUserExpiration($user){
-		$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("过期时间：".$user->expire_in)."&group=".Tools::base64_url_encode(Config::get('appName'));
-      		return "ssr://".Tools::base64_url_encode($ssurl);
-	}
-	*/
 }
