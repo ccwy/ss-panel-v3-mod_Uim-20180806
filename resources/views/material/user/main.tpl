@@ -388,6 +388,7 @@
 						</ul>
 
 
+						{if $user->class >1}
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_use">使用</a>
 						<ul class="menu-collapse collapse in" id="ui_menu_use">
 							<li>
@@ -444,6 +445,8 @@
 							</li>
 						</ul>
 						{/if}
+						{/if}
+						
 
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">商店</a>
 						<ul class="menu-collapse collapse in" id="ui_menu_help">
