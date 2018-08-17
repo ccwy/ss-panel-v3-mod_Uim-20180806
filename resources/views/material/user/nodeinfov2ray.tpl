@@ -129,13 +129,14 @@
 
 
 <script>
-$(function(){
-	new Clipboard('.copy-text');
-});
-$(".copy-text").click(function () {
-	$("#result").modal();
-	$("#msg").html("已复制，请进入软件添加。");
-});
-</script>
+	$(function(){
+		new Clipboard('.copy-text');
+	});
 
+	$(".copy-text").click(function () {
+		$("#result").modal();
+		$("#msg").html("已复制到您的剪贴板，请您继续接下来的操作。");
+	});
+
+</script>
 
