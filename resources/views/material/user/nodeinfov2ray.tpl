@@ -34,13 +34,16 @@
 							</div>
 						</div>			
 						<div class="col-lg-12 col-sm-12">
+						{assign var=server_explode value=";"|explode:$node->server}
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading">配置信息</p>
 										
 										
-										
+										<p>节点名：<span class="label label-red">
+										{$node->name}
+										</span></p>
 																				<p>地址：<span class="label label-brand-accent">
                                                                                     {$server_explode[0]}
 																				</span></p>
