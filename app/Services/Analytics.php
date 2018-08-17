@@ -101,7 +101,8 @@ class Analytics
         return Node::where('node_heartbeat', '>', 0)->where(
                     function ($query) {
                         $query->Where('sort', '=', 0)
-                            ->orWhere('sort', '=', 10);
+                            ->orWhere('sort', '=', 10)
+							->orWhere('sort', '=', 11);
                     }
                 )->count();
     }
@@ -111,7 +112,8 @@ class Analytics
         return Node::where(
             function ($query) {
                 $query->Where('sort', '=', 0)
-                    ->orWhere('sort', '=', 10);
+                    ->orWhere('sort', '=', 10)
+					->orWhere('sort', '=', 11);
             }
         )->where('node_heartbeat', '>', time()-90)->count();
     }
