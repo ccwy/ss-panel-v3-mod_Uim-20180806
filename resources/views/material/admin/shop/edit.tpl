@@ -76,6 +76,7 @@
 					</div>
 
 
+					{*
 					<div class="card">
 						<div class="card-main">
 							<div class="card-inner">
@@ -87,6 +88,7 @@
 							</div>
 						</div>
 					</div>
+					*}
 
 					<div class="card">
 						<div class="card-main">
@@ -222,7 +224,7 @@
                     bandwidth: $("#bandwidth").val(),
                     speedlimit: $("#speedlimit").val(),
                     connector: $("#connector").val(),
-                    expire: $("#expire").val(),
+                  <!--  expire: $("#expire").val(), -->
                     class: $("#class").val(),
 										class_expire: $("#class_expire").val(),
 										reset: $("#reset").val(),

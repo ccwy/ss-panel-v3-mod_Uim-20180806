@@ -45,8 +45,8 @@ class ShopController extends AdminController
             $content["bandwidth"]=$request->getParam('bandwidth');
         }
 
-        if ($request->getParam('expire')!=0) {
-            $content["expire"]=$request->getParam('expire');
+        if ($request->getParam('class_expire')!=0) {
+            $content["expire"]=$request->getParam('class_expire');
         }
 
         if ($request->getParam('class')!=0) {
@@ -126,8 +126,8 @@ class ShopController extends AdminController
             $content["bandwidth"]=$request->getParam('bandwidth');
         }
 
-        if ($request->getParam('expire')!=0) {
-            $content["expire"]=$request->getParam('expire');
+        if ($request->getParam('class_expire')!=0) {
+            $content["expire"]=$request->getParam('class_expire');
         }
 
         if ($request->getParam('class')!=0) {
