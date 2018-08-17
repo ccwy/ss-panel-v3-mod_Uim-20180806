@@ -1505,7 +1505,7 @@ FINAL,Proxy';
         if ($mu==0||$mu==1) {
             return Tools::base64_url_encode(URL::getAllUrl($user, $mu, 0, 1));
         } 
-		elseif ($mu==2 || $is_v2ray){
+		elseif ($mu==2 || $is_v2ray ==1){
             return Tools::base64_url_encode(URL::getAllVMessUrl($user));
         }
 		elseif ($mu==3) {
