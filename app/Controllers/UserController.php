@@ -1401,9 +1401,13 @@ class UserController extends BaseController
         $bought->coupon=$code;
 
 
-        if (isset($onetime)) {
+       /* if (isset($onetime)) {
             $price=$shop->price;
-        }
+        }*/
+		if ($coupon =='') {
+			$price=$shop->price;
+		}
+		
         $bought->price=$price;
         $bought->save();
 

@@ -51,6 +51,7 @@
 									<input class="form-control" id="count" type="number" value="1">
 								</div>
 
+								{*
 								<div class="form-group form-group-label">
 									<div class="checkbox switch">
 										<label for="onetime">
@@ -58,6 +59,7 @@
 										</label>
 									</div>
 								</div>
+								*}
 
 
 								<div class="form-group">
