@@ -105,7 +105,14 @@ class AdminController extends UserController
         $code = new Coupon();
         $code->onetime=$request->getParam('onetime');
 
-        $code->code=$request->getParam('prefix').Tools::genRandomChar(8);
+       // $code->code=$request->getParam('prefix').Tools::genRandomChar(8);
+	   //优惠码添加自定义
+		if ($prefix == '') {
+			$code->code=Tools::genRandomChar(10);
+		} else {
+			$code->code=$request->getParam('prefix');
+		}
+		
         $code->expire=time()+$request->getParam('expire')*3600;
         $code->shop=$request->getParam('shop');
         $code->credit=$request->getParam('credit');
