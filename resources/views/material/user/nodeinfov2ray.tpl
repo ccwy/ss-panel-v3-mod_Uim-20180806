@@ -38,29 +38,38 @@
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading">配置信息</p>
-										<p>地址：<span class="label label-brand-accent">
+										
+										
+										
+																				<p>地址：<span class="label label-brand-accent">
                                                                                     {$server_explode[0]}
 																				</span></p>
 
 																				<p>端口：<span class="label label-brand-red">
 																					{$server_explode[1]}
 																				</span></p>
-
-																				<p>协议：<span class="label label-brand-accent">
+																				
+																				<p>协议：<span class="label label-green">
 																					{$server_explode[2]}
 																				</span></p>
-
-																				<p>协议参数：<span class="label label-green">
-																					{$server_explode[0]}
-																				</span></p>
-
+																				
 																				<p>用户 UUID：<span class="label label-brand">
 																					{$user->getUuid()}
 																				</span></p>
 
-																				<p>流量比例：<span class="label label-red">
-																					{$node->traffic_rate}
+																				<p>加密算法(推荐)：<span class="label label-green">
+																					{$config["metodaes"]}
 																				</span></p>
+																				
+																				<p>传输协议：<span class="label label-red">
+																					{$config["vmesstcp"]}
+																				</span></p>
+																			{*	
+																
+																				<p>协议参数：<span class="label label-green">
+																					{$server_explode[0]}
+																				</span></p>
+																				*}
 
 																				<p>AlterId：<span class="label label-green">
 																					{$server_explode[3]}
@@ -69,12 +78,20 @@
 																				<p>Level：<span class="label label-brand">
 																					{$server_explode[4]}
 																				</span></p>
+																				
+																				<p>流量比例：<span class="label label-red">
+																					{$node->traffic_rate}
+																				</span></p>
+																				
 
 																				<p>VMess链接：
 																					<a class="copy-text" data-clipboard-text="{URL::getV2Url($user, $node)}">点击复制</a>
 																				</p>
 
 																				<p>{$node->info}</p>
+										
+										
+										
 									</div>
 									
 								</div>

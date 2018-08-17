@@ -475,7 +475,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1 && $node->sort != 11}
+																	{if $node->mu_only != 1 }
 																	<div class="card">
 																		<div class="card-main">
 
