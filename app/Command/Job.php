@@ -213,9 +213,9 @@ class Job
                 $user->transfer_enable = $user->auto_reset_bandwidth*1024*1024*1024;
                 $user->save();
 
-                $subject = Config::get('appName')."-您的流量被重置了";
+                $subject = Config::get('appName')."-您的流量已重置";
                 $to = $user->email;
-                $text = "您好，根据管理员的设置，流量已经被重置为".$user->auto_reset_bandwidth.'GB' ;
+                $text = "您好，根据您购买套餐设定，流量已经被重置为".$user->auto_reset_bandwidth.'GB' ;
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         "user" => $user,"text" => $text
