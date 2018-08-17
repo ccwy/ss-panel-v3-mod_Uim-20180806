@@ -107,7 +107,7 @@
 						</div>
 					</div>
 
-					{*
+					
 					<div class="card">
 						<div class="card-main">
 							<div class="card-inner">
@@ -149,7 +149,7 @@
 							</div>
 						</div>
 					</div>
-					*}
+					
 
 
 					<div class="card">
