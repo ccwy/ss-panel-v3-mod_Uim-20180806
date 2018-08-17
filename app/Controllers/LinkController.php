@@ -268,7 +268,7 @@ class LinkController extends BaseController
                 if (isset($request->getQueryParams()["mu"])) {
                     $mu = (int)$request->getQueryParams()["mu"];
                 }
-				
+
                 $newResponse = $response->withHeader('Content-type', ' application/octet-stream; charset=utf-8')->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate')->withHeader('Content-Disposition', ' attachment; filename='.$token.'.txt');
                 $newResponse->getBody()->write(LinkController::GetSSRSub(User::where("id", "=", $Elink->userid)->first(), $mu, $max));
                 return $newResponse;
@@ -1500,7 +1500,7 @@ FINAL,Proxy';
         if ($mu==0||$mu==1) {
             return Tools::base64_url_encode(URL::getAllUrl($user, $mu, 0, 1));
         } 
-		elseif ($mu==2 || $v2ray ==1){
+		elseif ($mu==2){
             return Tools::base64_url_encode(URL::getAllVMessUrl($user));
         }
 		elseif ($mu==3) {
