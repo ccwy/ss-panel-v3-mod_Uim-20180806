@@ -495,8 +495,8 @@
 														<p>
 														<span class="icon icon-lg text-white">flash_auto</span> 
 														V2ray节点订阅地址：
-														<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=2" readonly="true" />
-														<button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=2">
+														<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?v2ray=1" readonly="true" />
+														<button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?v2ray=1">
 															点击拷贝订阅地址
 														</button>
 														<br>
