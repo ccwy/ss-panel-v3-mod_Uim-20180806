@@ -125,5 +125,14 @@
 {include file='user/footer.tpl'}
 
 
+<script>
+$(function(){
+	new Clipboard('.copy-text');
+});
+$(".copy-text").click(function () {
+	$("#result").modal();
+	$("#msg").html("已复制，请进入软件添加。");
+});
+</script>
 
 
