@@ -491,7 +491,7 @@
 													<div class="tab-pane fade active in" id="all_v2ray_info">
 														{$v2_url_all = URL::getAllVMessUrl($user)}
 														
-														<p>客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> </p>
+														<p>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> </p>
 
 														<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>
 														<p>
