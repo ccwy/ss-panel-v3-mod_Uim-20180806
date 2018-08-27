@@ -115,7 +115,7 @@
         }
         $("html").keydown(function(event){
             if(event.keyCode==13){
-                reset();
+                login();
             }
         });
         $("#reset").click(function(){
