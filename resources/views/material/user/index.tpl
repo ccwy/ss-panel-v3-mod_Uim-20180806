@@ -571,8 +571,12 @@
 													</div>
 													
 													<div class="card-action">
-											<div class="card-action-btn pull-left">
-											{$v2_url_all = URL::getAllVMessUrl($user)}
+											        <div class="card-action-btn pull-left">
+													{$v2_url_all = URL::getAllVMessUrl($user)}
+											        {$user = URL::getSSRConnectInfo($pre_user)}
+													{$ssr_url_all = URL::getAllUrl($pre_user, 0, 0)}
+													{$ssr_url_all_mu = URL::getAllUrl($pre_user, 1, 0)}
+											
 												<p>
 														<span class="icon icon-lg text-white">flash_auto</span> 
 														V2ray节点订阅地址：
