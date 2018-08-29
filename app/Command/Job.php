@@ -751,7 +751,7 @@ class Job
 			}
 			
 			//等级到期前2天自动发邮件提醒用户			
-			if($user->class!=0 && strtotime($user->class_expire) - time() < (2*86400) && $user->tixing == 0)
+			if($user->class!=0 && strtotime($user->class_expire) - time() < 2*86400 && $user->tixing == 0)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号等级有效期不足 2 天啦";
