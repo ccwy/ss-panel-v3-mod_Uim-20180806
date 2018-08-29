@@ -578,7 +578,7 @@
 													<div class="tab-pane fade" id="all_v2ray_ios">
 													
 														<p><span class="icon icon-lg text-white">filter_1</span> 切换至非国区App Store账号，商店搜索<code>Shadowrocket</code>下载安装</p>
-														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后点击确定，就可以批量添加节点。</p>
+														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后打开<code>Shadowrocket</code>程序，会弹出是否添加上述链接到程序，点击确定，就可以批量添加节点。</p>
                                                       <p><span class="icon icon-lg text-white">filter_3</span> 注意：第一次连接可能不能用，导入后程序退出并重新打开程序后连接即可！</p>
 													  <p><span class="icon icon-lg text-white">filter_4</span> 备用导入节点方法“”打开Shadowrocket，点击右上角<span class="icon icon-lg text-white">add</span>，添加类型为<code>Subscribe</code>，URL填写v2ray订阅地址即可自动更新节点</p>
 													  <p>
