@@ -504,7 +504,7 @@
 
 										
 												<div class="tab-pane fade" id="all_v2ray">
-												{$v2_url_all = URL::getAllVMessUrl($user)}
+												
 													<nav class="tab-nav margin-top-no">
 														<ul class="nav nav-list">
 															<li class="active">
@@ -525,7 +525,7 @@
 														</ul>
 													</nav>
 													<div class="tab-pane fade active in" id="all_v2ray_info">
-														
+														{$v2_url_all = URL::getAllVMessUrl($user)}
 														
 														<p>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> </p>
 
@@ -542,6 +542,7 @@
 													</div>
 													
 													<div class="tab-pane fade" id="all_v2ray_windows">
+													{$v2_url_all = URL::getAllVMessUrl($user)}
 														<p><a href="https://client.yunxiao.us/V2ray/Windows/V2rayN-2.14.7z">下载</a>，解压，运行V2ray程序，然后您有两种方式导入所有节点<br>
 															(1)通过下方的v2ray订阅地址添加节点<br>
 															(2)<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后点击服务器，点击添加所有VMess链接<br>
@@ -549,21 +550,25 @@
 															(4)打开浏览器试试看能不能打开谷歌等网站吧</p>
 													</div>
 													<div class="tab-pane fade" id="all_v2ray_mac">
-														<p><a href="https://client.yunxiao.us/V2ray/MacOSX/V2RayX.app.zip">下载</a>，安装，<a class="copy-text" data-clipboard-text="{$v2_url_all}">，然后到客户端添加节点吧，具体教程没有</p>
+													{$v2_url_all = URL::getAllVMessUrl($user)}
+														<p><a href="https://client.yunxiao.us/V2ray/MacOSX/V2RayX.app.zip">下载</a>，安装，<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后到客户端添加节点吧，具体教程没有</p>
 													</div>
 													<div class="tab-pane fade" id="all_v2ray_ios">
+													{$v2_url_all = URL::getAllVMessUrl($user)}
 														<p><span class="icon icon-lg text-white">filter_1</span> 切换至非国区App Store账号，商店搜索<code>Shadowrocket</code>下载安装</p>
-														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中点击<a class="copy-text" data-clipboard-text="{$v2_url_all}">，然后点击确定，就可以批量添加节点。</p>
+														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后点击确定，就可以批量添加节点。</p>
                                                       <p><span class="icon icon-lg text-white">filter_3</span> 注意：第一次连接可能不能用，导入后程序退出并重新打开程序后连接即可！</p>
 													  <p><span class="icon icon-lg text-white">filter_4</span> 备用导入节点方法“”打开Shadowrocket，点击右上角<span class="icon icon-lg text-white">add</span>，添加类型为<code>Subscribe</code>，URL填写v2ray订阅地址即可自动更新节点</p>
 													</div>
 													<div class="tab-pane fade" id="all_v2ray_android">
-														<p><a href="https://client.yunxiao.us/V2ray/Android/V2rayNG-0.5.4.apk">下载</a>，然后安装，然后在手机上点击 <a class="copy-text" data-clipboard-text="{$v2_url_all}">复制到剪贴板，打开 V2rayNG 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
+													{$v2_url_all = URL::getAllVMessUrl($user)}
+														<p><a href="https://client.yunxiao.us/V2ray/Android/V2rayNG-0.5.4.apk">下载</a>，然后安装，然后在手机上<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>复制到剪贴板，打开 V2rayNG 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
 														<p>备用方法：在软件里面选择服务器订阅，复制下面v2ray订阅地址，在软件里面添加后更新订阅即可获取节点。</p>
 													</div>
 													
 													<div class="card-action">
 											<div class="card-action-btn pull-left">
+											{$v2_url_all = URL::getAllVMessUrl($user)}
 												<p>
 														<span class="icon icon-lg text-white">flash_auto</span> 
 														V2ray节点订阅地址：
