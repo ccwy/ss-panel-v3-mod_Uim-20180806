@@ -120,7 +120,9 @@
 											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;<code>{$user->node_speedlimit}</code>Mbps</dd>
 											{else}
 											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;不限速</dd>
-											{/if}</p>
+											{/if}
+											</p>
+											
                                            <p><dt>在线设备数</dt>
 										    {if $user->node_connector!=0}
 											<dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / {$user->node_connector}</dd>
@@ -128,7 +130,7 @@
                                             <dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / 不限制 </dd>
 											{/if}
 											</p>
-											</p>
+											
 
 											<p><dt>等级过期时间</dt>
                                               {if $user->class_expire!="1989-06-04 00:05:00"}
@@ -150,9 +152,10 @@
 											
 											{if $user->auto_reset_day > 0}
                                           	<p><dt>重置流量</dt>											
-											<dd><i class="icon icon-md">event</i>&nbsp;每月 {$user->auto_reset_day} 日，流量重置为  {$user->auto_reset_bandwidth} GB</dd>																				
-											{/if}
+											<dd><i class="icon icon-md">event</i>&nbsp;每月 {$user->auto_reset_day} 日，流量重置为  {$user->auto_reset_bandwidth} GB</dd>																															
 											</p>
+											{/if}
+											
 											{*
 											<p><dt>上次使用</dt>
                                               {if $user->lastSsTime()!="从未使用喵"}
@@ -239,9 +242,11 @@
 															<li>
 																<a class="waves-attach" data-toggle="tab" href="#all_ssr_mac"><i class="icon icon-lg">laptop_mac</i>&nbsp;MacOS</a>
 															</li>
+															<!--
                                                           <li>
 																<a class="waves-attach" data-toggle="tab" href="#all_ssr_linux"><i class="icon icon-lg">dvr</i>&nbsp;Linux</a>
 															</li>
+															-->
 															<li>
 																<a class="waves-attach" data-toggle="tab" href="#all_ssr_ios"><i class="icon icon-lg">phone_iphone</i>&nbsp;iOS</a>
 															</li>
@@ -275,8 +280,11 @@
 														<p><span class="icon icon-lg text-white">filter_3</span> 任务栏右下角右键纸飞机图标->服务器订阅->SSR服务器订阅设置，将订阅链接设置为下面的地址，确定之后再更新SSR服务器订阅（绕过代理）。</p>
 														<p> <span class="icon icon-lg text-white">filter_4</span> 然后选择一个合适的服务器，代理规则选“绕过局域网和大陆”，然后即可上网。</p>
 														<p><span class="icon icon-lg text-white">filter_5</span> 备用导入节点方法：点击<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这里（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这个(单端口多用户）</a>，然后右键小飞机->从剪贴板复制地址</p>
-														<p><span class="icon icon-lg text-white">flash_auto</span> 普通端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														
+														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														<!--
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443">点击拷贝订阅地址</button><br></p>
+														-->
 														
                                                      <!--  <p><a href="/user/announcement">点击这里查看Windows傻瓜式教程</a></p> -->
 													</div>
@@ -288,22 +296,30 @@
                                                       		<p><span class="icon icon-lg text-white">filter_4</span> 打开Launchapad里的ShadowsocksX</p>
                                                       		<p><span class="icon icon-lg text-white">filter_5</span> 菜单栏的纸飞机图标-服务器-服务器订阅填入以下订阅地址，更新后出现您的节点</p>
                                                       <p><span class="icon icon-lg text-white">filter_6</span> 菜单栏的纸飞机图标-打开shadowsocks</p>
-                                        				<p><span class="icon icon-lg text-white">flash_auto</span> 普通端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+													  
+                                        				<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														<!--
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443">点击拷贝订阅地址</button><br></p>
+														-->
                                                     <!--   <p><a href="/user/announcement">点击这里查看Mac傻瓜式教程</a></p>  -->
 													</div>
 													
+													<!--
                                                   <div class="tab-pane fade" id="all_ssr_linux">
-                                                     <!-- <p><a href="/user/announcement">点击这里查看Linux傻瓜式教程</a></p>  -->
+                                                     <p><a href="/user/announcement">点击这里查看Linux傻瓜式教程</a></p>  
 													</div>
+													-->
 													
 													<div class="tab-pane fade" id="all_ssr_ios">
                                                         <p><span class="icon icon-lg text-white">filter_1</span> 切换至非国区App Store账号，商店搜索<code>Shadowrocket</code>下载安装</p>
 														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中点击<a href="{$ssr_url_all}">这个（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个（单端口多用户）</a>，然后点击确定，就可以批量添加节点。</p>
                                                       <p><span class="icon icon-lg text-white">filter_3</span> 注意：第一次连接可能不能用，导入后程序退出并重新打开程序后连接即可！</p>
 													  <p><span class="icon icon-lg text-white">filter_4</span> 备用导入节点方法“”打开Shadowrocket，点击右上角<span class="icon icon-lg text-white">add</span>，添加类型为<code>Subscribe</code>，URL填写以下地址即可自动更新节点</p>
-														<p><span class="icon icon-lg text-white">flash_auto</span> 普通端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+													  
+														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														<!--
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443">点击拷贝订阅地址</button><br></p>
+														-->
                                                      <!-- <p><a href="/user/announcement">点击这里查看iOS傻瓜式教程</a></p> -->
 													</div>
 													
@@ -317,8 +333,11 @@
                                                       <p><span class="icon icon-lg text-white">filter_7</span> 点击选择任意节点， 路由选择：略过区域网路以及中国大陆</p>
                                                         <p><span class="icon icon-lg text-white">filter_8</span> 点击右上角的纸飞机图标即可连接</p>
 														<p><span class="icon icon-lg text-white">filter_9</span> 备用导入节点方法：在手机上默认浏览器中点击<a href="{$ssr_url_all}">这个链接（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个链接（单端口多用户）</a>，然后点击确定</p>
-														<p><span class="icon icon-lg text-white">flash_auto</span> 普通端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														
+														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														<!--
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443">点击拷贝订阅地址</button><br></p>
+														-->
                                                     <!--  <p><a href="/user/announcement">点击这里查看Android傻瓜式教程</a></p> -->
 													</div>
 													
@@ -335,8 +354,11 @@
                                                        <p><span class="icon icon-lg text-white">filter_3</span> 打开桌面程序SSTap</p>
                                                        <p><span class="icon icon-lg text-white">filter_4</span> 齿轮图标-SSR订阅-SSR订阅管理添加以下订阅链接即可</p>
                                                        <p><span class="icon icon-lg text-white">filter_5</span> 更新后选择其中一个节点闪电图标测试节点-测试UDP转发...通过!（UDP通过即可连接并开始游戏），如测试不通过，点击齿轮图标设置DNS，推荐谷歌DNS</p>
-														<p><span class="icon icon-lg text-white">flash_auto</span> 普通端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+													   
+														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
+														<!--
 														<p><span class="icon icon-lg text-white">flash_auto</span> 单端口订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=443">点击拷贝订阅地址</button><br></p>
+														-->
                                                      <!-- <p><a href="/user/announcement">点击这里查看游戏客户端傻瓜式教程</a></p> -->
 													</div>
 													{*
@@ -452,6 +474,7 @@
 															<p>同时, Shadowsocks 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
 														{/if}
 													</div>
+													
 													<div class="tab-pane fade" id="all_ss_windows">
 														<p><a href="/ssr-download/ss-win.zip">下载</a>，解压，运行程序，然后您有两种方式导入所有节点<br>
 															(1)下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个（普通端口）</a>，放到小飞机的目录下，然后打开小飞机。<br>
@@ -479,17 +502,30 @@
 										
 
 
-										{if $user->class >=2}
+										
 												<div class="tab-pane fade" id="all_v2ray">
+												{$v2_url_all = URL::getAllVMessUrl($user)}
 													<nav class="tab-nav margin-top-no">
 														<ul class="nav nav-list">
 															<li class="active">
 																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_info"><i class="icon icon-lg">info_outline</i>&nbsp;连接信息</a>
 															</li>
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_windows"><i class="icon icon-lg">desktop_windows</i>&nbsp;Windows</a>
+															</li>
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_mac"><i class="icon icon-lg">laptop_mac</i>&nbsp;MacOS</a>
+															</li>
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_ios"><i class="icon icon-lg">laptop_mac</i>&nbsp;iOS</a>
+															</li>
+															<li>
+																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_android"><i class="icon icon-lg">android</i>&nbsp;Android</a>
+															</li>
 														</ul>
 													</nav>
 													<div class="tab-pane fade active in" id="all_v2ray_info">
-														{$v2_url_all = URL::getAllVMessUrl($user)}
+														
 														
 														<p>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> </p>
 
@@ -502,12 +538,45 @@
 															点击拷贝订阅地址
 														</button>
 														<br>
-														</p>
-                                                      
-
+														</p>                                                     
 													</div>
+													
+													<div class="tab-pane fade" id="all_v2ray_windows">
+														<p><a href="https://client.yunxiao.us/V2ray/Windows/V2rayN-2.14.7z">下载</a>，解压，运行V2ray程序，然后您有两种方式导入所有节点<br>
+															(1)通过下方的v2ray订阅地址添加节点<br>
+															(2)<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后点击服务器，点击添加所有VMess链接<br>
+															(3)鼠标右键点击桌面右下角v2ray图标，点击开启http代理，pac代理规则设置为全局或按需求设置，点击服务器，选择一个节点点击一下，配置完成<br>
+															(4)打开浏览器试试看能不能打开谷歌等网站吧</p>
+													</div>
+													<div class="tab-pane fade" id="all_v2ray_mac">
+														<p><a href="https://client.yunxiao.us/V2ray/MacOSX/V2RayX.app.zip">下载</a>，安装，<a class="copy-text" data-clipboard-text="{$v2_url_all}">，然后到客户端添加节点吧，具体教程没有</p>
+													</div>
+													<div class="tab-pane fade" id="all_v2ray_ios">
+														<p><span class="icon icon-lg text-white">filter_1</span> 切换至非国区App Store账号，商店搜索<code>Shadowrocket</code>下载安装</p>
+														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中点击<a class="copy-text" data-clipboard-text="{$v2_url_all}">，然后点击确定，就可以批量添加节点。</p>
+                                                      <p><span class="icon icon-lg text-white">filter_3</span> 注意：第一次连接可能不能用，导入后程序退出并重新打开程序后连接即可！</p>
+													  <p><span class="icon icon-lg text-white">filter_4</span> 备用导入节点方法“”打开Shadowrocket，点击右上角<span class="icon icon-lg text-white">add</span>，添加类型为<code>Subscribe</code>，URL填写v2ray订阅地址即可自动更新节点</p>
+													</div>
+													<div class="tab-pane fade" id="all_v2ray_android">
+														<p><a href="https://client.yunxiao.us/V2ray/Android/V2rayNG-0.5.4.apk">下载</a>，然后安装，然后在手机上点击 <a class="copy-text" data-clipboard-text="{$v2_url_all}">复制到剪贴板，打开 V2rayNG 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
+														<p>备用方法：在软件里面选择服务器订阅，复制下面v2ray订阅地址，在软件里面添加后更新订阅即可获取节点。</p>
+													</div>
+													
+													<div class="card-action">
+											<div class="card-action-btn pull-left">
+												<p>
+														<span class="icon icon-lg text-white">flash_auto</span> 
+														V2ray节点订阅地址：
+														<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?v2ray=1" readonly="true" />
+														<button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?v2ray=1">
+															点击拷贝订阅地址
+														</button>
+														<br>
+														</p>   
+											</div>
+										</div>
 												</div>										
-										{/if}	
+										
 											
 										
 										<div class="tab-pane fade " id="all_client">

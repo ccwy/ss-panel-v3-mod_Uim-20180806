@@ -33,7 +33,7 @@
 
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="credit">优惠码额度(百分比，九折就填 10 )</label>
-									<input class="form-control" id="credit" type="text">
+									<input class="form-control" id="credit" type="text" value="12">
 								</div>
 
 								<div class="form-group form-group-label">
