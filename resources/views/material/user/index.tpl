@@ -547,7 +547,7 @@
 													
 													<div class="tab-pane fade active in" id="all_v2ray_windows">
 													
-														<p><a href="https://client.yunxiao.us/V2ray/Windows/V2rayN-2.14.7z">下载</a>，解压，运行V2ray程序，然后您有两种方式导入所有节点<br>
+														<p><a href="https://client.yunxiao.us/V2ray/Windows/V2rayN-2.14.7z">下载</a>，解压，运行V2ray程序，进入V2rayN配置节点页面，然后您有两种方式导入所有节点<br>
 															(1)通过下方的v2ray订阅地址添加节点<br>
 															(2)<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后点击服务器，点击添加所有VMess链接<br>
 															(3)鼠标右键点击桌面右下角v2ray图标，点击开启http代理，pac代理规则设置为全局或按需求设置，点击服务器，选择一个节点点击一下，配置完成<br>
@@ -564,7 +564,7 @@
 													</div>
 													<div class="tab-pane fade" id="all_v2ray_mac">
 													
-														<p><a href="https://client.yunxiao.us/V2ray/MacOSX/V2RayX.app.zip">下载</a>，安装，<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后到客户端添加节点吧，具体教程没有</p>
+														<p><a href="https://client.yunxiao.us/V2ray/MacOSX/V2RayX.app.zip">下载</a>，安装，<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>，然后到客户端添加节点吧，没有Mac设备，所以具体教程没有</p>
 														<p>
 														<span class="icon icon-lg text-white">flash_auto</span> 
 														V2ray节点订阅地址：
