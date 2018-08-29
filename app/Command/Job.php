@@ -684,7 +684,7 @@ class Job
 					$user->auto_reset_day = 0;
 					$user->auto_reset_bandwidth = 0;
 
-                    $subject = Config::get('appName')."-您的用户账户已经过期了";
+                    $subject = Config::get('appName')."-您的账户已经过期了";
                     $to = $user->email;
                     $text = "您好，系统发现您的账号已经过期了，账号已被暂停使用，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号";
                     try {
@@ -713,7 +713,7 @@ class Job
 
             if (strtotime($user->expire_in)+((int)Config::get('enable_account_expire_delete_days')*86400)<time() && $user->class == 0 && $user->money == 0 ) {
                 if (Config::get('enable_account_expire_delete')=='true') {
-                    $subject = Config::get('appName')."-您的用户账户已经被删除了";
+                    $subject = Config::get('appName')."-您的账号已经被删除了";
                     $to = $user->email;
                     $text = "您好，感谢您的支持与使用，系统发现您的账号等级已于 ".$user->class_expire." 过期，根据网站用户协议约定，账号过期 ".Config::get('enable_account_expire_delete_days')." 天以上会被系统自动删除，您的帐号现已被删除，如需继续使用，请重新注册，如有疑问，请发邮件联系管理员，Email：asmark798@gmail.com" ;
                     try {
@@ -751,7 +751,7 @@ class Job
 			}
 			
 			//等级到期前2天自动发邮件提醒用户			
-			if($user->class!=0 && strtotime($user->class_expire) - time() < 2*86400 && $user->tixing == 0)
+			if($user->class!=0 && strtotime($user->class_expire) - time() < (2*86400) && $user->tixing == 0)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号等级有效期不足 2 天啦";
@@ -785,7 +785,7 @@ class Job
 			
 			
 			//等级到期3天后提醒用户续费	
-			if($user->class ==0 && time() - strtotime($user->class_expire) > 3*86400 && $user->tixing == 1)
+			if($user->class ==0 && time() - strtotime($user->class_expire) > (3*86400) && $user->tixing == 1)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
@@ -819,7 +819,7 @@ class Job
 			
 			
 			//等级到期删除用户前7天最后提醒
-			if($user->class ==0 && time() - strtotime($user->class_expire) > 7*86400 && $user->tixing == 2)
+			if($user->class ==0 && time() - strtotime($user->class_expire) > (7*86400) && $user->tixing == 2)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号快要被删除啦";
@@ -855,7 +855,7 @@ class Job
             if ((int)Config::get('enable_auto_clean_uncheck_days')!=0 && max($user->last_check_in_time, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_uncheck_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money')) {
 
                 if (Config::get('enable_auto_clean_uncheck')=='true') {
-                    $subject = Config::get('appName')."-您的用户账户已经被删除了";
+                    $subject = Config::get('appName')."-您的账号已经被删除了";
                     $to = $user->email;
                     $text = "您好，系统发现您的账号已经 ".Config::get('enable_auto_clean_uncheck_days')." 天没签到了，帐号已经被删除。" ;
                     try {
@@ -899,7 +899,7 @@ class Job
             if ((int)Config::get('enable_auto_clean_unused_days')!=0 && max($user->t, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_unused_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money') && $user->t == 0 && $user->transfer_enable == 0 && $user->lastSsTime() ==0) {
 
                 if (Config::get('enable_auto_clean_unused')=='true') {
-                    $subject = Config::get('appName')."-您的用户账户已经被删除了";
+                    $subject = Config::get('appName')."-您的账号已经被删除了";
                     $to = $user->email;
                     $text = "您好，系统发现您的账号自注册起到现在已经 ".Config::get('enable_auto_clean_unused_days')." 天了，我们发现您没有购买任何套餐使用，根据注册时的用户协议约定，系统已自动删除您的账户，如您需要购买使用，请重新注册，如有疑问，请发邮件联系，Email：asmark798@gmail.com" ;
                     try {
@@ -947,7 +947,7 @@ class Job
 					$user->auto_reset_bandwidth = 0;
 					$user->tixing =0;	
 
-                    $subject = Config::get('appName')."-您的用户等级已经过期了";
+                    $subject = Config::get('appName')."-您的账号等级已经过期了";
                     $to = $user->email;
                     $text = "您好，系统发现您的账号等级已经过期了，账号已被暂停使用，账号过期  ".Config::get('enable_account_expire_delete_days')."   天以上将自动删除，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号，如有疑问，请登陆网站发工单联系管理员，谢谢！" ;
                     try {
