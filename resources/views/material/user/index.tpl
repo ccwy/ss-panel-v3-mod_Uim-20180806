@@ -507,10 +507,12 @@
 												
 													<nav class="tab-nav margin-top-no">
 														<ul class="nav nav-list">
+															<!--
 															<li class="active">
 																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_info"><i class="icon icon-lg">info_outline</i>&nbsp;连接信息</a>
 															</li>
-															<li>
+															-->
+															<li class="active">
 																<a class="waves-attach" data-toggle="tab" href="#all_v2ray_windows"><i class="icon icon-lg">desktop_windows</i>&nbsp;Windows</a>
 															</li>
 															<li>
@@ -524,6 +526,7 @@
 															</li>
 														</ul>
 													</nav>
+													{*
 													<div class="tab-pane fade active in" id="all_v2ray_info">
 														{$v2_url_all = URL::getAllVMessUrl($user)}
 														
@@ -540,8 +543,9 @@
 														<br>
 														</p>                                                     
 													</div>
+													*}
 													
-													<div class="tab-pane fade" id="all_v2ray_windows">
+													<div class="tab-pane fade active in" id="all_v2ray_windows">
 													{$v2_url_all = URL::getAllVMessUrl($user)}
 														<p><a href="https://client.yunxiao.us/V2ray/Windows/V2rayN-2.14.7z">下载</a>，解压，运行V2ray程序，然后您有两种方式导入所有节点<br>
 															(1)通过下方的v2ray订阅地址添加节点<br>
