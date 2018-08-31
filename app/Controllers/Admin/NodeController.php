@@ -56,7 +56,7 @@ class NodeController extends AdminController
 
         if ($node->sort == 0 || $node->sort == 1 || $node->sort == 10 || $node->sort == 11) {
             if ($req_node_ip != '') {
-                $node->node_ip = $req_node_ip;
+                $node->node_ip = gethostbyname($request->getParam('server'));
             } else {
                 if ($node->sort == 11) {
                     $server_list = explode(";", $request->getParam('server'));
@@ -119,7 +119,7 @@ class NodeController extends AdminController
 
         if ($node->sort == 0 || $node->sort == 1 || $node->sort == 10 || $node->sort == 11) {
             if ($req_node_ip != '') {
-                $node->node_ip = $req_node_ip;
+                $node->node_ip = gethostbyname($request->getParam('server'));
             } 
 			else {
                 if ($node->isNodeOnline()) {
