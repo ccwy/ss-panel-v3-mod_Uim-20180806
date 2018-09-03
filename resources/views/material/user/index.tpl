@@ -55,7 +55,7 @@
 											<dd><i class="icon icon-md t4-text">email</i>&nbsp;{$user->email}</dd>
                                           
                                           </p>
-										 <p><dt>余额</dt>
+										 <p><dt>账号余额</dt>
 											<dd><i class="icon icon-md">monetization_on</i>&nbsp;<code>{$user->money}</code> CNY   ; <a href="/user/code">点我充值</a></dd> </p>
 											
 											<p><dt>帐号等级</dt>
@@ -279,7 +279,7 @@
                                                         <p><span class="icon icon-lg text-white">filter_2</span> 解压至任意磁盘并运行</p>
 														<p><span class="icon icon-lg text-white">filter_3</span> 任务栏右下角右键纸飞机图标->服务器订阅->SSR服务器订阅设置，将订阅链接设置为下面的地址，确定之后再更新SSR服务器订阅（绕过代理）。</p>
 														<p> <span class="icon icon-lg text-white">filter_4</span> 然后选择一个合适的服务器，代理规则选“绕过局域网和大陆”，然后即可上网。</p>
-														<p><span class="icon icon-lg text-white">filter_5</span> 备用导入节点方法：点击<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这里（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这个(单端口多用户）</a>，然后右键小飞机->从剪贴板复制地址</p>
+														<p><span class="icon icon-lg text-white">filter_5</span> 备用导入节点方法：点击<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这里（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ssr_url_all_mu}">这个(单端口多用户）</a>，然后右键小飞机->从剪贴板复制地址</p>
 														
 														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
 														<!--
@@ -801,7 +801,7 @@
 										<p class="card-heading"><i class="icon icon-md">account_circle</i>账号使用情况</p>
 										<dl class="dl-horizontal">
 										
-										<p><dt>邮箱</dt>
+										<p><dt>邮箱账号</dt>
                                               
 											<dd><i class="icon icon-md t4-text">email</i>&nbsp;{$user->email}</dd>
                                           
@@ -846,7 +846,12 @@
 									<div class="card-inner margin-bottom-no">
 									<p class="card-heading">新用户使用引导：</p>
 									
-										<p><font color="blue">1，注册即代表同意并遵守本站<a href="/toos">用户协议（TOS）</a>，<br>2，本站不提供试用,<br>3，请<a href="/user/code">点我充值</a>余额到账户，<br>4，然后通过  <a href="/user/shop">商店</a> 购买激活账号，<br>5，如您未能在注册后  {$config['enable_auto_clean_unused_days']}  天内完成购买，账号将自动删除,<br>6，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</font></p>
+										<p>1，注册即代表同意并遵守本站<a href="/toos">用户协议（TOS）</a>，<br>
+										2，本站不提供试用,节点不保证可以玩游戏，不保证可以观看TVB、NF等视频网站，<br>
+										3，请<a href="/user/code">点我充值</a>余额到账户，<br>
+										4，然后通过  <a href="/user/shop">商店</a> 购买激活账号，<br>
+										5，如您未能在注册后  <code>{$config['enable_auto_clean_unused_days']} </code> 天内完成购买，账号将自动删除,<br>
+										6，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
 																												
 									</div>									
 								</div>
@@ -861,8 +866,9 @@
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 									<p class="card-heading">账号当前状态</p>
-										<h5><font color="blue">1，您的账号等级已于 {$user->class_expire} 过期，<br>2，</font>为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；
-										<br,3，<font color="blue">请注意，您的账号将在等级过期 {$config['enable_account_expire_delete_days']}  天后自动删除，</font></h5>
+										<h5>1，您的账号等级已于 <code>{$user->class_expire}</code> 过期，<br>
+										2，为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；<br>
+										3，请注意，您的账号将在等级过期 <code>{$config['enable_account_expire_delete_days']}</code>  天后自动删除，</h5>
 										<p>4，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
 																												
 									</div>									
