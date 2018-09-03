@@ -628,7 +628,7 @@
 											<p>客户端教程：<a href="{$config["jiaocheng1"]}" target="_blank">{$config["jiaocheng1"]}</a>
 											<br>SSR客户端下载：<a href="http://t.cn/RYHO1hn" target="_blank">http://t.cn/RYHO1hn</a>
 											<br>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> 
-                                          <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt" target="_blank">pac下载</a>，鼠标右键另存为即可直接下载</p>
+                                          <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt">pac下载</a>，鼠标右键另存为即可直接下载</p>
 											
 															
 															</div>
