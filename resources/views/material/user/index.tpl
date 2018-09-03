@@ -593,7 +593,7 @@
 													</div>
 													<div class="tab-pane fade" id="all_v2ray_android">
 													
-														<p><a href="https://client.yunxiao.us/V2ray/Android/V2rayNG-0.5.4.apk">下载</a>，然后安装，然后在手机上<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>复制到剪贴板，打开 V2rayNG 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
+														<p><a href="https://client.yunxiao.us/V2ray/Android/V2rayNG-0.5.4.apk">下载</a>，然后安装，然后在手机上<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>复制到剪贴板，打开 V2ray NG 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
 														<p>备用方法：在软件里面选择服务器订阅，复制下面v2ray订阅地址，在软件里面添加后更新订阅即可获取节点。</p>
 														<p>
 														<span class="icon icon-lg text-white">flash_auto</span> 
@@ -625,7 +625,9 @@
 															
 															<div class="tab-pane fade active in" id="all_clien">
 															<p class="card-heading">教程及客户端下载</p>
-											<p>客户端教程：<a href="{$config["jiaocheng1"]}" target="_blank">{$config["jiaocheng1"]}</a><br>客户端下载：<a href="http://t.cn/RYHO1hn" target="_blank">http://t.cn/RYHO1hn</a>
+											<p>客户端教程：<a href="{$config["jiaocheng1"]}" target="_blank">{$config["jiaocheng1"]}</a>
+											<br>SSR客户端下载：<a href="http://t.cn/RYHO1hn" target="_blank">http://t.cn/RYHO1hn</a>
+											<br>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> 
                                           <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt">pac下载</a>，鼠标右键另存为即可直接下载</p>
 											
 															
@@ -643,7 +645,7 @@
 											{/if}
 											<p>使用方法：登陆APP Store后请搜索Shadowrocket，或者在已购记录里面找到Shadowrocket，然后点击下载安装就行；
 											<br>注意：下载完软件，请立即退出登录，为确保账号不被锁定，此账号不定期更新密码。
-											<br><font color="red">关于隐私：为了您的隐私安全，禁止使用此账号登录icloud，登陆icloud可能会自动上传通讯录和照片等隐私，并且会有被锁机和抹掉手机数据的风险，如您不听劝告，后果自负。</font></p>	
+											<br><font color="red">为了保护您的隐私安全：禁止使用此账号登录icloud，登陆icloud可能会自动上传通讯录和照片等隐私，并且会有被锁机和抹掉手机数据的风险，如有违反这条，后果自负。</font></p>	
 												
 												</div>
 											
@@ -840,7 +842,7 @@
 							
 							
 							
-							{if $user->class == 0 && $user->lastSsTime() == 0 && $user->ref_by != 1766}
+							{if $user->class == 0 && $user->lastSsTime() == 0}
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
@@ -866,9 +868,9 @@
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 									<p class="card-heading">账号当前状态</p>
-										<h5>1，您的账号等级已于 <code>{$user->class_expire}</code> 过期，<br>
+										<p>1，您的账号等级已于 <code>{$user->class_expire}</code> 过期，<br>
 										2，为不影响您的正常使用，请及时通过  <a href="/user/shop">商店</a> 购买套餐重新激活账号；<br>
-										3，请注意，您的账号将在等级过期 <code>{$config['enable_account_expire_delete_days']}</code>  天后自动删除，</h5>
+										3，请注意，您的账号将在等级过期 <code>{$config['enable_account_expire_delete_days']}</code>  天后自动删除，</p>
 										<p>4，如您有任何疑问，请 <a href="/user/ticket/create">建立工单</a> 联系管理员</p>
 																												
 									</div>									
