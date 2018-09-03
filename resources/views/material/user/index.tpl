@@ -628,7 +628,7 @@
 											<p>客户端教程：<a href="{$config["jiaocheng1"]}" target="_blank">{$config["jiaocheng1"]}</a>
 											<br>SSR客户端下载：<a href="http://t.cn/RYHO1hn" target="_blank">http://t.cn/RYHO1hn</a>
 											<br>V2ray客户端下载：<a href="https://client.yunxiao.us/?dir=V2ray" target="_blank">https://client.yunxiao.us</a> 
-                                          <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt">pac下载</a>，鼠标右键另存为即可直接下载</p>
+                                          <br>pac文件：<a href="https://client.yunxiao.us/Pac/pac.txt" target="_blank">pac下载</a>，鼠标右键另存为即可直接下载</p>
 											
 															
 															</div>
@@ -641,7 +641,7 @@
 											<p>账号： {$config["iosinfo"]}</p>
 											<p>密码： {$config["iospasswd"]}</p>
 											{else}
-											<h5><font color="red">为减少账号出现异常，导致需要经常改密码，现账号仅对年付SVIP用户共享，其他用户请自行前往APP Store中国区以外的区进行购买使用，此App价格介绍：美区价格在2.88美元左右，换算成人民币价格在18元左右，其他区价格差不多，请自行前往购买使用</font></h5>	
+											<h5><font color="red">为减少账号出现异常，导致需要经常改密码，现账号仅对年付SVIP用户共享，其他用户请自行前往APP Store中国区以外的区进行购买使用.</font></h5>	
 											{/if}
 											<p>使用方法：登陆APP Store后请搜索Shadowrocket，或者在已购记录里面找到Shadowrocket，然后点击下载安装就行；
 											<br>注意：下载完软件，请立即退出登录，为确保账号不被锁定，此账号不定期更新密码。
