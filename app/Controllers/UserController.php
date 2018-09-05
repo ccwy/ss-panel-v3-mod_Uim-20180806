@@ -923,7 +923,13 @@ class UserController extends BaseController
                     return $this->view()->assign('node', $node)->assign('user', $user)->assign('mu', $mu)->assign('relay_rule_id', $relay_rule_id)->registerClass("URL", "App\Utils\URL")->display('user/nodeinfo.tpl');
                 }
                 break;
-			
+				
+			 case 11:
+                if ((($user->class>=$node->node_class&&($user->node_group==$node->node_group||$node->node_group==0))||$user->is_admin)&&($node->node_bandwidth_limit==0||$node->node_bandwidth<$node->node_bandwidth_limit)) {
+                    return $this->view()->assign('node', $node)->assign('user', $user)->assign('mu', $mu)->registerClass("URL", "App\Utils\URL")->display('user/nodeinfov2ray.tpl');
+                }
+                break;
+				
             default:
                 echo "微笑";
 

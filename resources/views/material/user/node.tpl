@@ -75,7 +75,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1 && $node->sort != 11}
+																	{if $node->mu_only != 1}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -103,6 +103,7 @@
 																	{/if}
 
 
+																	
 																	{if $node->sort == 11} 
 																		{assign var=server_explode value=";"|explode:$node->server}
 																		<div class="card">
@@ -152,6 +153,7 @@
 																			</div>
 																		</div>
 																	{/if}
+																	
 																	{if ($node->sort == 0 || $node->sort == 10) && $node->custom_rss == 1 && $node->mu_only != -1}
 																		{foreach $node_muport as $single_muport}
 
@@ -265,7 +267,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1 && $node->sort != 11}
+																	{if $node->mu_only != 1}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -291,6 +293,7 @@
 																	{if $node->sort == 0 || $node->sort == 10}
 																		{$point_node=$node}
 																	{/if}
+																	{*
 {if $node->sort == 11} 
 																		{assign var=server_explode value=";"|explode:$node->server}
 																		<div class="card">
@@ -312,11 +315,11 @@
 																					{$server_explode[2]}
 																				</span></p>
 
-																				{*
+																				
 																				<p>协议参数：<span class="label label-green">
 																					{$server_explode[0]}
 																				</span></p>
-																				*}
+																				
 																				
 
 																				<p>用户 UUID：<span class="label label-brand">
@@ -355,6 +358,7 @@
 																			</div>
 																		</div>
 																	{/if}
+																	*}
 
 
 																	{if ($node->sort == 0 || $node->sort == 10) && $node->custom_rss == 1 && $node->mu_only != -1}
@@ -475,7 +479,7 @@
 																		{$relay_rule = $tools->pick_out_relay_rule($node->id, $user->port, $relay_rules)}
 																	{/if}
 
-																	{if $node->mu_only != 1 && $node->sort != 11}
+																	{if $node->mu_only != 1 }
 																	<div class="card">
 																		<div class="card-main">
 
@@ -501,7 +505,8 @@
 																	{if $node->sort == 0 || $node->sort == 10}
 																		{$point_node=$node}
 																	{/if}
-{if $node->sort == 11} 
+																	{*
+                                                                       {if $node->sort == 11} 
 																		{assign var=server_explode value=";"|explode:$node->server}
 																		<div class="card">
 																			<div class="card-main">
@@ -533,12 +538,12 @@
 																				<p>传输协议：<span class="label label-red">
 																					{$config["vmesstcp"]}
 																				</span></p>
-																			{*	
+																			
 																
 																				<p>协议参数：<span class="label label-green">
 																					{$server_explode[0]}
 																				</span></p>
-																				*}
+																				
 
 																				<p>AlterId：<span class="label label-green">
 																					{$server_explode[3]}
@@ -562,6 +567,7 @@
 																			</div>
 																		</div>
 																	{/if}
+																	*}
 
 
 																	{if ($node->sort == 0 || $node->sort == 10) && $node->custom_rss == 1 && $node->mu_only != -1}
@@ -689,7 +695,7 @@
 																	{/if}
 
 																	
-																	{if $node->mu_only != 1 && $node->sort != 11}
+																	{if $node->mu_only != 1}
 																	<div class="card">
 																		<div class="card-main">
 
@@ -716,6 +722,7 @@
 																	{if $node->sort == 0 || $node->sort == 10}
 																		{$point_node=$node}
 																	{/if}
+																	
 {if $node->sort == 11} 
 																		{assign var=server_explode value=";"|explode:$node->server}
 																		<div class="card">
@@ -774,6 +781,7 @@
 																			</div>
 																		</div>
 																	{/if}
+																	
 
 
 																	<!--
@@ -906,6 +914,7 @@ function urlChange(id,is_mu,rule_id) {
 	$("#nodeinfo").modal();
 }
 
+{*
 $(function(){
 	new Clipboard('.copy-text');
 });
@@ -913,4 +922,5 @@ $(".copy-text").click(function () {
 	$("#result").modal();
 	$("#msg").html("已复制，请进入软件添加。");
 });
+*}
 </script>
