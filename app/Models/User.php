@@ -127,6 +127,7 @@ class User extends Model
          return Uuid::uuid3(Uuid::NAMESPACE_DNS, $this->attributes['id']. '|' .$this->attributes['passwd'])->toString();
     }
 
+	
     public function addManyInviteCodes($num)
     {
         for ($i = 0; $i < $num; $i++) {
