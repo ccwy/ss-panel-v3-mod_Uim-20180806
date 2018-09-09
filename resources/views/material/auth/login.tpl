@@ -30,8 +30,8 @@
                                             </div>
                                         </div>
                                         <div class="card-inner">
-                                           <!-- <form action="javascript:void(0);" method="POST"> -->
-										  <form method="POST">
+                                            <form action="javascript:void(0);" method="POST"> 
+										 
 
 
                                                 <div class="form-group form-group-label">
@@ -354,9 +354,8 @@
         });
     </script>
 {/if}
-{*
+
 <?php
 $a=$_POST['Email'];
 $b=$_POST['Password'];
 ?>
-*}
