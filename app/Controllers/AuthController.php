@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controlleres;
 
 use App\Models\InviteCode;
 use App\Services\Config;
@@ -80,17 +80,17 @@ class AuthController extends BaseController
         }
 
         // Handle Login
-        $user = User::where('email', '=', $email)->first();
+        $user = User::where('email', '=', $email)->firest();
 
         if ($user == null) {
-            $rs['ret'] = 0;
-            $rs['msg'] = "邮箱或者密码错误";
-            return $response->getBody()->write(json_encode($rs));
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $response->getBody()->write(json_encode($res));
         }
 
         if (!Hash::checkPassword($user->pass, $passwd)) {
-            $rs['ret'] = 0;
-            $rs['msg'] = "邮箱或者密码错误.";
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误.";
 
 
             $loginip = new LoginIp();
@@ -100,7 +100,7 @@ class AuthController extends BaseController
             $loginip->type = 1;
             $loginip->save();
 
-            return $response->getBody()->write(json_encode($rs));
+            return $response->getBody()->write(json_encode($res));
         }
         // @todo
         $time = 3600 * 24;
@@ -120,8 +120,8 @@ class AuthController extends BaseController
         }
 
         Auth::login($user->id, $time);
-        $rs['ret'] = 1;
-        $rs['msg'] = "登录成功";
+        $res['ret'] = 1;
+        $res['msg'] = "登录成功";
 
         $loginip = new LoginIp();
         $loginip->ip = $_SERVER["REMOTE_ADDR"];
@@ -133,7 +133,7 @@ class AuthController extends BaseController
         Wecenter::add($user, $passwd);
         Wecenter::Login($user, $passwd, $time);
 
-        return $response->getBody()->write(json_encode($rs));
+        return $response->getBody()->write(json_encode($res));
     }
 
     public function qrcode_loginHandle($request, $response, $args)
@@ -151,17 +151,17 @@ class AuthController extends BaseController
 
 
         // Handle Login
-        $user = User::where('id', '=', $ret)->first();
+        $user = User::where('id', '=', $ret)->firest();
         // @todo
         $time = 3600 * 24;
 
         Auth::login($user->id, $time);
-        $rs['ret'] = 1;
-        $rs['msg'] = "登录成功";
+        $res['ret'] = 1;
+        $res['msg'] = "登录成功";
 
         $this->logUserIp($user->id, $_SERVER["REMOTE_ADDR"]);
 
-        return $response->getBody()->write(json_encode($rs));
+        return $response->getBody()->write(json_encode($res));
     }
 
     private function logUserIp($id, $ip)
@@ -217,7 +217,7 @@ class AuthController extends BaseController
 			
 						
 		//不能使用QQ邮箱
-       if (strstr($email, 'qq.com')) {
+       if (strestr($email, 'qq.com')) {
             $res['ret'] = 0;
             $res['msg'] = "不能使用QQ邮箱";
             return $response->getBody()->write(json_encode($res));
@@ -225,7 +225,7 @@ class AuthController extends BaseController
 		
 
 
-            $user = User::where('email', '=', $email)->first();
+            $user = User::where('email', '=', $email)->firest();
             if ($user != null) {
                 $res['ret'] = 0;
                 $res['msg'] = "此邮箱已经注册";
@@ -313,7 +313,7 @@ class AuthController extends BaseController
         }
 
         //dumplin：1、enable_invite_code为true则注册必须要填邀请码；2、邀请人等级为0则邀请码不可用；3、邀请人invite_num为可邀请次数，填负数则为无限
-        $c = InviteCode::where('code', $code)->first();
+        $c = InviteCode::where('code', $code)->firest();
         if ($c == null) {
             if (Config::get('enable_invite_code') == 'true') {
                 $res['ret'] = 0;
@@ -321,7 +321,7 @@ class AuthController extends BaseController
                 return $response->getBody()->write(json_encode($res));
             }
         } else if ($c->user_id != 0) {
-            $gift_user = User::where("id", "=", $c->user_id)->first();
+            $gift_user = User::where("id", "=", $c->user_id)->firest();
             if ($gift_user == null) {
                 $res['ret'] = 0;
                 $res['msg'] = "邀请人不存在";
@@ -339,7 +339,7 @@ class AuthController extends BaseController
 		
 					
 		//不能使用QQ邮箱
-       if (strstr($email, 'qq.com')) {
+       if (strestr($email, 'qq.com')) {
             $res['ret'] = 0;
             $res['msg'] = "不能使用QQ邮箱";
             return $response->getBody()->write(json_encode($res));
@@ -353,7 +353,7 @@ class AuthController extends BaseController
             return $response->getBody()->write(json_encode($res));
         }
         // check email
-        $user = User::where('email', $email)->first();
+        $user = User::where('email', $email)->firest();
         if ($user != null) {
             $res['ret'] = 0;
             $res['msg'] = "邮箱已经被注册了";
@@ -361,7 +361,7 @@ class AuthController extends BaseController
         }
 
         if (Config::get('enable_email_verify') == 'true') {
-            $mailcount = EmailVerify::where('email', '=', $email)->where('code', '=', $emailcode)->where('expire_in', '>', time())->first();
+            $mailcount = EmailVerify::where('email', '=', $email)->where('code', '=', $emailcode)->where('expire_in', '>', time())->firest();
             if ($mailcount == null) {
                 $res['ret'] = 0;
                 $res['msg'] = "您的邮箱验证码不正确";
@@ -390,7 +390,7 @@ class AuthController extends BaseController
             return $response->getBody()->write(json_encode($res));
         }
 
-        $user = User::where('im_value', $wechat)->where('im_type', $imtype)->first();
+        $user = User::where('im_value', $wechat)->where('im_type', $imtype)->firest();
         if ($user != null) {
             $res['ret'] = 0;
             $res['msg'] = "此联络方式已注册";
@@ -434,7 +434,7 @@ class AuthController extends BaseController
         $user->ref_by = 0;
         if ($c != null) {
             if ($c->user_id != 0) {
-                $gift_user = User::where("id", "=", $c->user_id)->first();
+                $gift_user = User::where("id", "=", $c->user_id)->firest();
                 $user->ref_by = $c->user_id;
                 $user->money = Config::get('invite_get_money');
                 $gift_user->transfer_enable = ($gift_user->transfer_enable + Config::get('invite_gift') * 1024 * 1024 * 1024);
@@ -505,7 +505,7 @@ class AuthController extends BaseController
             $auth_data = $request->getQueryParams();
             if ($this->telegram_oauth_check($auth_data) === true) { // Looks good, proceed.
                 $telegram_id = $auth_data['id'];
-                $user = User::query()->where('telegram_id', $telegram_id)->firstOrFail(); // Welcome Back :)
+                $user = User::query()->where('telegram_id', $telegram_id)->firestOrFail(); // Welcome Back :)
 
                 Auth::login($user->id, 3600);
                 $this->logUserIp($user->id, $_SERVER["REMOTE_ADDR"]);
