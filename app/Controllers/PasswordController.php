@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controlleres;
+namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\PasswordReset;
@@ -9,7 +9,7 @@ use App\Utils\Hash;
 
 /***
  * Class Password
- * @package App\Controlleres
+ * @package App\Controllers
  * 密码重置
  */
 
@@ -26,16 +26,16 @@ class PasswordController extends BaseController
         // check limit
 
         // send email
-        $user = User::where('email', $email)->firest();
+        $user = User::where('email', $email)->first();
         if ($user == null) {
-            $res['ret'] = 0;
-            $res['msg'] = '此邮箱不存在.';
-            return $response->getBody()->write(json_encode($res));
+            $rs['ret'] = 0;
+            $rs['msg'] = '此邮箱不存在.';
+            return $response->getBody()->write(json_encode($rs));
         }
         Password::sendResetEmail($email);
-        $res['ret'] = 1;
-        $res['msg'] = '重置邮件已经发送,请检查邮箱.';
-        return $response->getBody()->write(json_encode($res));
+        $rs['ret'] = 1;
+        $rs['msg'] = '重置邮件已经发送,请检查邮箱.';
+        return $response->getBody()->write(json_encode($rs));
     }
 
     public function token($request, $response, $args)
@@ -63,18 +63,18 @@ class PasswordController extends BaseController
         }
         
         // check token
-        $token = PasswordReset::where('token', $tokenStr)->firest();
+        $token = PasswordReset::where('token', $tokenStr)->first();
         if ($token == null || $token->expire_time < time()) {
-            $res['ret'] = 0;
-            $res['msg'] = '链接已经失效,请重新获取';
-            return $response->getBody()->write(json_encode($res));
+            $rs['ret'] = 0;
+            $rs['msg'] = '链接已经失效,请重新获取';
+            return $response->getBody()->write(json_encode($rs));
         }
 
-        $user = User::where('email', $token->email)->firest();
+        $user = User::where('email', $token->email)->first();
         if ($user == null) {
-            $res['ret'] = 0;
-            $res['msg'] = '链接已经失效,请重新获取';
-            return $response->getBody()->write(json_encode($res));
+            $rs['ret'] = 0;
+            $rs['msg'] = '链接已经失效,请重新获取';
+            return $response->getBody()->write(json_encode($rs));
         }
 
         // reset password
@@ -82,16 +82,16 @@ class PasswordController extends BaseController
         $user->pass = $hashPassword;
         $user->ga_enable = 0;
         if (!$user->save()) {
-            $res['ret'] = 0;
-            $res['msg'] = '重置失败,请重试';
-            return $response->getBody()->write(json_encode($res));
+            $rs['ret'] = 0;
+            $rs['msg'] = '重置失败,请重试';
+            return $response->getBody()->write(json_encode($rs));
         }
-        $res['ret'] = 1;
-        $res['msg'] = '重置成功';
+        $rs['ret'] = 1;
+        $rs['msg'] = '重置成功';
         
        // $user->clean_link();
 	   //修复更改密码订阅链接变化问题
         
-        return $response->getBody()->write(json_encode($res));
+        return $response->getBody()->write(json_encode($rs));
     }
 }
