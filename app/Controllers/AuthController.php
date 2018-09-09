@@ -83,14 +83,14 @@ class AuthController extends BaseController
         $user = User::where('email', '=', $email)->first();
 
         if ($user == null) {
-            $rs['ret'] = 0;
-            $rs['msg'] = "邮箱或者密码错误";
-            return $response->getBody()->write(json_encode($rs));
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $response->getBody()->write(json_encode($res));
         }
 
         if (!Hash::checkPassword($user->pass, $passwd)) {
-            $rs['ret'] = 0;
-            $rs['msg'] = "邮箱或者密码错误.";
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误.";
 
 
             $loginip = new LoginIp();
@@ -100,7 +100,7 @@ class AuthController extends BaseController
             $loginip->type = 1;
             $loginip->save();
 
-            return $response->getBody()->write(json_encode($rs));
+            return $response->getBody()->write(json_encode($res));
         }
         // @todo
         $time = 3600 * 24;
@@ -120,8 +120,8 @@ class AuthController extends BaseController
         }
 
         Auth::login($user->id, $time);
-        $rs['ret'] = 1;
-        $rs['msg'] = "登录成功";
+        $res['ret'] = 1;
+        $res['msg'] = "登录成功";
 
         $loginip = new LoginIp();
         $loginip->ip = $_SERVER["REMOTE_ADDR"];
@@ -133,7 +133,7 @@ class AuthController extends BaseController
         Wecenter::add($user, $passwd);
         Wecenter::Login($user, $passwd, $time);
 
-        return $response->getBody()->write(json_encode($rs));
+        return $response->getBody()->write(json_encode($res));
     }
 
     public function qrcode_loginHandle($request, $response, $args)
@@ -156,12 +156,12 @@ class AuthController extends BaseController
         $time = 3600 * 24;
 
         Auth::login($user->id, $time);
-        $rs['ret'] = 1;
-        $rs['msg'] = "登录成功";
+        $res['ret'] = 1;
+        $res['msg'] = "登录成功";
 
         $this->logUserIp($user->id, $_SERVER["REMOTE_ADDR"]);
 
-        return $response->getBody()->write(json_encode($rs));
+        return $response->getBody()->write(json_encode($res));
     }
 
     private function logUserIp($id, $ip)
