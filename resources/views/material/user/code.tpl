@@ -29,9 +29,9 @@
 									<div class="card-inner">
 										<p class="card-heading"><i class="icon icon-lg">view_compact</i>&nbsp;仪表盘</p>
 										<p><i class="icon icon-lg">monetization_on</i>&nbsp;余额：&nbsp;<font color="red" size="5">{$user->money}</font>&nbsp;元</p>
-									<p><i class="icon icon-lg">shop</i>&nbsp;商店：&nbsp;<a href="/user/shop">点击进入</a></p>
-									<P>充值完成后请到商店购买套餐，充值过程中如遇到问题，请   <a href="/user/ticket/create">发工单</a>   联系管理员处理。</p>
-										<p>充值完成后需刷新网页以查看余额，通常一分钟内到账。</p>
+									<p><i class="icon icon-lg">shop</i>&nbsp;商店：&nbsp;<a href="/user/shop">点击进入</a>
+									<br>充值完成后请到商店购买套餐，充值过程中如遇到问题，请   <a href="/user/ticket/create">发工单</a>   联系管理员处理。
+										<br>充值完成后需刷新网页以查看余额，通常一分钟内到账。</p>
 										{if $config["enable_admin_contact"] == 'true'}
 											<p class="card-heading">如果没有到账请立刻联系站长：</p>
 											{if $config["admin_contact1"]!=null}
@@ -93,6 +93,7 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
+									<p class="card-heading">充值记录</p>				
 										<div class="card-table">
 											<div class="table-responsive">
 												{$codes->render()}
