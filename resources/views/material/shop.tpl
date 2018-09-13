@@ -1,8 +1,4 @@
 
-
-
-
-
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -26,38 +22,26 @@
 							<div class="inner">
 								<h1>套餐价格</h1>
                             </div>
-					</div>
-		
+					</div>		
 		        <div class="card-inner">
 					<p class="card-heading">本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；<br>
-					商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点。</p>
-								
-
-					<div class="table-responsive">
-					
+					商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点；<br>
+					如有任何问题，请<a href="/cous">联系管理员</a></p>								
+					<div class="table-responsive">					
 						{$shops->render()}
 						<table class="table ">
-                            <tr>
-							    
-                                <th>商店套餐列表（点击列表中的套餐进入购买页面）</th>
-								
+                            <tr>							    
+                                <th>商店套餐列表（点击列表中的套餐进入购买页面）</th>								
                             </tr>
                             {foreach $shops as $shop}
-                            <tr>
-							   
-                                <td><a href="/user/shop">{$shop->name}</a></td>
-								
+                            <tr>							   
+                                <td><a href="/user/shop">{$shop->name}</a></td>								
                             </tr>
                             {/foreach}
                         </table>
-						{$shops->render()}
-						
-					</div>
-					
-				</div>
-				
-							
-
+						{$shops->render()}						
+					</div>					
+				</div>											
                            <nav>
 							<ul>  
                           <a href="javascript:history.back();" class="button">返回上一页</a>  <a href="/" class="button">返回到首页</a>
