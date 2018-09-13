@@ -25,7 +25,7 @@ class NodeController extends AdminController
                             "bandwidthlimit_resetday" => "流量重置日", "node_heartbeat" => "上一次活跃时间",
                             "custom_method" => "自定义加密", "custom_rss" => "自定义协议以及混淆",
                             "mu_only" => "只启用单端口多用户");
-        $table_config['default_show_column'] = Array("op", "id", "name", "sort");
+        $table_config['default_show_column'] = Array("op", "id", "name", "type", "sort", "server", "node_ip", "traffic_rate", "node_group", "node_class");
         $table_config['ajax_url'] = 'node/ajax';
 
         return $this->view()->assign('table_config', $table_config)->display('admin/node/index.tpl');
