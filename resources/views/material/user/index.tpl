@@ -48,8 +48,26 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-										<p class="card-heading"><i class="icon icon-md">account_circle</i>账号使用情况</p>
+									
+									
+										<nav class="tab-nav margin-top-no">
+											<ul class="nav nav-list">
+											<li class="active">
+											<a class="waves-attach" data-toggle="tab" href="#all_info"><i class="icon icon-lg">info_outline</i>&nbsp;账号信息</a>
+                                             </li>
+											<li>
+											<a class="waves-attach" data-toggle="tab" href="#all_us"><i class="icon icon-lg">question_answer</i>&nbsp;联系我们</a>
+                                             </li>
+											 
+											</ul>
+                                        </nav>
+										
+											
+								<div class="tab-pane fade active in" id="all_info">
+									<div class="card-inner">
+                                       <div class="form-group form-group-label">
 										<dl class="dl-horizontal">
+										
 										<p><dt>邮箱帐号</dt>
                                               
 											<dd><i class="icon icon-md t4-text">email</i>&nbsp;{$user->email}</dd>
@@ -193,7 +211,25 @@
 
 								</div>
 							</div>
-
+							
+								
+								<div class="tab-pane fade in" id="all_us">
+									<div class="card-inner">
+                                        <div class="form-group form-group-label">
+										<dl class="dl-horizontal">
+										<p>
+									    1，发邮件到：<a href="mailto:{$config["connemail"]}">{$config["connemail"]}</a><br>
+								     	2，<a href="/user/ticket/create">点击建立工单</a></p>	
+																		
+										<p>Telegram频道群：<a href="{$config["telegram1"]}" target="_blank">点击加入</a>
+										<br>Telegram用户群：<a href="{$config["telegram2"]}" target="_blank">点击加入</a></p>
+										</dl>
+										</div>
+									</div>
+								</div>	
+								
+                           </div>
+							</div>
 							
 
 						</div>

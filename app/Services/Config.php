@@ -7,7 +7,11 @@ class Config
     public static function get($key)
     {
         global $System_Config;
-        return $System_Config[$key];
+        if (isset($System_Config[$key])){
+            return $System_Config[$key];
+        } else {
+            return null;
+        }
     }
 
     public static function set($key, $value)
@@ -48,7 +52,7 @@ class Config
 			"admin_contact3" => self::get("admin_contact3"),
 			"enable_flag" => self::get("enable_flag"),
 			
-		"enable_account_expire_delete_days" => self::get("enable_account_expire_delete_days"),     //账号过期时间
+		    "enable_account_expire_delete_days" => self::get("enable_account_expire_delete_days"),     //账号过期时间
 			"enable_auto_clean_unused_days" => self::get("enable_auto_clean_unused_days"),  //账号过期时间
 			"rssresd" => self::get("rssresd"),  //rss订阅地址
 			//"payurl" => self::get("payurl"),  //spay支付地址
@@ -65,7 +69,7 @@ class Config
 			"jiaocheng1" => self::get("jiaocheng1"),  // 教程地址
 			"regiestrs" => self::get("regiestrs"),  // 注册开关
 			"restport" => self::get("restport"),  // 重置端口
-		        "metodaes" => self::get("metodaes"),  // v2ray加密算法
+		    "metodaes" => self::get("metodaes"),  // v2ray加密算法
 			"vmesstcp" => self::get("vmesstcp")  // v2ray传输协议
 		
 			

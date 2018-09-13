@@ -286,7 +286,7 @@ class AuthController extends BaseController
         }
     }
 
-    public function registerHandle($request, $response, $next)
+    public function registerHandle($request, $response)
     {
         $name = $request->getParam('name');
         $email = $request->getParam('email');
