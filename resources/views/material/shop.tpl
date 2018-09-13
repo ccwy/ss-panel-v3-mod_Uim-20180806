@@ -24,9 +24,10 @@
                             </div>
 					</div>		
 		        <div class="card-inner">
-					<p class="card-heading">本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；<br>
-					商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点；<br>
-					如有任何问题，请<a href="/cous">联系管理员</a></p>								
+					<p class="card-heading">
+					1，本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；<br>
+					2，商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点；<br>
+					3，如有任何问题，请<a href="/cous">联系管理员</a></p>								
 					<div class="table-responsive">					
 						{$shops->render()}
 						<table class="table ">

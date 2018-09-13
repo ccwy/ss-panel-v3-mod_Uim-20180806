@@ -118,7 +118,9 @@ class HomeController extends BaseController
         if (isset($request->getQueryParams()["page"])) {
             $pageNum = $request->getQueryParams()["page"];
         }
-        $shops = Shop::where("status", 1)->orderBy("name")->paginate(20, ['*'], 'page', $pageNum);
+		//商品显示模式优化
+       // $shops = Shop::where("status", 1)->orderBy("name")->paginate(20, ['*'], 'page', $pageNum);
+	   $shops = Shop::where("status", 1)->paginate(15, ['*'], 'page', $pageNum);
         $shops->setPath('shop');
 
         return $this->view()->assign('shops', $shops)->display('shop.tpl');

@@ -1276,7 +1276,9 @@ class UserController extends BaseController
         if (isset($request->getQueryParams()["page"])) {
             $pageNum = $request->getQueryParams()["page"];
         }
-        $shops = Shop::where("status", 1)->orderBy("name")->paginate(15, ['*'], 'page', $pageNum);
+		//商品显示模式优化
+       // $shops = Shop::where("status", 1)->orderBy("name")->paginate(15, ['*'], 'page', $pageNum);
+	   $shops = Shop::where("status", 1)->paginate(15, ['*'], 'page', $pageNum);
         $shops->setPath('/user/shop');
 
         return $this->view()->assign('shops', $shops)->display('user/shop.tpl');
