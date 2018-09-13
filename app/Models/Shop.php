@@ -158,7 +158,7 @@ class Shop extends Model
             switch ($key) {
                 case "bandwidth":
                     if ($is_renew == 0) {
-                        if (Config::get('enable_bought_reset') == 'true') {
+                        if (Config::get('enable_bought_reset') == 'false') { //是否允许叠加等级到期时间和流量
 							if ($this->attributes['auto_reset_day'] == 1) { //自动重置流量
                              $user->auto_reset_day=date("d");
 							 $user->auto_reset_bandwidth = $value;
@@ -173,8 +173,16 @@ class Shop extends Model
                              $user->auto_reset_day=date("d");
 							 $user->auto_reset_bandwidth = $value;
 							 }
+							if (Config::get('enable_bought_class') == 'true' || $user->class == $value) { //是否允许跨等级叠加
                             $user->transfer_enable=$user->transfer_enable+$value*1024*1024*1024;
+							} else {
+							$user->transfer_enable=$value*1024*1024*1024;
+                            $user->u = 0;
+                            $user->d = 0;
+                            $user->last_day_t = 0;
+							}
 							$user->tixing =0;
+							
                         }
                     } else {
                         if ($this->attributes['auto_reset_bandwidth'] == 1) {
@@ -187,27 +195,59 @@ class Shop extends Model
                             $user->d = 0;
                             $user->last_day_t = 0;
 							$user->tixing =0;
+							
                         } else {
 							if ($this->attributes['auto_reset_day'] == 1) {  //自动重置流量
                              $user->auto_reset_day=date("d");
 							 $user->auto_reset_bandwidth = $value;
 							}
+							
+                            if (Config::get('enable_bought_class') == 'true' || $user->class == $value) { //是否允许跨等级叠加
                             $user->transfer_enable=$user->transfer_enable+$value*1024*1024*1024;
+							} else {
+							$user->transfer_enable=$value*1024*1024*1024;
+                            $user->u = 0;
+                            $user->d = 0;
+                            $user->last_day_t = 0;
+							}
 							$user->tixing =0;
+							
                         }
                     }
                     break;
                 case "expire":
-                   /* if (time()>strtotime($user->expire_in)) {
-                        $user->expire_in=date("Y-m-d H:i:s", time()+$value*86400);
+				 if (Config::get('enable_bought_reset') == 'false') { //是否允许叠加等级到期时间和流量
+					   $user->expire_in=date("Y-m-d H:i:s", time()+7200+$value*86400);
+				 } else {					   
+                    if (time()>strtotime($user->expire_in) || $user->class==0 ) {
+                        $user->expire_in=date("Y-m-d H:i:s", time()+7200+$value*86400);
+                    } else {						
+						if (Config::get('enable_bought_class') == 'true' || $user->class == $value) { //是否允许跨等级叠加
+                        $user->expire_in=date("Y-m-d H:i:s", strtotime($user->expire_in) + $value*86400);
                     } else {
-                        $user->expire_in=date("Y-m-d H:i:s", strtotime($user->expire_in)+$value*86400);
-                    }*/
-					$user->expire_in=date("Y-m-d H:i:s", time()+7200+$value*86400);
+						 $user->expire_in=date("Y-m-d H:i:s", time()+7200+$value*86400);
+					       }
+					}
+				 }
+					
                     break;
                 case "class":
+				if (Config::get('enable_bought_reset') == 'false') { //是否允许叠加等级到期时间和流量
+					$user->class_expire=date("Y-m-d H:i:s", time()+$content["class_expire"]*86400);					
+				} else {
+					if (time()>strtotime($user->class_expire) || $user->class==0 ) {					
+						$user->class_expire=date("Y-m-d H:i:s", time()+$content["class_expire"]*86400);						
+					} else {	
+					
+					if (Config::get('enable_bought_class') == 'true' || $user->class == $value) { //是否允许跨等级叠加
+					 $user->class_expire=date("Y-m-d H:i:s", strtotime($user->class_expire)+$content["class_expire"]*86400);				    
+					} else {
+							$user->class_expire=date("Y-m-d H:i:s", time()+$content["class_expire"]*86400);
+						   }						   					
+					}
+				}
                     $user->class=$value;
-                    $user->class_expire=date("Y-m-d H:i:s", time()+$content["class_expire"]*86400);
+                    
                     break;
                 case "speedlimit":
                     $user->node_speedlimit=$value;

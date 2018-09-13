@@ -683,6 +683,7 @@ class Job
                     $user->last_day_t = 0;
 					$user->auto_reset_day = 0;
 					$user->auto_reset_bandwidth = 0;
+					$user->class = 0;
 
                     $subject = Config::get('appName')."-您的账户已经过期了";
                     $to = $user->email;
@@ -748,6 +749,11 @@ class Job
 			if ($user->auto_reset_day !=0 && $user->auto_reset_day >= 28) {
 				$user->auto_reset_day = 27;
 				
+			}
+			//解决到期前购买自动重置未去掉的问题
+			if ($user->class >=17 && $user->class <=19 || $user->class ==0) {
+				$user->auto_reset_day = 0;
+				$user->auto_reset_bandwidth = 0;
 			}
 			
 			//等级到期前2天自动发邮件提醒用户			
