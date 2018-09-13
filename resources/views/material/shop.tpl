@@ -29,8 +29,8 @@
 					</div>
 		
 		        <div class="card-inner">
-					<p class="card-heading">本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；</p>
-					<p>商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点。</p>
+					<p class="card-heading">本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；<br>
+					商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点。</p>
 								
 
 					<div class="table-responsive">
@@ -71,7 +71,7 @@
                               </div>
                      <!-- 版权底部 -->
                       <footer id="footer">
-                    <p class="copyright">&copy;{$config["appName"]}    <a href="/fstaffs">STAFF</a>    <a class="Keep Right" href="/toos">用户协议(TOS)</a></p>
+                    <p class="copyright">&copy;2015-{date("Y")} {$config["appName"]}     <a href="/fstaffs">STAFF</a>    <a class="Keep Right" href="/toos">用户协议(TOS)</a></p>
                       </footer>
               <!-- 版权结束 -->
 			 </div>
