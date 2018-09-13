@@ -88,7 +88,7 @@
 						<a  href="/auth/register"><i class="icon icon-lg">person_add</i>&nbsp;注册</a>
 					</li>
 					<li>
-						<a  href="/game_pricing.html"><i class="icon icon-lg">shop</i>&nbsp;价格</a>
+						<a  href="/shop"><i class="icon icon-lg">shop</i>&nbsp;价格</a>
 					</li>
 					{/if}
                   	<li>

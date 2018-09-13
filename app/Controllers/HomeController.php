@@ -18,6 +18,9 @@ use App\Utils\Pay;
 use App\Utils\TelegramProcess;
 use App\Utils\Spay_tool;
 
+//shop
+use App\Models\Shop;
+
 /**
  *  HomeController
  */
@@ -107,5 +110,17 @@ class HomeController extends BaseController
     public function codepay_pay_callback($request, $response, $args)
     {
         Pay::codepay_pay_callback($request);
+    }
+	
+    public function shop($request, $response, $args)
+    {
+        $pageNum = 1;
+        if (isset($request->getQueryParams()["page"])) {
+            $pageNum = $request->getQueryParams()["page"];
+        }
+        $shops = Shop::where("status", 1)->orderBy("name")->paginate(20, ['*'], 'page', $pageNum);
+        $shops->setPath('shop');
+
+        return $this->view()->assign('shops', $shops)->display('shop.tpl');
     }
 }

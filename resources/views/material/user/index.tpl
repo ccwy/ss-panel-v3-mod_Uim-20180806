@@ -675,7 +675,7 @@
 
 										<div id="traffic_chart" style="height: 300px; width: 100%;"></div>
 
-                                      <script src="/assets/js/canvasjs.min.js"> </script>
+                                      <script src="/theme/material/js/canvasjs.min.js"></script>
 										<script type="text/javascript">
 											var chart = new CanvasJS.Chart("traffic_chart",
 

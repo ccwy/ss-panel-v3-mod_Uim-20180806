@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -16,53 +21,49 @@
        <body>
 			<div id="wrapper">
               <!--首页开始-->
-                          <div class="content">
+
+	                <div class="content">
 							<div class="inner">
-								<h1>联系我们</h1>
-                          </div>
-                        </div>
+								<h1>套餐价格</h1>
+                            </div>
+					</div>
+		
+		        <div class="card-inner">
+					<p class="card-heading">本站没有游戏节点，不建议用来玩游戏，不保证可以观看TVB、NF等网站视频；</p>
+					<p>商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点。</p>
+								
 
-											
-                                 <div class="table-wrapper">
-										<table>
-
-											<tbody>
-												<tr>
-													<td>如您未注册或无法登陆？</td>
-													
-												</tr>
-												<tr>
-													<td>请发送Email联系我们的管理员，有任何疑问都可以得到解答。</td>
-													
-												</tr>
-												<tr>
-													<td>Email：<a href="mailto:{$config["connemail"]}">{$config["connemail"]}</a></td>
-													
-												</tr>
-												<tr>
-													<td>Telegram群：<a href="{$config["telegram3"]}"  target="_blank">点击加入</a></td>
-													
-												</tr>
-												<tr>
-													<td>已经是我们用户？请登录后发送工单联系管理员可。</td>
-													
-												</tr>
-												</tbody>
-										</table>
-								</div>
-                                        
-									
+					<div class="table-responsive">
+					
+						{$shops->render()}
+						<table class="table ">
+                            <tr>
+							    
+                                <th>商店套餐列表（点击列表中的套餐进入购买页面）</th>
+								
+                            </tr>
+                            {foreach $shops as $shop}
+                            <tr>
+							   
+                                <td><a href="/user/shop">{$shop->name}</a></td>
+								
+                            </tr>
+                            {/foreach}
+                        </table>
+						{$shops->render()}
 						
-										
+					</div>
+					
+				</div>
+				
+							
 
                            <nav>
 							<ul>  
                           <a href="javascript:history.back();" class="button">返回上一页</a>  <a href="/" class="button">返回到首页</a>
                            </ul>
 						</nav>
-                 
-                 
-             
+					
               <!--首页结束-->
 					<div id="main">
                      
@@ -70,7 +71,7 @@
                               </div>
                      <!-- 版权底部 -->
                       <footer id="footer">
-                    <p class="copyright">&copy;2015-{date("Y")} {$config["appName"]}    <a href="/fstaffs">STAFF</a>    <a class="Keep Right" href="/toos">用户协议(TOS)</a></p>
+                    <p class="copyright">&copy;{$config["appName"]}    <a href="/fstaffs">STAFF</a>    <a class="Keep Right" href="/toos">用户协议(TOS)</a></p>
                       </footer>
               <!-- 版权结束 -->
 			 </div>

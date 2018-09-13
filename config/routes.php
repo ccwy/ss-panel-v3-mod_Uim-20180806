@@ -85,6 +85,9 @@ $app->get('/yft/notify', 'App\Controllers\YFTPayCallBackController:yft_notify');
 $app->get('/codepay_callback', 'App\Controllers\HomeController:codepay_callback');
 $app->post('/codepay_callback', 'App\Controllers\HomeController:codepay_pay_callback');
 
+//shop
+$app->get('/shop', 'App\Controllers\HomeController:shop');
+
 
 // User Center
 $app->group('/user', function () {

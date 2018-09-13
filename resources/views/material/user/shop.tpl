@@ -26,7 +26,7 @@
 							<p><i class="icon icon-lg">monetization_on</i>&nbsp;余额：&nbsp;<font color="red" size="5">{$user->money}</font>&nbsp;元</p>
 								    <p>余额不足？您可以 <a href="/user/code">点我充值</a> 余额到账户；本站没有游戏节点，不建议用来玩游戏。</p>
 								<p>商品不可叠加，新购商品会覆盖旧商品的效果，V2ray不提供任何技术支持，年付用户可用VIP/SVIP节点，其他用户可使用VIP节点。</p>
-								<p>当前余额：{$user->money} 元</p>
+								
 							</div>
 						</div>
 					</div>

@@ -102,7 +102,7 @@
 								{if $config['regiestrs'] == 'true'}
 								<li><a href="/auth/register">注册</a></li>
 								
-                              	<li><a href="/game_pricing.html">价格</a></li>
+                              	<li><a href="/shop">价格</a></li>
 								{/if}
 								<li><a href="/toos">用户协议</a></li>
 								
