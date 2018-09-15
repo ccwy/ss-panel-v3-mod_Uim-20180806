@@ -26,7 +26,7 @@ class LinkController extends BaseController
     {
         $i =0;
         for ($i = 0; $i < 10; $i++) {
-            $token = Tools::genRandomChar(26);
+            $token = Tools::genRandomChar(18);
             $Elink = Link::where("token", "=", $token)->first();
             if ($Elink == null) {
                 return $token;
