@@ -64,7 +64,7 @@ class AliPay
 //        }
         $user->save();
         $codeq = new Code();
-        $codeq->code = "支付宝充值" . $order;
+        $codeq->code = $order;
         $codeq->isused = 1;
         $codeq->type = -1;
         $codeq->number = $trade->total;
@@ -174,7 +174,7 @@ class AliPay
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
                         strtotime($item['tradeTime']) < $time && $item['tradeAmount'] == $fee) {
-                        return $item['orderNo'];
+                        return $item['tradeNo'];
                     }
                 }
             }

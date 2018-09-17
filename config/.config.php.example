@@ -184,7 +184,7 @@ $System_Config['AliPay_EMail'] = ''; //失效通知email
 $System_Config['AliPay_QRcode'] = '';  //支付宝二维码
 $System_Config['AliPay_Cookie'] = ''; //支付宝cookie
 //https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm 的 https://mbillexprod.alipay.com/enterprise/tradeListQuery.json接口
-
+// 支付宝登录成功后的cookies, 用于请求订单列表页的身份验证(获取方式: 首先访问你的个人支付宝, 进入到https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm订单列表页面, 使用chrome按F12打开调试工具, 进Network选项卡, //查找tradeListQuery.json的请求, 选中该请求记录, 查看Request Headers中的Cookie, 复制该项值, 粘贴到此处引号中)
 
 #codepay码支付
 #wiki地址:https://goo.gl/dRwRDi  http://t.cn/RnsWjtB
