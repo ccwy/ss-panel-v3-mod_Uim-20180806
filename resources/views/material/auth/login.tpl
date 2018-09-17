@@ -43,7 +43,7 @@
                                                         <div class="col-md-10 col-md-push-1">
                                                             <label class="floating-label" for="passwd">密码</label>
                                                             <input class="form-control" id="passwd" type="password" name="Password">
-																  <a href="/password/reset" >忘记密码？点击这里</a> 
+																 <p> <a href="/password/reset" >忘记密码？点击这里</a> </p>
                                                         </div>
                                                     </div>
                                                 </div>
