@@ -907,7 +907,7 @@ class Job
 			if($user->class ==0 && time() - strtotime($user->class_expire) > 7*86400 )
 			{				
 					
-					$subject = Config::get('appName')."-您的账号已过期7天以上了";
+					$subject = Config::get('appName')."-您的账号已过期7天以上，即将被删除了";
 					$to = $user->email;
 					$text = "您好，系统发现您的账户等级已于 ".$user->class_expire." 过期，账号等级已过期 ".Config::get('enable_account_expire_delete_days')."  天以上了，账号即将被自动删除，如您还需要继续使用，请您尽快登录网站续费，如不打算继续使用，请忽略此邮件，如有疑问，请发工单联系管理员，谢谢！";
 					try {
