@@ -43,7 +43,7 @@
                                                         <div class="col-md-10 col-md-push-1">
                                                             <label class="floating-label" for="passwd">密码</label>
                                                             <input class="form-control" id="passwd" type="password" name="Password">
-																 <!--  <a href="/password/reset" >忘记密码？点击这里</a> -->
+																  <a href="/password/reset" >忘记密码？点击这里</a> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,7 +140,7 @@
                     </div>
 
 
-					
+					{*
                     <div class="clearfix">
                         <p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach" href="/password/reset">重置密码</a></p>
                         {if $config['regiestrs'] == 'true'}
@@ -149,7 +149,7 @@
 							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/cous">联系我们</a></p>
 							{/if}
                     </div>
-					
+					*}
 
 
                     {include file='dialog.tpl'}
