@@ -173,8 +173,8 @@ class AliPay
 //                        return $item['outTradeNo'];
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
-                        strtotime($item['tradeTime']) < $time && $item['tradeAmount'] == $fee) {
-                        return $item['orderNo'];
+                        strtotime($item['tradeTime']) < $time() &&  strtotime($item['tradeTime']) > $time()-180 && $item['tradeAmount'] == $fee) {
+                        return $item['tradeno'];
                     }
                 }
             }
