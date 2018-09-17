@@ -793,7 +793,7 @@ class Job
 
 			
 
- //删除注册后3天未购买账户
+             //删除注册后3天未购买账户
             if ((int)Config::get('enable_auto_clean_unused_days')!=0 && max($user->t, strtotime($user->reg_date)) + ((int)Config::get('enable_auto_clean_unused_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money') && $user->t == 0 && $user->transfer_enable == 0 && $user->lastSsTime() ==0) {
 
                 if (Config::get('enable_auto_clean_unused')=='true') {
@@ -870,7 +870,7 @@ class Job
 			
 			
 		      	//等级到期3天后提醒用户续费	
-		     	if($user->class ==0 && time() - strtotime($user->class_expire) >= 3*86400 && $user->tixing != 4)
+		     	if($user->class ==0 && time() - strtotime($user->class_expire) >= 3*86400 && $user->tixing != 3)
 			    {				
 					
 					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
