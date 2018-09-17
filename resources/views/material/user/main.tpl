@@ -343,7 +343,7 @@
 				<ul class="nav">
 					<li>
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">我的</a>
-						<ul class="menu-collapse collapse out" id="ui_menu_me">
+						<ul class="menu-collapse collapse in" id="ui_menu_me">
 							<li>
 								<a href="/user">
 									<i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
@@ -361,7 +361,7 @@
 
 							<li>
 								<a href="/user/edit">
-									<i class="icon icon-lg">sync_problem</i>&nbsp;资料编辑
+									<i class="icon icon-lg">sync_problem</i>&nbsp;系统设置
 								</a>
 							</li>
 
@@ -398,13 +398,13 @@
 								</a>
 							</li>
 							
-							
+							{if $user->anyid !='' && $user->anypwd !=''}
 							<li>
 								<a href="/user/anyconnect">
 									<i class="icon icon-lg">router</i>&nbsp;Anyconnect
 								</a>
 							</li>
-							
+							{/if}
 
 							<li>
 								<a href="/user/relay">
