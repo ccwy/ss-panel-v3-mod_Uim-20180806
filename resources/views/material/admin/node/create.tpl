@@ -92,7 +92,7 @@
 
 									<div class="form-group form-group-label">
 										<label class="floating-label" for="status">节点状态</label>
-										<input class="form-control" id="status" type="text" name="status" value="可用">
+										<input class="form-control" id="status" type="text" name="status" value="OK">
 									</div>
 
 									<div class="form-group form-group-label">

@@ -382,7 +382,7 @@
 																					<div class="card-inner">
 																					<p class="card-heading" >
 																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - 单端口 Shadowsocks - {$single_muport['server']->server} 端口</a>
-																						<span class="label label-brand-accent">{$node->status}</span>
+																						<span class="label label-brand-accent">←点击节点查看配置信息</span>
 																					</p>
 
 
@@ -591,7 +591,7 @@
 																					<div class="card-inner">
 																					<p class="card-heading" >
 																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - 单端口 Shadowsocks - {$single_muport['server']->server} 端口</a>
-																						<span class="label label-brand-accent">{$node->status}</span>
+																						<span class="label label-brand-accent">←点击节点查看配置信息</span>
 																					</p>
 
 
@@ -806,7 +806,7 @@
 																					<div class="card-inner">
 																					<p class="card-heading" >
 																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - 单端口 Shadowsocks - {$single_muport['server']->server} 端口</a>
-																						<span class="label label-brand-accent">{$node->status}</span>
+																						<span class="label label-brand-accent">←点击节点查看配置信息</span>
 																					</p>
 
 
