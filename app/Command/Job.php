@@ -870,7 +870,7 @@ class Job
 			
 			
 		      	//等级到期3天后提醒用户续费	
-		     	if($user->class ==0 && time() - strtotime($user->class_expire) >= 3*86400 && $user->tixing != 3)
+		     	if($user->class ==0 && time() - strtotime($user->class_expire) >= 3*86400 && $user->tixing != 3 && $user->tixing != 4)
 			    {				
 					
 					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
