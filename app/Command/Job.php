@@ -681,7 +681,7 @@ class Job
 				
 			}
 			//解决到期前购买自动重置未去掉的问题
-			if ($user->class >=17 && $user->class <=19 || $user->class ==0) {
+			if ($user->class >=17 && $user->class <=19) {
 				$user->auto_reset_day = 0;
 				$user->auto_reset_bandwidth = 0;
 			}
@@ -694,7 +694,7 @@ class Job
                     $user->last_day_t = 0;
 					$user->auto_reset_day = 0;
 					$user->auto_reset_bandwidth = 0;
-					$user->tixing =0;	
+					$user->tixing =2;	
 					$user->class=0;
 
                     $subject = Config::get('appName')."-您的账号等级已经过期了";
@@ -866,7 +866,7 @@ class Job
 			
 			
 			//等级到期3天后提醒用户续费	
-			if($user->class ==0 && time() - (3*86400) > strtotime($user->class_expire) && $user->tixing == 1)
+			if($user->class ==0 && (time() - strtotime($user->class_expire)) > (3*86400) && $user->tixing == 2)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
@@ -892,14 +892,14 @@ class Job
 		$emailjilu->datetime = time();
 		$emailjilu->save();
 		
-				$user->tixing =2;	
+				$user->tixing =3;	
 				
 			}
 
 			
 			
 			//等级到期删除用户前7天最后提醒
-			if($user->class ==0 && time() - strtotime($user->class_expire) > (7*86400) && $user->tixing == 2)
+			if($user->class ==0 && time() - strtotime($user->class_expire) > (7*86400) && $user->tixing == 3)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号快要被删除啦";
@@ -924,7 +924,7 @@ class Job
 		$emailjilu->neirong = $antiXss->xss_clean($text);
 		$emailjilu->datetime = time();
 		$emailjilu->save();		
-				$user->tixing =3;	
+				$user->tixing =4;	
 				
 			}
 
