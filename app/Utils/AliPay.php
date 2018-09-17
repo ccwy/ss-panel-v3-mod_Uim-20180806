@@ -174,7 +174,7 @@ class AliPay
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
                         strtotime($item['tradeTime']) < $time && $item['tradeAmount'] == $fee) {
-                        return $item['tradeNo'];
+                        return $item['orderNo'];
                     }
                 }
             }
