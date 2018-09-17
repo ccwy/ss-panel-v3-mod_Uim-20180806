@@ -25,15 +25,11 @@
                                     <div class="card-main">
                                         <div class="card-header">
                                             <div class="card-inner">
-                                                <h1 class="card-heading" style=" text-align:center;font-weight:bold;">
-                                                    登录到用户中心</h1>
+                                                <h1 class="card-heading" style=" text-align:center;font-weight:bold;">登录到用户中心</h1>                                                 
                                             </div>
                                         </div>
                                         <div class="card-inner">
-                                            <form action="javascript:void(0);" method="POST"> 
-										 
-
-
+                                            <form action="javascript:void(0);" method="POST"> 									 
                                                 <div class="form-group form-group-label">
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
@@ -66,10 +62,7 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
-                                                            <button id="login" type="submit"
-                                                                    class="btn btn-block btn-brand waves-attach waves-light">
-                                                                登录
-                                                            </button>
+                                                            <button id="login" type="submit" class="btn btn-block btn-brand waves-attach waves-light"> 登录 </button>   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,12 +72,10 @@
                                                         <div class="col-md-10 col-md-push-1">
                                                             <div class="checkbox checkbox-adv">
                                                                 <label for="remember_me">
-                                                                    <input class="access-hide" value="week"
-                                                                           id="remember_me" name="remember_me"
-                                                                           type="checkbox">记住我
-                                                                    <span class="checkbox-circle"></span><span
-                                                                            class="checkbox-circle-check"></span><span
-                                                                            class="checkbox-circle-icon icon">done</span>
+                                                                    <input class="access-hide" value="week" id="remember_me" name="remember_me" type="checkbox">记住我                                                                          
+                                                                    <span class="checkbox-circle"></span>
+																	<span class="checkbox-circle-check"></span>
+																	<span class="checkbox-circle-icon icon">done</span>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -149,8 +140,7 @@
 
 					{*
                     <div class="clearfix">
-                        <p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach"
-                                                              href="/password/reset">重置密码</a></p>
+                        <p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach" href="/password/reset">重置密码</a></p>
                         {if $config['regiestrs'] == 'true'}
 							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/auth/register">注册帐号</a></p>
 							{else}
