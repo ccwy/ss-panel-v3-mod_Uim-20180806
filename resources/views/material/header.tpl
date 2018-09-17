@@ -43,7 +43,7 @@
 							<a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
 						</li>
 						<li>
-							<a class="padding-right-lg waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
+							<a class="padding-right-lg waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>退出登录</a>
 						</li>
 					</ul>
 				{else}
@@ -77,7 +77,7 @@
 						<a  href="/user"><i class="icon icon-lg">person</i>&nbsp;用户中心</a>
 					</li>
 					<li>
-						<a  href="/user/logout"><i class="icon icon-lg">call_missed_outgoing</i>&nbsp;退出</a>
+						<a  href="/user/logout"><i class="icon icon-lg">call_missed_outgoing</i>&nbsp;退出登录</a>
 					</li>
 					{else}
 					<li>

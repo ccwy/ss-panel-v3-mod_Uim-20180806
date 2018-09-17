@@ -184,7 +184,7 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-heading">
-										<h2 class="modal-title">注册 TOS</h2>
+										<h2 class="modal-title">注册 用户协议</h2>
 									</div>
 									<div class="modal-inner">
 										{include file='reg_tos.tpl'}

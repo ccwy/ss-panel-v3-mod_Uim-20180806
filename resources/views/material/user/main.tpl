@@ -317,7 +317,7 @@
 						</li>
 
 						<li>
-							<a class="padding-right-cd waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
+							<a class="padding-right-cd waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>退出登录</a>
 						</li>
 					</ul>
 				{else}
@@ -431,7 +431,7 @@
 						</ul>
 
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_detect">审计</a>
-						<ul class="menu-collapse collapse in" id="ui_menu_detect">
+						<ul class="menu-collapse collapse out" id="ui_menu_detect">
 							<li><a href="/user/detect"><i class="icon icon-lg">account_balance</i>&nbsp;审计规则</a></li>
 							<li><a href="/user/detect/log"><i class="icon icon-lg">assignment_late</i>&nbsp;审计记录</a></li>
 						</ul>
