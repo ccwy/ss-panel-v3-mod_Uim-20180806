@@ -709,16 +709,16 @@ class Job
                         echo $e->getMessage();
                     }
 										
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();		
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
                 }             
             }
 
@@ -745,16 +745,17 @@ class Job
                         echo $e->getMessage();
                     }
 											
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
+         					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
 		
                 }
             }
@@ -773,16 +774,17 @@ class Job
                         echo $e->getMessage();
                     }
 	
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
+        					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
 		
                     $user->kill_user();
                     continue;
@@ -807,16 +809,17 @@ class Job
                         echo $e->getMessage();
                     }
 						
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();		
+         					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();			
 
                     Radius::Delete($user->email);
 
@@ -848,25 +851,26 @@ class Job
 						echo $e->getMessage();
 					}
 								
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
+        					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
 		
-				$user->tixing =1;	
+				   $user->tixing =1;	
 				
 			}
 
 			
 			
 			//等级到期3天后提醒用户续费	
-			if($user->class ==0 && (time() - strtotime($user->class_expire)) > (3*86400) && $user->tixing == 2)
+			if($user->class ==0 && time() - strtotime($user->class_expire) > 3*86400 && $user->tixing == 2)
 			{				
 					
 					$subject = Config::get('appName')."-您的账号等级已过期 3 天了";
@@ -881,28 +885,29 @@ class Job
 						echo $e->getMessage();
 					}
 								
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
+        					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
 		
-				$user->tixing =3;	
+				   $user->tixing =3;	
 				
 			}
 
 			
 			
 			//等级到期删除用户前7天最后提醒
-			if($user->class ==0 && time() - strtotime($user->class_expire) > (7*86400) && $user->tixing == 3)
+			if($user->class ==0 && time() - strtotime($user->class_expire) > 7*86400 )
 			{				
 					
-					$subject = Config::get('appName')."-您的账号快要被删除啦";
+					$subject = Config::get('appName')."-您的账号已过期7天以上了";
 					$to = $user->email;
 					$text = "您好，系统发现您的账户等级已于 ".$user->class_expire." 过期，账号等级已过期 ".Config::get('enable_account_expire_delete_days')."  天以上了，账号即将被自动删除，如您还需要继续使用，请您尽快登录网站续费，如不打算继续使用，请忽略此邮件，如有疑问，请发工单联系管理员，谢谢！";
 					try {
@@ -914,17 +919,19 @@ class Job
 						echo $e->getMessage();
 					}
 								
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();		
-				$user->tixing =4;	
+         					
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();	
+				   
+				   $user->tixing =4;	
 				
 			}
 
@@ -944,17 +951,17 @@ class Job
                     } catch (Exception $e) {
                         echo $e->getMessage();
                     }
-											
-         //增加邮件记录
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
+							
+                    //增加邮件记录
+		           $antiXss = new AntiXSS();
+		           $emailjilu = new Emailjilu();
+		           $emailjilu->userid = $user->id;
+		           $emailjilu->username = $user->user_name;
+		           $emailjilu->useremail = $user->email;
+		           $emailjilu->biaoti = $antiXss->xss_clean($subject);
+		           $emailjilu->neirong = $antiXss->xss_clean($text);
+		           $emailjilu->datetime = time();
+		           $emailjilu->save();		
 		
                     Radius::Delete($user->email);
 
