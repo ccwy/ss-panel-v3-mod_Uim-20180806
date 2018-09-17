@@ -343,7 +343,7 @@
 				<ul class="nav">
 					<li>
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">我的</a>
-						<ul class="menu-collapse collapse in" id="ui_menu_me">
+						<ul class="menu-collapse collapse out" id="ui_menu_me">
 							<li>
 								<a href="/user">
 									<i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心

@@ -69,7 +69,7 @@
 	<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
 		<div class="menu-scroll">
 			<div class="menu-content">
-				<a class="menu-logo" href="/"><i class="icon icon-lg">language</i>&nbsp;点击返回官网</a>
+				<a class="menu-logo" href="/"><i class="icon icon-lg">language</i>&nbsp;点击返回首页</a>
 				<ul class="nav">
 
 					{if $user->isLogin}
