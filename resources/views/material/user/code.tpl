@@ -164,6 +164,36 @@
 						</div>
 					</div>
 
+					<!-- ailpay -->
+                <div aria-hidden="true" class="modal modal-va-middle fade" id="AliPayReadyToPay" role="dialog"
+                     tabindex="-1">
+                    <div class="modal-dialog modal-xs">
+                        <div class="modal-content">
+                            <div class="modal-heading">
+                                <a class="modal-close" id="AliPayReadyToPayClose" data-dismiss="modal">×</a>
+                                <h2 class="modal-title">支付宝扫码充值<span style="color: red;margin-left: 10px;"
+                                                                            id="countTime"></span>
+                                </h2>
+                            </div>
+                            <div class="modal-inner" style="text-align: center">
+
+                                <div class="text-center">
+                                    <p id="title">手机端点击二维码即可转跳app支付</p>
+                                    <p id="qrcode">
+                                        <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode={$QRcodeUrl}">
+                                            <img src="{$QRcode}" width="200px"/>
+                                        </a>
+                                    </p>
+                                    <p id="title">支付成功后大约一分钟内提示</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+				
 					<div aria-hidden="true" class="modal modal-va-middle fade" id="alipay" role="dialog" tabindex="-1">
 						<div class="modal-dialog modal-xs">
 							<div class="modal-content">
@@ -296,6 +326,86 @@
 		});
 		<!-- tid = setTimeout(f, 1000); //循环调用触发setTimeout  -->
 	}
-	setTimeout(f, 1000);
-})
+	
+        $("#urlChangeAliPay").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "NewAliPay",
+                dataType: "json",
+                data: {
+                    fee: $("#AliPayType").val()
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#AliPayReadyToPay").modal();
+                        getCountdown();
+                        $id = setInterval(function () {
+                            getCountdown()
+                        }, 1000);
+                        setTimeout(function () {
+                            checkPayTime(data.id)
+                        }, 1000);
+                    } else {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    }
+                }
+            });
+			
+			
+            function checkPayTime(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "CheckAliPay",
+                    dataType: "json",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        if (data.ret) {
+                            if (data.status == 1) {
+                                close('充值成功！');
+                                setTimeout(function (){
+                                    location.reload()
+                                }, 3000);
+                            }
+                        }
+                    }
+                });
+                CheckPayTimeId = setTimeout(function () {
+                    checkPayTime(id)
+                }, 3000); //循环调用触发setTimeout
+            }
+
+            $('#AliPayReadyToPayClose').click(function () {
+                if (CheckPayTimeId) clearTimeout(CheckPayTimeId);
+                if ($id) clearInterval($id)
+            });
+
+            function close($msg) {
+                if (CheckPayTimeId) clearTimeout(CheckPayTimeId);
+                if ($id) clearInterval($id)
+                $("#AliPayReadyToPay").modal('hide');
+                $("#result").modal();
+                $("#msg").html($msg);
+            }
+
+            var m = 2, s = 59, countdown = document.getElementById("countTime");
+
+            function getCountdown() {
+                countdown.innerHTML = "<span>" + (m > 10 ? m : '0' + m) + "</span>:<span>" + (s > 10 ? s : '0' + s) + "</span>";
+                if (m == 0 && s == 0) {
+                    close('充值超时，如付款成功请刷新页面');
+                } else if (m >= 0) {
+                    if (s > 0) {
+                        s--;
+                    } else if (s == 0) {
+                        m--, s = 59;
+                    }
+                }
+            }
+        });
+
+
+    })
 </script>

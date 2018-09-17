@@ -15,6 +15,8 @@ class Pay
                 return Pay::doiampay_html($user);
             case "paymentwall":
                 return Pay::pmw_html($user);
+			case "chenAlipay":  //ailipay
+                return AliPay::getHTML($user);
             case 'spay':
                 return Pay::spay_html($user);
             case 'zfbjk':
@@ -147,7 +149,7 @@ class Pay
 						<!-- <form name="codepay" action="/user/code/codepay" method="get">
 						<p class="card-heading">请输入充值金额</p> -->
                         <form name="codepay" action="/user/code/codepay" method="get" target="_blank">
-                            <input class="form-control" id="price" name="price" placeholder="输入充值金额后，点击你要付款的应用图标即可" autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required">
+                            <input class="form-control" id="price" name="price" placeholder="输入充值金额后，点击你要付款的应用图标即可" autofocus="autofocus" type="number" min="0" max="1000" step="1" required="required">
                             <br>
                             <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="1" ><img src="/images/alipay.jpg" width="50px" height="50px" /></button>
                           <!--  <button class="btn btn-flat waves-attach" id="btnSubmit" type="submit" name="type" value="2" disabled><img src="/images/qqpay.jpg" width="50px" height="50px" /></button> -->

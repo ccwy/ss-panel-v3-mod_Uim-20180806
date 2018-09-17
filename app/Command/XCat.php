@@ -16,6 +16,8 @@ use App\Services\Config;
 use App\Utils\GA;
 use App\Utils\QRcode;
 use App\Utils\Update;
+//alipay
+use App\Utils\AliPay;
 
 class XCat
 {
@@ -31,6 +33,8 @@ class XCat
         switch ($this->argv[1]) {
             case("install"):
                 return $this->install();
+			case("alipay"):  //alipay
+                return $this->alipay();	
             case("createAdmin"):
                 return $this->createAdmin();
             case("resetTraffic"):
@@ -105,6 +109,11 @@ class XCat
 		echo("  initQQWry - 下载 IP 解析库".PHP_EOL);
 		echo("  resetTraffic - 重置所有用户流量".PHP_EOL);
 		echo("  migrateConfig - 将配置迁移至新配置".PHP_EOL);
+    }
+    //alipay
+    public function alipay()
+    {
+        AliPay::checkAliPay();
     }
 
 	public function resetPort()

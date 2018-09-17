@@ -79,6 +79,7 @@ $app->get('/pay_callback', 'App\Controllers\HomeController:pay_callback');
 $app->get('/toos', 'App\Controllers\HomeController:toos');  //tos
 $app->get('/fstaffs', 'App\Controllers\HomeController:fstaffs');  //staff
 $app->get('/cous', 'App\Controllers\HomeController:cous'); //联系我们
+$app->get('/error', 'App\Controllers\HomeController:code_error'); //充值错误页
 $app->get('/gfwlistjs', 'App\Controllers\LinkController:GetGfwlistJs');
 $app->post('/telegram_callback', 'App\Controllers\HomeController:telegram');
 $app->get('/yft/notify', 'App\Controllers\YFTPayCallBackController:yft_notify');
@@ -166,6 +167,12 @@ $app->group('/user', function () {
     $this->get('/code/codepay', 'App\Controllers\UserController:codepay');
     $this->get('/code_check', 'App\Controllers\UserController:code_check');
     $this->post('/code', 'App\Controllers\UserController:codepost');
+	
+	//alipay
+	$this->get('/CheckAliPay', 'App\Controllers\UserController:CheckAliPay');
+    $this->get('/NewAliPay', 'App\Controllers\UserController:NewAliPay');
+	
+	
     $this->post('/gacheck', 'App\Controllers\UserController:GaCheck');
     $this->post('/gaset', 'App\Controllers\UserController:GaSet');
     $this->get('/gareset', 'App\Controllers\UserController:GaReset');

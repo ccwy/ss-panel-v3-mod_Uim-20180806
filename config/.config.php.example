@@ -175,14 +175,21 @@ $System_Config['enable_geetest_checkin']='false';      //启用签到验证码
 
 
 //支付系统设置--------------------------------------------------------------------
-#取值 codepay,doiampay,paymentwall,zfbjk,spay,f2fpay,yftpay,none,f2fpay_codepay
+#取值 codepay,doiampay,paymentwall,zfbjk,spay,f2fpay,yftpay,none,f2fpay_codepay,chenAlipay
 $System_Config['payment_system']='none';
+$System_Config['codypaymenay']='15';      //码支付最低限额
+
+# chenPay
+$System_Config['AliPay_EMail'] = ''; //失效通知email 
+$System_Config['AliPay_QRcode'] = '';  //支付宝二维码
+$System_Config['AliPay_Cookie'] = ''; //支付宝cookie
+//https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm 的 https://mbillexprod.alipay.com/enterprise/tradeListQuery.json接口
+
 
 #codepay码支付
 #wiki地址:https://goo.gl/dRwRDi  http://t.cn/RnsWjtB
 
 $System_Config['payurl2'] = '';   // 码支付通知地址，必须为这个
-$System_Config['codypaymenay']='15';      //码支付最低限额
 $System_Config['codepay_id']='';      //码支付ID
 $System_Config['codepay_key']='';      //码支付通信密钥
 

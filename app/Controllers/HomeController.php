@@ -56,6 +56,11 @@ class HomeController extends BaseController
     {
         return $this->view()->display('cous.tpl');
     }
+	
+	public function code_error()
+    {
+        return $this->view()->display('code_error.tpl');
+    }
     
     
     public function telegram($request, $response, $args)
