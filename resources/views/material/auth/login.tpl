@@ -67,6 +67,7 @@
                                                     </div>
                                                 </div>
 
+												{*
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
@@ -81,6 +82,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+												*}
                                             </form>
                                         </div>
                                     </div>
