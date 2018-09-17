@@ -33,7 +33,8 @@
 										<p class="card-heading">节点连接密码修改</p>
 										<p>当前连接密码：<code id="ajax-user-passwd">{$user->passwd}</code><button class="kaobei copy-text btn btn-subscription" type="button" data-clipboard-text="{$user->passwd}">点击拷贝</button></p>
 										<p><font color="red">连接密码只能是大写字母、小写字母、数字，连接密码需大于8位，小于26位；
-										<br>改完连接密码后请更新客户端服务器的连接密码或者重新导入配置文件！</font></p>
+										<br>改完连接密码后请更新客户端服务器的连接密码或者重新导入配置文件！
+										<br>修改链接密码会导致V2ray的UUID自动更新，请留意并更新V2ray节点配置</font></p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="sspwd">新连接密码</label>
 											<input class="form-control" id="sspwd" type="text">
