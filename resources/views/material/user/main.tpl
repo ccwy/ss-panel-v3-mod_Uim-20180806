@@ -398,13 +398,13 @@
 								</a>
 							</li>
 							
-							{if $user->anyid !='' && $user->anypwd !=''}
+							{*
 							<li>
 								<a href="/user/anyconnect">
 									<i class="icon icon-lg">router</i>&nbsp;Anyconnect
 								</a>
 							</li>
-							{/if}
+							*}
 
 							<li>
 								<a href="/user/relay">

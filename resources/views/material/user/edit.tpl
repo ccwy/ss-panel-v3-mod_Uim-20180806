@@ -16,7 +16,7 @@
 	<main class="content">
 		<div class="content-header ui-content-header">
 			<div class="container">
-				<h1 class="content-heading">修改资料</h1>
+				<h1 class="content-heading">系统设置</h1>
 			</div>
 		</div>
 		<div class="container">
