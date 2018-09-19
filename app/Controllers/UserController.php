@@ -429,7 +429,7 @@ class UserController extends BaseController
 		}
 		else 
 		{
-			header("Location: /error"); 
+			header("Location: /code_error"); 
 			exit;
 		}
       //  Pay::getGen($this->user, $amount);
@@ -446,6 +446,7 @@ class UserController extends BaseController
         return $response->getBody()->write(json_encode(AliPay::checkOrder($id)));
     }
 
+	
     public function NewAliPay($request, $response, $args)
     {
         $fee = $request->getQueryParams()["fee"];

@@ -353,6 +353,7 @@
             });
 			
 			
+			
             function checkPayTime(id) {
                 $.ajax({
                     type: "GET",
@@ -390,6 +391,7 @@
                 $("#msg").html($msg);
             }
 
+			
             var m = 2, s = 59, countdown = document.getElementById("countTime");
 
             function getCountdown() {
