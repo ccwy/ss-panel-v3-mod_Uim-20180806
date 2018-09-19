@@ -87,6 +87,7 @@
 							<li><a href="/admin/trafficlog"><i class="icon icon-lg">traffic</i>&nbsp;流量记录</a></li>
 						<!--	<li><a href="/admin/block"><i class="icon icon-lg">dialer_sip</i>&nbsp;已封禁IP</a></li>
 							<li><a href="/admin/unblock"><i class="icon icon-lg">dialer_sip</i>&nbsp;已解封IP</a></li>  -->
+							<li><a href="/admin/alive"><i class="icon icon-lg">important_devices</i>&nbsp;在线IP</a></li>
 						</ul>
 
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_user">用户</a>
@@ -95,7 +96,7 @@
 							<li><a href="/admin/relay"><i class="icon icon-lg">compare_arrows</i>&nbsp;中转规则</a></li>
 							<li><a href="/admin/invite"><i class="icon icon-lg">loyalty</i>&nbsp;邀请与返利</a></li>
 							<li><a href="/admin/login"><i class="icon icon-lg">text_fields</i>&nbsp;登录记录</a></li>
-						<!--	<li><a href="/admin/alive"><i class="icon icon-lg">important_devices</i>&nbsp;在线IP</a></li> -->
+						
 						</ul>
 
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_detect">审计</a>
