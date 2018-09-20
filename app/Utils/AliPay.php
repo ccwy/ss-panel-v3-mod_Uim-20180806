@@ -17,11 +17,12 @@ use App\Models\Paylist;
 use App\Models\Payback;
 use App\Services\Mail;
 
+
 class AliPay
 {
     static $file = __DIR__ . '/../../storage/framework/smarty/cache/aliPayDie.ini';
 
-    public static function getHTML($user)
+	 public static function getHTML($user)
     {
         $a = '<a class="btn btn-flat waves-attach" id="urlChangeAliPay" ><span class="icon">check</span>&nbsp;充值</a>';
         if (file_exists(static::$file))
@@ -32,7 +33,7 @@ class AliPay
 						<br>2，支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
 						</p>
 						
-                        <input class="form-control" type="number" id="AliPayType"  name="amount" placeholder="输入充值金额后，点击你要付款的应用图标即可"  autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required" />
+                        <input class="form-control" type="number" id="AliPayType"  name="amount" placeholder="输入充值金额后，点击你要付款的应用图标即可"  autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required">
 						
                         <div class="form-group form-group-label">
 						<button class="btn btn-flat waves-attach" id="urlChangeAliPay"><img src="/images/alipay.jpg" width="50px" height="50px" /></button>
@@ -43,9 +44,10 @@ class AliPay
                             }
                         </script>
 						</div>
+                        
 ';
     }
-
+	
     public static function AliPay_callback($trade, $order)
     {
         if ($trade == null) {//没有符合的订单，或订单已经处理，或订单号为空则判断为未支付
@@ -71,17 +73,18 @@ class AliPay
         $codeq->userid = $user->id;
         $codeq->save();
         if ($user->ref_by != "" && $user->ref_by != 0 && $user->ref_by != null) {
-		    //首次返利
+			//首次返利
 			$ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
 			if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {	
-            $gift_user = User::where("id", "=", $user->ref_by)->first();
-            $gift_user->fanli = $gift_user->fanli + ($codeq->number*(Config::get('code_payback')/100)));  //返利8
-            $gift_user->save();			
+            $gift_user=User::where("id", "=", $user->ref_by)->first();
+            $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利8
+            $gift_user->save();
+			
             $Payback = new Payback();
             $Payback->total = $trade->total;
             $Payback->userid = $user->id;
             $Payback->ref_by = $user->ref_by;
-            $Payback->ref_get = $codeq->number*(Config::get('code_payback')/100);
+            $Payback->ref_get = $codeq->number * (Config::get('code_payback')/100);
             $Payback->datetime = time();
             $Payback->save();
 			}
@@ -171,7 +174,7 @@ class AliPay
 //                        return $item['outTradeNo'];
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
-                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-150 && $item['tradeAmount'] == $fee) {
+                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-180 && $item['tradeAmount'] == $fee) {
                         return $item['tradeNo'];
                     }
                 }
