@@ -459,14 +459,13 @@ class UserController extends BaseController
             $res['msg'] = "最低充值金额不能小于 " .Config::get('codypaymenay'). " 元。";
             return $response->getBody()->write(json_encode($res));
         }
-		$paylist = Paylist::where('status' , 0)->first();
 		
+		$paylist = Paylist::where('status' , 0)->first();
 		if ($paylist) {
 		    $res['ret'] = 0;
             $res['msg'] = "系统繁忙，请 5 分钟后再试。";
             return $response->getBody()->write(json_encode($res));
-	        } 
-		
+	        } 		
         return $response->getBody()->write(json_encode(AliPay::newOrder($this->user, $fee)));
     }
 

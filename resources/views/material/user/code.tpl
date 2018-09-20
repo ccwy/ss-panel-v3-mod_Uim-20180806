@@ -179,6 +179,7 @@
 
                                 <div class="text-center">
                                     <p id="title">手机端点击二维码即可转跳app支付</p>
+									<p id="fee"></p>
                                     <p id="qrcode">
                                         <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode={$QRcodeUrl}">
                                             <img src="{$QRcode}" width="200px"/>
@@ -338,6 +339,7 @@
                 success: function (data) {
                     if (data.ret) {
                         $("#AliPayReadyToPay").modal();
+						$("#fee").html("您的订单金额为："+data.fee+"元。");
                         getCountdown();
                         $id = setInterval(function () {
                             getCountdown()
