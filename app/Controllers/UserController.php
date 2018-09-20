@@ -463,7 +463,7 @@ class UserController extends BaseController
 		$paylist = Paylist::where('status' , 0)->first();
 		if ($paylist) {
 		    $res['ret'] = 0;
-            $res['msg'] = "系统繁忙，请 5 分钟后再试。";
+            $res['msg'] = "系统繁忙，请 3 分钟后再试。";
             return $response->getBody()->write(json_encode($res));
 	        } 		
         return $response->getBody()->write(json_encode(AliPay::newOrder($this->user, $fee)));
