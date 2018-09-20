@@ -460,7 +460,7 @@ class UserController extends BaseController
             return $response->getBody()->write(json_encode($res));
         }
 		
-		$paylist = Paylist::where('status' , '=', 0)->first();
+		$paylist = Paylist::where('status', '=', '0')->first();
 		if ($paylist) {
 		    $res['ret'] = 0;
             $res['msg'] = "系统繁忙，请 3 分钟后再试。";
