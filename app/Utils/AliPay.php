@@ -183,6 +183,7 @@ class AliPay
         return false;
     }
 
+	
     public static function sendMail()
     {
         $time = date('Y-m-d H:i:s');
