@@ -392,7 +392,7 @@
             }
 
 			
-            var m = 2, s = 59, countdown = document.getElementById("countTime");
+            var m = 1, s = 59, countdown = document.getElementById("countTime");
 
             function getCountdown() {
                 countdown.innerHTML = "<span>" + (m > 10 ? m : '0' + m) + "</span>:<span>" + (s > 10 ? s : '0' + s) + "</span>";

@@ -84,7 +84,7 @@ class AliPay
             $Payback->total = $trade->total;
             $Payback->userid = $user->id;
             $Payback->ref_by = $user->ref_by;
-            $Payback->ref_get = $codeq->number * 0.2;
+            $Payback->ref_get = $codeq->number * (Config::get('code_payback')/100);
             $Payback->datetime = time();
             $Payback->save();
 			}
@@ -151,7 +151,7 @@ class AliPay
         $pl = new Paylist();
         $pl->userid = $user->id;
         $pl->total = $amount;
-        $pl->datetime = time() + 3 * 60;//有效时间
+        $pl->datetime = time() + 2 * 60;//有效时间
         $pl->save();
         $pl->ret = 1;
         return $pl;
