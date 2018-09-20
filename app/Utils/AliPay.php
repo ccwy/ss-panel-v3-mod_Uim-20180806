@@ -17,12 +17,11 @@ use App\Models\Paylist;
 use App\Models\Payback;
 use App\Services\Mail;
 
-
 class AliPay
 {
     static $file = __DIR__ . '/../../storage/framework/smarty/cache/aliPayDie.ini';
 
-	 public static function getHTML($user)
+    public static function getHTML($user)
     {
         $a = '<a class="btn btn-flat waves-attach" id="urlChangeAliPay" ><span class="icon">check</span>&nbsp;充值</a>';
         if (file_exists(static::$file))
@@ -44,10 +43,9 @@ class AliPay
                             }
                         </script>
 						</div>
-                        
 ';
     }
-	
+
     public static function AliPay_callback($trade, $order)
     {
         if ($trade == null) {//没有符合的订单，或订单已经处理，或订单号为空则判断为未支付
@@ -73,18 +71,17 @@ class AliPay
         $codeq->userid = $user->id;
         $codeq->save();
         if ($user->ref_by != "" && $user->ref_by != 0 && $user->ref_by != null) {
-			//首次返利
+		    //首次返利
 			$ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
 			if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {	
-            $gift_user=User::where("id", "=", $user->ref_by)->first();
-            $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利8
-            $gift_user->save();
-			
+            $gift_user = User::where("id", "=", $user->ref_by)->first();
+            $gift_user->fanli = $gift_user->fanli + ($codeq->number*(Config::get('code_payback')/100)));  //返利8
+            $gift_user->save();			
             $Payback = new Payback();
             $Payback->total = $trade->total;
             $Payback->userid = $user->id;
             $Payback->ref_by = $user->ref_by;
-            $Payback->ref_get = $codeq->number * (Config::get('code_payback')/100);
+            $Payback->ref_get = $codeq->number*(Config::get('code_payback')/100);
             $Payback->datetime = time();
             $Payback->save();
 			}
@@ -183,7 +180,6 @@ class AliPay
         return false;
     }
 
-	
     public static function sendMail()
     {
         $time = date('Y-m-d H:i:s');
