@@ -209,9 +209,9 @@ class AliPay
 
     public static function checkAliPay()
     {
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             self::checkAliPayOne();
-            if ($i != 5) sleep(10);
+            if ($i != 2) sleep(30);
         }
     }
 }
