@@ -187,7 +187,7 @@ class AliPay
     {
         $time = date('Y-m-d H:i:s');
         if (!file_exists(static::$file)) {
-            Mail::getClient()->send(Config::get('AliPay_EMail'), 'LOG报告监听COOKIE出现问题', "LOG提醒你，COOKIE出现问题，请务必尽快更新COOKIE。<br>LOG记录时间：$time", []);
+            Mail::getClient()->send(Config::get('AliPay_EMail'), 'LOG报告监听支付宝COOKIE出现问题', "LOG提醒你，支付宝COOKIE出现问题，请务必尽快更新支付宝COOKIE。<br>LOG记录时间：$time", []);
             file_put_contents(static::$file, '1');
         }
     }
