@@ -5,8 +5,6 @@ use App\Models\Code;
 use App\Models\Paylist;
 use App\Models\Payback;
 use App\Services\Config;
-use App\Services\Payment;
-
 class Pay
 {
     public static function getHTML($user)
@@ -17,8 +15,8 @@ class Pay
                 return Pay::doiampay_html($user);
             case "paymentwall":
                 return Pay::pmw_html($user);
-			case "chenAlipay":
-                return (new AliPay)->getHTML();
+			case "chenAlipay":  //ailipay
+                return AliPay::getHTML($user);
             case 'spay':
                 return Pay::spay_html($user);
             case 'zfbjk':

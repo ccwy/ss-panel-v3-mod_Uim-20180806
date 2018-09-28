@@ -12,7 +12,7 @@
     "aws/aws-sdk-php": "3.*",
     "gregwar/captcha": "1.*",
     "cloudxns/cloud-xns-api-sdk-php": "*",
-    "guzzlehttp/guzzle": " ~6.2.2",
+    "guzzlehttp/guzzle": " ~5.0",
     "voku/anti-xss": "^1.2",
     "paymentwall/paymentwall-php": "^2.1",
     "telegram-bot/api": "^2.2",

@@ -9,7 +9,6 @@ namespace App\Command;
 
 use App\Models\User;
 use App\Models\Relay;
-use App\Utils\AliPay;
 use App\Utils\Hash;
 use App\Utils\Tools;
 use App\Services\Config;
@@ -17,6 +16,8 @@ use App\Services\Config;
 use App\Utils\GA;
 use App\Utils\QRcode;
 use App\Utils\Update;
+//alipay
+use App\Utils\AliPay;
 
 class XCat
 {
@@ -32,10 +33,8 @@ class XCat
         switch ($this->argv[1]) {
             case("install"):
                 return $this->install();
-            case("alipay"):
-                return (new AliPay)->checkAliPay();
-            case("wxpay"):
-                return (new AliPay)->checkWxPay();
+			case("alipay"):  //alipay
+                return $this->alipay();	
             case("createAdmin"):
                 return $this->createAdmin();
             case("resetTraffic"):
@@ -68,8 +67,6 @@ class XCat
                     return Job::syncnode();
             case("syncnasnode"):
                     return Job::syncnasnode();
-			case("detectGFW"):
-				return Job::detectGFW();
             case("syncnas"):
                     return SyncRadius::syncnas();
             case("dailyjob"):
@@ -93,10 +90,8 @@ class XCat
 	        case("resetAllPort"):
                 return $this->resetAllPort();
 			case("migrateConfig"):
-			    return $this->migrateConfig();
-			case("update"):
 			    return Update::update();
-			default:
+            default:
                 return $this->defaultAction();
         }
     }
@@ -113,7 +108,12 @@ class XCat
 		echo("  initdownload - 下载 SSR 程序至服务器".PHP_EOL);
 		echo("  initQQWry - 下载 IP 解析库".PHP_EOL);
 		echo("  resetTraffic - 重置所有用户流量".PHP_EOL);
-		echo("  update - 更新并迁移配置".PHP_EOL);
+		echo("  migrateConfig - 将配置迁移至新配置".PHP_EOL);
+    }
+    //alipay
+    public function alipay()
+    {
+        AliPay::checkAliPay();
     }
 
 	public function resetPort()
@@ -145,11 +145,6 @@ class XCat
             $user->save();
         }
     }
-
-	public function migrateConfig()
-	{
-		echo("此命令已过时，请使用update命令。".PHP_EOL);
-	}
 
     public function cleanRelayRule()
     {
