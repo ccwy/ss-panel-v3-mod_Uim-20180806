@@ -287,9 +287,9 @@ class UserController extends BaseController
             $res['ret'] = 0;
             $res['msg'] = "请输入正确金额";
             return $response->getBody()->write(json_encode($res));
-        } elseif ($fee <= 0) {
+        } elseif ($fee < Config::get('codypaymenay')) {
             $res['ret'] = 0;
-            $res['msg'] = "请输入正确金额";
+            $res['msg'] = "最低充值金额不能小于 " .Config::get('codypaymenay'). " 元。";
             return $response->getBody()->write(json_encode($res));
         }
         return $response->getBody()->write(json_encode(AliPay::newOrder($this->user, $fee, $type, $url)));

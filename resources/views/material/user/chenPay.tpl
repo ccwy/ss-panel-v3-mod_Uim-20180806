@@ -15,7 +15,10 @@
 </style>
 <div class="card-inner">
     <div class="form-group pull-left">
-        <p class="modal-title">本站支持支付宝/微信在线充值</p>';
+        <p class="modal-title">支付宝/微信在线充值</p>
+		<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，自动到账，在下方输入充值金额，点击支付宝/微信图标，扫码支付
+						<br>2，支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
+						</p>';
         {if preg_match('/\|/', $this->getConfig('Pay_Price'))}
         {$data = explode('|', $this->getConfig('Pay_Price'))}
         <p>选择充值金额：</p>
@@ -66,7 +69,7 @@
                                  width="300px"/>
                         </a>
                     </p>
-                    <p id="title">支付成功后大约一分钟内提示</p>
+                    <p id="title">支付成功后大约一分钟内到账，请不要关闭页面</p>
                     <p id="info"></p>
                 </div>
             </div>
@@ -200,7 +203,7 @@
         function getCountdown() {
             countdown.innerHTML = "<span>" + (m > 10 ? m : '0' + m) + "</span>:<span>" + (s > 10 ? s : '0' + s) + "</span>";
             if (m == 0 && s == 0) {
-                close('倒计时结束了');
+                close('充值码已过期，如付款成功请联系管理员处理');
             } else if (m >= 0) {
                 if (s > 0) {
                     s--;

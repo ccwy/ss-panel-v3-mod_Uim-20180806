@@ -206,7 +206,7 @@
 													 width="300px"/>
 											</a>
 										</p>
-										<p id="title">支付成功后大约一分钟内提示</p>
+										<p id="title">支付成功后大约一分钟内到账，请不要关闭页面</p>
 										<p id="info"></p>
 									</div>
 								</div>
@@ -476,7 +476,7 @@
         function getCountdown() {
             countdown.innerHTML = "<span>" + (m > 10 ? m : '0' + m) + "</span>:<span>" + (s > 10 ? s : '0' + s) + "</span>";
             if (m == 0 && s == 0) {
-                close('倒计时结束了');
+                close('二维码已过期，如付款成功，请联系管理员处理');
             } else if (m >= 0) {
                 if (s > 0) {
                     s--;
