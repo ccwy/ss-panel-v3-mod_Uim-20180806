@@ -295,7 +295,7 @@ class AliPay
                     if (preg_match('/微信支付收款/', $item['FileName'])) {
                         $fees = explode('微信支付收款', $item['FileName']);
                         $fees = explode('元', $fees[1])[0];
-                        if ($item['CreateTime'] < $time && $fees == $fee) {
+                        if ($item['CreateTime'] < $time && $item['CreateTime'] > $time-120 && $fees == $fee) {
                             if ($this->getConfig('Pay_Xposed') == 1) {
                                 $wxsn = explode('收款方备注：', $item['Content']);
                                 $wxsn = explode('<br/>', $wxsn[1])[0];
