@@ -198,6 +198,7 @@
 								<div class="modal-inner" style="text-align: center">
 
 									<div class="text-center">
+									<p>付款前后不能关闭这个页面，否则无法自动到账</p>
 										<p id="title" class="textShow"></p>
 										<p id="qrcode">
 											<a class="pay"
@@ -206,7 +207,7 @@
 													 width="300px"/>
 											</a>
 										</p>
-										<p id="title">支付成功后大约一分钟内到账，请不要关闭页面</p>
+										<p id="title">支付成功后大约一分钟内到账</p>
 										<p id="info"></p>
 									</div>
 								</div>
