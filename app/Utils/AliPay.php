@@ -263,7 +263,7 @@ class AliPay
 //                        return $item['outTradeNo'];
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
-                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-120 && $item['tradeAmount'] == $fee) {
+                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-180 && $item['tradeAmount'] == $fee) {
                         if (!Paylist::where('tradeno', $item['tradeNo'])->first())
                             return $item['tradeNo'];
                     }
