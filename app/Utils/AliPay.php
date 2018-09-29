@@ -263,7 +263,7 @@ class AliPay
 //                        return $item['outTradeNo'];
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
-                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-180 && $item['tradeAmount'] == $fee) {
+                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-120 && $item['tradeAmount'] == $fee) {
                         if (!Paylist::where('tradeno', $item['tradeNo'])->first())
                             return $item['tradeNo'];
                     }
@@ -382,9 +382,9 @@ class AliPay
 
     public function checkWxPay()
     {
-        for ($i = 1; $i <= 2; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $this->checkWxPayOne();
-            if ($i != 2) sleep(30);
+            if ($i != 5) sleep(10);
         }
         Paylist::where('status', 0)->where('datetime', '<', time())->delete();
     }
