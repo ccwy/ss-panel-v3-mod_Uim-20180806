@@ -299,11 +299,11 @@ class AliPay
                             if ($this->getConfig('Pay_Xposed') == 1) {
                                 $wxsn = explode('收款方备注：', $item['Content']);
                                 $wxsn = explode('<br/>', $wxsn[1])[0];
-                                if ($sn == $wxsn && !Paylist::where('tradeno', $item['detail_id'])->first())
-                                    return $item['detail_id'];
+                                if ($sn == $wxsn && !Paylist::where('tradeno', $item['transaction_id'])->first())
+                                    return $item['transaction_id'];
                             } else {
-                                if (!Paylist::where('tradeno', $item['detail_id'])->first())
-                                    return $item['detail_id'];
+                                if (!Paylist::where('tradeno', $item['transaction_id'])->first())
+                                    return $item['transaction_id'];
                             }
                         }
                     }
