@@ -37,8 +37,8 @@ class AliPay
             $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay2" type="2"><img src="/images/weixin.jpg" width="45"></a>';
         $html = '<div class="form-group pull-left">
                         <p class="modal-title" >支付宝/微信在线充值</p>
-						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，付款前后不能关闭二维码页面，否则无法自动到账，在下方输入充值金额，点击支付宝/微信图标，扫码支付，支付成功等待网页自动跳转提示。
-						<br>2，支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
+						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，付款前后不能关闭二维码页面，否则无法自动到账，在下方输入充值金额，点击支付宝/微信图标，扫码支付，
+						<br>2，支付成功等待网页自动跳转提示,支付金额必须要和输入金额一致，金额不一致无法自动到账；付款时不能填备注，否则可能会导致无法自动到账
 						</p>';
         if (preg_match('/\|/', $this->getConfig('Pay_Price'))) {
             $data = explode('|', $this->getConfig('Pay_Price'));
