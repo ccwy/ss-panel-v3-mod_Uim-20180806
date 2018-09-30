@@ -389,7 +389,7 @@
 													<p>路由器 刷入<a href="http://www.right.com.cn/forum/thread-161324-1-1.html">这个固件</a>，然后 SSH 登陆路由器，执行以下命令{if $config["murss22"]==true}（导入普通端口）{/if}<br>
 														<code>wget -O- {$config['roudeurl']}/link/{$router_token}?is_ss=0 | bash && echo -e "\n0 */3 * * * wget -O- {$config['roudeurl']}/link/{$router_token}?is_ss=0 | bash\n">> /etc/storage/cron/crontabs/admin && killall crond && crond </code><br>
 														{if $config["murss22"]==true}
-														这个单端口多用户的<br>
+														或者这个单端口多用户的<br>
 														<code>wget -O- {$config['roudeurl']}/link/{$router_token_without_mu}?is_ss=1 | bash && echo -e "\n0 */3 * * * wget -O- {$config['roudeurl']}/link/{$router_token_without_mu}?is_ss=1 | bash\n">> /etc/storage/cron/crontabs/admin && killall crond && crond </code>{/if}
 														<br>
 														执行完毕以后就可以到路由器的设置面板里随意选择 Shadowsocks 服务器进行连接了。</p>
