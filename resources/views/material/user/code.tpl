@@ -198,7 +198,7 @@
 								<div class="modal-inner" style="text-align: center">
 
 									<div class="text-center">
-									<p><font color="red">付款时不能关闭这个页面，否则无法自动到账</font></p>
+									<p><font color="red">付款时不能关闭这里，否则无法自动到账</font></p>
 										<p id="title" class="textShow"></p>
 										<p id="qrcode">
 											<a class="pay"
