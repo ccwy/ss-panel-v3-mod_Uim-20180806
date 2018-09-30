@@ -45,6 +45,8 @@ $System_Config['iospasswd']='';     // ios小火煎密码
 
 $System_Config['jiaocheng1']='';     // 教程地址
 
+//单端口开关
+$System_Config['murss22']='true';     // 单端口开关
 
 //邮件设置-----------------------------------------------------------------------
 $System_Config['mailDriver'] = 'mailgun';   // mailgun or smtp or sendgrid 选择发送邮件的方式

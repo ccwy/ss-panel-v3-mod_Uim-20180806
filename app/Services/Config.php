@@ -67,6 +67,7 @@ class Config
 			"restport" => self::get("restport"),  // 重置端口
 		    "metodaes" => self::get("metodaes"),  // v2ray加密算法
 			"vmesstcp" => self::get("vmesstcp"),  // v2ray传输协议
+			"murss22" => self::get("murss22"),  // 单端口开关
 			"codypaymenay" => self::get("codypaymenay")  //  //码支付最低限额
 		
 			
