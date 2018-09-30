@@ -316,7 +316,7 @@
                                                         <p><span class="icon icon-lg text-white">filter_2</span> 解压至任意磁盘并运行</p>
 														<p><span class="icon icon-lg text-white">filter_3</span> 任务栏右下角右键纸飞机图标->服务器订阅->SSR服务器订阅设置，将订阅链接设置为下面的地址，确定之后再更新SSR服务器订阅（绕过代理）。</p>
 														<p> <span class="icon icon-lg text-white">filter_4</span> 然后选择一个合适的服务器，代理规则选“绕过局域网和大陆”，然后即可上网。</p>
-														<p><span class="icon icon-lg text-white">filter_5</span> 备用导入节点方法：点击<a class="copy-text" data-clipboard-text="{$ssr_url_all}">这里{if $config["murss22"]=='true'}（普通端口）{/if}</a>{if $config["murss22"]=='true'}或者<a class="copy-text" data-clipboard-text="{$ssr_url_all_mu}">这个(单端口多用户）</a>{/if}，然后右键小飞机->从剪贴板复制地址</p>
+														<p><span class="icon icon-lg text-white">filter_5</span> 备用导入节点方法：<a class="copy-text" data-clipboard-text="{$ssr_url_all}">点击这里{if $config["murss22"]=='true'}（普通端口）{/if}</a>{if $config["murss22"]=='true'}或者<a class="copy-text" data-clipboard-text="{$ssr_url_all_mu}">这个(单端口多用户）</a>{/if}，然后右键小飞机->从剪贴板复制地址</p>
 														
 														<p><span class="icon icon-lg text-white">flash_auto</span> SSR订阅地址：<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0" readonly="true"><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config['rssresd']}/link/{$ssr_sub_token}?mu=0">点击拷贝订阅地址</button><br></p>
 														
