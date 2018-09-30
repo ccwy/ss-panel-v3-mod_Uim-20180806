@@ -47,7 +47,7 @@ class AliPay
                 $html .= '<a class="btn btn-price ' . ($key == 0 ? 'active' : '') . '" price="' . $item . '" type="' . $key . '">' . $item . '元</a>';
             $html .= '<input type="hidden" id="AliPayType" class="form-control" name="amount" />';
         } else $html .= '<p>输入充值金额：</p><div class="form-group form-group-label btnBox"><label class="floating-label" for="price">充值金额</label>
-                        <input type="number" id="AliPayType" class="form-control" name="amount" autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required" />';
+                        <input type="number" id="AliPayType" class="form-control" name="amount" autofocus="autofocus" min="15" max="1000" step="1" required="required" />';
         $html .= '</div>' . $a . '</div>
                        <!-- <div class="form-group pull-right">
                         <img src="/images/qianbai-2.png" height="205" />
