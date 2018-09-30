@@ -253,6 +253,7 @@
 
 
 
+
 {include file='user/footer.tpl'}
 
 
@@ -315,6 +316,7 @@
 						$("#qrcode").html(data.qrcode);
 						$("#info").html("您的订单金额为："+data.amount+"元。");
 						$("#alipay").modal();
+						setTimeout(f, 1000);
 					} else {
 						$("#result").modal();
 						$("#msg").html(data.msg);
@@ -348,7 +350,7 @@
 				}
 			}
 		});
-		<!-- tid = setTimeout(f, 1000); //循环调用触发setTimeout  -->
+		tid = setTimeout(f, 1000); //循环调用触发setTimeout
 	}
 
    {if $config['payment_system']=='chenAlipay'}
@@ -477,7 +479,7 @@
         function getCountdown() {
             countdown.innerHTML = "<span>" + (m > 10 ? m : '0' + m) + "</span>:<span>" + (s > 10 ? s : '0' + s) + "</span>";
             if (m == 0 && s == 0) {
-                close('二维码已过期，如付款成功，请联系管理员处理');
+                close('二维码已过期，如已付款，请发工单联系管理员');
             } else if (m >= 0) {
                 if (s > 0) {
                     s--;
