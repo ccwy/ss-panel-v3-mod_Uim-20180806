@@ -352,7 +352,7 @@
 													
 													<div class="tab-pane fade" id="all_ssr_ios">
                                                         <p><span class="icon icon-lg text-white">filter_1</span> 切换至非国区App Store账号，商店搜索<code>Shadowrocket</code>下载安装</p>
-														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中点击<a href="{$ssr_url_all}">这个{if $config["murss22"]=='true'}（普通端口）{/if}</a>{if $config["murss22"]=='true'}或者<a href="{$ssr_url_all_mu}">这个（单端口多用户）</a>{/if}，然后点击确定，就可以批量添加节点。</p>
+														<p><span class="icon icon-lg text-white">filter_2</span> 在 Safari 中<a href="{$ssr_url_all}">点击这里{if $config["murss22"]=='true'}（普通端口）{/if}</a>{if $config["murss22"]=='true'}或者<a href="{$ssr_url_all_mu}">这里（单端口多用户）</a>{/if}，然后点击确定，就可以批量添加节点。</p>
                                                       <p><span class="icon icon-lg text-white">filter_3</span> 注意：第一次连接可能不能用，导入后程序退出并重新打开程序后连接即可！</p>
 													  <p><span class="icon icon-lg text-white">filter_4</span> 备用导入节点方法“”打开Shadowrocket，点击右上角<span class="icon icon-lg text-white">add</span>，添加类型为<code>Subscribe</code>，URL填写以下地址即可自动更新节点</p>
 													  
