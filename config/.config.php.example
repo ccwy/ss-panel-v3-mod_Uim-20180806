@@ -323,7 +323,7 @@ $System_Config['enable_analytics_code']='false';
 #V2ray设置---------------------------------------------------
 $System_Config['v2ray_port']='1899';
 $System_Config['v2ray_protocol']='HTTP/2 + TLS';
-$System_Config['v2ray_alter_id']='32';
+$System_Config['v2ray_alter_id']='2';
 $System_Config['v2ray_level']='0';
 $System_Config['metodaes']='aes-128-gcm';  //加密算法
 $System_Config['vmesstcp']='tcp';  //传输协议
