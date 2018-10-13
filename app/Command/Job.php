@@ -760,11 +760,11 @@ class Job
                 }
             }
 
-            if (strtotime($user->expire_in)+((int)Config::get('enable_account_expire_delete_days')*86400)<time() && $user->class == 0 && $user->money == 0 ) {
+            if (strtotime($user->expire_in)+((int)Config::get('enable_account_expire_delete_days')*86400)<time() && $user->class == 0 ) {
                 if (Config::get('enable_account_expire_delete')=='true') {
-                    $subject = Config::get('appName')."-您的账号已经被删除了";
+                    $subject = Config::get('appName')."-您的账号被删除了";
                     $to = $user->email;
-                    $text = "您好，感谢您的支持与使用，系统发现您的账号等级已于 ".$user->class_expire." 过期，根据网站用户协议约定，账号过期 ".Config::get('enable_account_expire_delete_days')." 天以上会被系统自动删除，您的帐号现已被删除，如需继续使用，请重新注册，如有疑问，请发邮件联系管理员，Email：asmark798@gmail.com" ;
+                    $text = "您好，感谢您的支持与使用，系统发现您的账号等级已于 ".$user->class_expire." 过期，根据网站用户协议约定，账号过期  7   天以上会被系统自动删除，您的帐号现已被删除，如需继续使用，请重新注册，如有疑问，请发邮件联系管理员，Email：asmark798@gmail.com" ;
                     try {
                         Mail::send($to, $subject, 'news/warn.tpl', [
                             "user" => $user,"text" => $text
