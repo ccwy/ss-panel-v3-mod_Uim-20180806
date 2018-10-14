@@ -319,13 +319,13 @@ class AliPay
         if ($this->getConfig('AliPay_Status') == 1 && $type == 1) {
             $name = '支付宝';
             $this->setConfig('AliPay_Status', 0);
-            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . 'COOKIE出现问题',
+            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG监听' . $name . '已掉线',
                 "LOG提醒你，{$name}COOKIE出现问题，请务必尽快更新COOKIE。<br>LOG记录时间：$time", []);
         }
         if ($this->getConfig('WxPay_Status') == 1 && $type == 2) {
             $name = '微信';
             $this->setConfig('WxPay_Status', 0);
-            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . 'COOKIE出现问题',
+            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . '已掉线',
                 "LOG提醒你，{$name}COOKIE出现问题，请务必尽快更新COOKIE。<br>LOG记录时间：$time", []);
         }
     }
@@ -373,9 +373,9 @@ class AliPay
 
     public function checkAliPay()
     {
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             $this->checkAliPayOne();
-            if ($i != 3) sleep(20);
+            if ($i != 2) sleep(30);
         }
         Paylist::where('status', 0)->where('datetime', '<', time())->delete();
     }
