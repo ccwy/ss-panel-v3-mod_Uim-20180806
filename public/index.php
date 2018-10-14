@@ -1,5 +1,5 @@
-/*
 <?php
+/*
 //屏蔽中国ip
 include('ip/geoip.inc');    
 global $countryCode;    
@@ -32,7 +32,7 @@ require BASE_PATH.'/config/routes.php';
 }
 */
 
-<?php
+
 
 //  PUBLIC_PATH
 define('PUBLIC_PATH', __DIR__);
