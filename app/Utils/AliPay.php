@@ -166,6 +166,7 @@ class AliPay
         return iconv('GBK', 'UTF-8', $html->getContents());
     }
 
+
     public function getWxSyncKey()
     {
         $html = (new \GuzzleHttp\Client())
