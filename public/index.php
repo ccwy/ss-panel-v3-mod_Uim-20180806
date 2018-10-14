@@ -1,5 +1,5 @@
+/*
 <?php
-
 //屏蔽中国ip
 include('ip/geoip.inc');    
 global $countryCode;    
@@ -30,8 +30,8 @@ require PUBLIC_PATH.'/../bootstrap.php';
 // Init slim routes
 require BASE_PATH.'/config/routes.php';
 }
+*/
 
-/*
 <?php
 
 //  PUBLIC_PATH
@@ -43,4 +43,3 @@ require PUBLIC_PATH.'/../bootstrap.php';
 
 // Init slim routes
 require BASE_PATH.'/config/routes.php';
-*/
