@@ -43,3 +43,5 @@ require PUBLIC_PATH.'/../bootstrap.php';
 
 // Init slim routes
 require BASE_PATH.'/config/routes.php';
+
+
