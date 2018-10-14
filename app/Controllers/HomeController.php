@@ -63,6 +63,11 @@ class HomeController extends BaseController
     {
         return $this->view()->display('code_error.tpl');
     }
+     //禁止中国ip
+	public function error_ip()
+    {
+        return $this->view()->display('error_ip.tpl');
+    }
     
     
     public function telegram($request, $response, $args)

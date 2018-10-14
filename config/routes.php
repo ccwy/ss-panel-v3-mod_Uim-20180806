@@ -80,6 +80,7 @@ $app->get('/toos', 'App\Controllers\HomeController:toos');  //tos
 $app->get('/fstaffs', 'App\Controllers\HomeController:fstaffs');  //staff
 $app->get('/cous', 'App\Controllers\HomeController:cous'); //联系我们
 $app->get('/code_error', 'App\Controllers\HomeController:code_error'); //充值错误页
+$app->get('/error_ip', 'App\Controllers\HomeController:error_ip'); //禁止中国ip 
 $app->get('/gfwlistjs', 'App\Controllers\LinkController:GetGfwlistJs');
 $app->post('/telegram_callback', 'App\Controllers\HomeController:telegram');
 $app->get('/yft/notify', 'App\Controllers\YFTPayCallBackController:yft_notify');
