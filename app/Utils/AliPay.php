@@ -373,9 +373,9 @@ class AliPay
 
     public function checkAliPay()
     {
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $this->checkAliPayOne();
-            if ($i != 5) sleep(10);
+            if ($i != 3) sleep(20);
         }
         Paylist::where('status', 0)->where('datetime', '<', time())->delete();
     }
