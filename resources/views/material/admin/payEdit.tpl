@@ -51,6 +51,7 @@
                                 <label class="floating-label" for="amount">支付宝二维码（金额设定后需要英文“|”分割）</label>
                                 <input class="form-control" id="AliPay_QRcode" type="text"
                                        value="{$payConfig['AliPay_QRcode']}">
+									   <p>访问：<a href="https://cli.im/deqr"  target="_blank">https://cli.im/deqr</a> ,上传付款码二维码，解析出来的地址复制到后台管理的二维码地址框</p>
                             </div>
 
 
@@ -58,12 +59,14 @@
                                 <label class="floating-label" for="number">支付宝COOKIE</label>
                                 <input class="form-control" id="AliPay_Cookie" type="text"
                                        value='{$payConfig['AliPay_Cookie']}'>
+									   <p>支付宝cookie获取，浏览器访问：<a href="https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm"  target="_blank">https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm</a>，浏览器按f12再刷新一下，可以看到tradeListQuery.json，点击header它找到Cookie: 后面就是cookie全部复制到后台配置框内</p>
                             </div>
 
                             <div class="form-group form-group-label">
                                 <label class="floating-label" for="number">微信登录地址</label>
                                 <input class="form-control" id="WxPay_Url" type="text"
                                        value="{$payConfig['WxPay_Url']}">
+									   
                             </div>
                             <div class="form-group form-group-label">
                                 <label class="floating-label" for="number">微信二维码（金额设定后需要英文“|”分割）</label>
@@ -75,6 +78,8 @@
                                 <label class="floating-label" for="number">微信COOKIE</label>
                                 <input class="form-control" id="WxPay_Cookie" type="text"
                                        value="{$payConfig['WxPay_Cookie']}">
+									   <p>浏览器访问：<a href="https://wx.qq.com"  target="_blank">https://wx.qq.com</a>，浏览器按f12再刷新一下，可以看到webwxinit?r=*******
+点击header它找到Cookie: 后面有cookie了</p>
                             </div>
 
 
