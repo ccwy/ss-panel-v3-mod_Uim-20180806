@@ -31,7 +31,7 @@ class AliPay
     public function getHTML()
     {
         $a = '';
-        if (!$this->getConfig('AliPay_Status') == 0)
+        
             $a .= '<a class="btn btn-flat waves-attach" onclick="codepay()" type="1" ><img src="/images/alipay.jpg" width="45"></a>
 		<script>
                             function codepay() {
