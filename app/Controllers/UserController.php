@@ -2141,9 +2141,7 @@ class UserController extends BaseController
 		
         return $this->view()->display('user/anyconnect.tpl');
     }
-	
-		
-	
+
     //返利
      public function fanli($request, $response, $args)
     {

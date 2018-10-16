@@ -16,7 +16,7 @@ class ShopController extends AdminController
         $table_config['total_column'] = array("op" => "操作", "id" => "ID", "name" => "商品名称",
                         "price" => "价格", "content" => "商品内容",
                      //   "auto_renew" => "自动续费", "auto_reset_bandwidth" => "续费时是否重置流量",
-						"auto_reset_day" => "每月是否重置流量", 
+						"auto_reset_day" => "每月是否重置流量",  //每月是否重置流量
                         "status" => "状态");
         $table_config['default_show_column'] = array();
         foreach ($table_config['total_column'] as $column => $value) {
@@ -38,7 +38,7 @@ class ShopController extends AdminController
         $shop->price =  $request->getParam('price');
         $shop->auto_renew =  $request->getParam('auto_renew');
         $shop->auto_reset_bandwidth =  $request->getParam('auto_reset_bandwidth');
-		$shop->auto_reset_day =  $request->getParam('auto_reset_day'); 
+		$shop->auto_reset_day =  $request->getParam('auto_reset_day');  //每月是否重置流量
 
         $content=array();
         if ($request->getParam('bandwidth')!=0) {
@@ -201,7 +201,7 @@ class ShopController extends AdminController
 						 "name" => "商品名称", "content" => "内容",
                         
                          //"renew" => "自动续费时间", 
-                       // "auto_reset_bandwidth" => "续费时是否重置流量");
+                       // "auto_reset_bandwidth" => "续费时是否重置流量"); //每月是否重置流量
 					   "auto_reset_day" => "每月是否重置流量"  
                         );
         $table_config['default_show_column'] = array();

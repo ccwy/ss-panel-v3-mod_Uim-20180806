@@ -42,7 +42,6 @@ class HomeController extends BaseController
     public function down()
     {
     }
-
     public function toos()
     {
         return $this->view()->display('toos.tpl');

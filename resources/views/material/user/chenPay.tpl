@@ -33,6 +33,7 @@
             <div class="form-group form-group-label btnBox"><label class="floating-label" for="price">充值金额</label>
                 <input type="number" id="AliPayType" class="form-control" name="amount"/>
             </div>
+			
             {if $config['AliPay_Status']==0}
                 <a class="btn btn-flat waves-attach" id="urlChangeAliPay" type="1"><img src="/images/alipay.jpg"
                                                                                         width="45"></a>
@@ -41,6 +42,7 @@
                 <a class="btn btn-flat waves-attach" id="urlChangeAliPay2" type="2"><img src="/images/weixin.jpg"
                                                                                          width="45"></a>
             {/if}
+			
             {/if}
         </div>
 		<!--
