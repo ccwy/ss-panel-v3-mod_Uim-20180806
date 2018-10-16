@@ -35,7 +35,7 @@ class AliPay
             $a .= '<a class="btn btn-flat waves-attach" onclick="codepay()" type="1" ><img src="/images/alipay.jpg" width="45"></a>
 		<script>
                             function codepay() {
-                                window.location.href=("/user/code/codepay?type=1&price="+$("#urlChangeAliPay").val());
+                                window.location.href=("/user/code/codepay?type=1&price="+$("#AliPayType").val());
                             }
                         </script>';
         if (!$this->getConfig('WxPay_Status') == 0)
