@@ -31,12 +31,20 @@ class AliPay
     public function getHTML()
     {
         $a = '';
-        if (!$this->getConfig('AliPay_Status') == 0)
-            $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay" type="1" ><img src="/images/alipay.jpg" width="45"></a>';
+        
+            $a .= '<a class="btn btn-flat waves-attach" onclick="codepay()" type="1" ><img src="/images/alipay.jpg" width="45"></a>
+		                <script>
+                            function codepay() {
+                                window.location.href=("/user/code/codepay?type=1&price="+$("#AliPayType").val());
+                            }
+                        </script>';
         if (!$this->getConfig('WxPay_Status') == 0)
             $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay2" type="2"><img src="/images/weixin.jpg" width="45"></a>';
         $html = '<div class="form-group pull-left">
-                        <p class="modal-title" >本站支持支付宝/微信在线充值</p>';
+                        <p class="modal-title" >支付宝/微信在线充值</p>
+						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，在下方输入充值金额，支付金额必须要和输入金额一致，点击支付宝/微信图标，扫码支付，
+						<br>2，付款时不能关闭二维码页面，否则无法自动到账，支付成功等待网页自动跳转提示，没提示前不要关闭二维码页面，付款时不能填备注，否则可能会导致无法自动到账。
+						</p>';
         if (preg_match('/\|/', $this->getConfig('Pay_Price'))) {
             $data = explode('|', $this->getConfig('Pay_Price'));
             $html .= '<p>选择充值金额：</p><div class="form-group form-group-label btnBox">';
@@ -46,11 +54,39 @@ class AliPay
         } else $html .= '<p>输入充值金额：</p><div class="form-group form-group-label btnBox"><label class="floating-label" for="price">充值金额</label>
                         <input type="number" id="AliPayType" class="form-control" name="amount" />';
         $html .= '</div>' . $a . '</div>
-                        <div class="form-group pull-right">
+                       <!-- <div class="form-group pull-right">
                         <img src="/images/qianbai-2.png" height="205" />
-                        </div>';
+                        </div> -->';
         return $html;
     }
+/*
+    public function getHTML()
+    {
+        $a = '';
+        if (!$this->getConfig('AliPay_Status') == 0)
+            $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay" type="1" ><img src="/images/alipay.jpg" width="45"></a>';
+        if (!$this->getConfig('WxPay_Status') == 0)
+            $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay2" type="2"><img src="/images/weixin.jpg" width="45"></a>';
+        $html = '<div class="form-group pull-left">
+                        <p class="modal-title" >支付宝/微信在线充值</p>
+						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，在下方输入充值金额，支付金额必须要和输入金额一致，点击支付宝/微信图标，扫码支付，
+						<br>2，付款时不能关闭二维码页面，否则无法自动到账，支付成功等待网页自动跳转提示，没提示前不要关闭二维码页面，付款时不能填备注，否则可能会导致无法自动到账。
+						</p>';
+        if (preg_match('/\|/', $this->getConfig('Pay_Price'))) {
+            $data = explode('|', $this->getConfig('Pay_Price'));
+            $html .= '<p>选择充值金额：</p><div class="form-group form-group-label btnBox">';
+            foreach ($data as $key => $item)
+                $html .= '<a class="btn btn-price ' . ($key == 0 ? 'active' : '') . '" price="' . $item . '" type="' . $key . '">' . $item . '元</a>';
+            $html .= '<input type="hidden" id="AliPayType" class="form-control" name="amount" />';
+        } else $html .= '<p>输入充值金额：</p><div class="form-group form-group-label btnBox"><label class="floating-label" for="price">充值金额</label>
+                        <input type="number" id="AliPayType" class="form-control" name="amount" />';
+        $html .= '</div>' . $a . '</div>
+                       <!-- <div class="form-group pull-right">
+                        <img src="/images/qianbai-2.png" height="205" />
+                        </div> -->';
+        return $html;
+    }
+*/
 
     public static function AliPay_callback($trade, $order)
     {
@@ -69,7 +105,7 @@ class AliPay
 //        }
         $user->save();
         $codeq = new Code();
-        $codeq->code = "ChenPay充值" . $order;
+        $codeq->code = $order;
         $codeq->isused = 1;
         $codeq->type = -1;
         $codeq->number = $trade->total;
@@ -77,16 +113,23 @@ class AliPay
         $codeq->userid = $user->id;
         $codeq->save();
         if ($user->ref_by != "" && $user->ref_by != 0 && $user->ref_by != null) {
+			
+			//首次返利
+			$ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+			if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
             $gift_user = User::where("id", "=", $user->ref_by)->first();
-            $gift_user->money = $gift_user->money + ($codeq->number * 0.2);
+            $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));  //返利10
             $gift_user->save();
+			
             $Payback = new Payback();
             $Payback->total = $trade->total;
             $Payback->userid = $user->id;
             $Payback->ref_by = $user->ref_by;
-            $Payback->ref_get = $codeq->number * 0.2;
+            $Payback->ref_get = $codeq->number*(Config::get('code_payback')/100);
             $Payback->datetime = time();
             $Payback->save();
+			}
         }
     }
 
@@ -155,6 +198,7 @@ class AliPay
             ->getBody();
         return iconv('GBK', 'UTF-8', $html->getContents());
     }
+
 
     public function getWxSyncKey()
     {
@@ -229,7 +273,7 @@ class AliPay
             $pl->ret = 1;
         } else {
             $pl = [
-                'msg' => '正在排队中，请稍后再试！',
+                'msg' => '正在排队中，请 3 分钟后再试！',
                 'ret' => 0
             ];
         }
@@ -253,9 +297,9 @@ class AliPay
 //                        return $item['outTradeNo'];
 //                    }
                     if ($item['signProduct'] == '转账收款码' && $item['accountType'] == '交易' &&
-                        strtotime($item['tradeTime']) < $time && $item['tradeAmount'] == $fee) {
-                        if (!Paylist::where('tradeno', $item['orderNo'])->first())
-                            return $item['orderNo'];
+                        strtotime($item['tradeTime']) < $time && strtotime($item['tradeTime']) > $time-180 && $item['tradeAmount'] == $fee) {
+                        if (!Paylist::where('tradeno', $item['tradeNo'])->first())
+                            return $item['tradeNo'];
                     }
                 }
             }
@@ -309,13 +353,13 @@ class AliPay
         if ($this->getConfig('AliPay_Status') == 1 && $type == 1) {
             $name = '支付宝';
             $this->setConfig('AliPay_Status', 0);
-            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . 'COOKIE出现问题',
+            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG监听' . $name . '已掉线',
                 "LOG提醒你，{$name}COOKIE出现问题，请务必尽快更新COOKIE。<br>LOG记录时间：$time", []);
         }
         if ($this->getConfig('WxPay_Status') == 1 && $type == 2) {
             $name = '微信';
             $this->setConfig('WxPay_Status', 0);
-            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . 'COOKIE出现问题',
+            Mail::getClient()->send($this->getConfig('Notice_EMail'), 'LOG报告监听' . $name . '已掉线',
                 "LOG提醒你，{$name}COOKIE出现问题，请务必尽快更新COOKIE。<br>LOG记录时间：$time", []);
         }
     }
@@ -363,9 +407,9 @@ class AliPay
 
     public function checkAliPay()
     {
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $this->checkAliPayOne();
-            if ($i != 5) sleep(10);
+            if ($i != 3) sleep(20);
         }
         Paylist::where('status', 0)->where('datetime', '<', time())->delete();
     }
