@@ -92,52 +92,6 @@
             ],
             "time": "2018-09-21T20:29:41+00:00"
         },
-		        {
-            "name": "chen-see/chen-pay",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ChenSee/ChenPay.git",
-                "reference": "272eca7d394eb2b09ca98abf7ffdbe4e4b909ff3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ChenSee/ChenPay/zipball/272eca7d394eb2b09ca98abf7ffdbe4e4b909ff3",
-                "reference": "272eca7d394eb2b09ca98abf7ffdbe4e4b909ff3",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.3",
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "ChenPay\\": "src/ChenPay"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "免签约支付宝与微信双支付，根据COOKIE",
-            "homepage": "http://9in.info",
-            "keywords": [
-                "Wxpay",
-                "alipay",
-                "chenpay"
-            ],
-            "time": "2018-10-07 15:21:06"
-        },
         {
             "name": "cloudflare/sdk",
             "version": "1.1.1",
@@ -3330,8 +3284,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ramsey/uuid": 20,
-		"chen-see/chen-pay": 20
+        "ramsey/uuid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
