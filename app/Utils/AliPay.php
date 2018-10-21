@@ -31,6 +31,38 @@ class AliPay
     public function getHTML()
     {
         $a = '';
+        
+            $a .= '<a class="btn btn-flat waves-attach" onclick="codepay()" type="1" ><img src="/images/alipay.jpg" width="45"></a>
+		                <script>
+                            function codepay() {
+                                window.location.href=("/user/code/codepay?type=1&price="+$("#AliPayType").val());
+                            }
+                        </script>';
+        if (!$this->getConfig('WxPay_Status') == 0)
+            $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay2" type="2"><img src="/images/weixin.jpg" width="45"></a>';
+        $html = '<div class="form-group pull-left">
+                        <p class="modal-title" >支付宝/微信在线充值</p>
+						<p>1，支付宝/微信充值，支持 '.Config::get('codypaymenay').' 元以上任意金额，在下方输入充值金额，支付金额必须要和输入金额一致，点击支付宝/微信图标，扫码支付，
+						<br>2，付款时不能关闭二维码页面，否则无法自动到账，支付成功等待网页自动跳转提示，没提示前不要关闭二维码页面，付款时不能填备注，否则可能会导致无法自动到账。
+						</p>';
+        if (preg_match('/\|/', $this->getConfig('Pay_Price'))) {
+            $data = explode('|', $this->getConfig('Pay_Price'));
+            $html .= '<p>选择充值金额：</p><div class="form-group form-group-label btnBox">';
+            foreach ($data as $key => $item)
+                $html .= '<a class="btn btn-price ' . ($key == 0 ? 'active' : '') . '" price="' . $item . '" type="' . $key . '">' . $item . '元</a>';
+            $html .= '<input type="hidden" id="AliPayType" class="form-control" name="amount" />';
+        } else $html .= '<p>输入充值金额：</p><div class="form-group form-group-label btnBox"><label class="floating-label" for="price">充值金额</label>
+                        <input type="number" id="AliPayType" class="form-control" name="amount" />';
+        $html .= '</div>' . $a . '</div>
+                       <!-- <div class="form-group pull-right">
+                        <img src="/images/qianbai-2.png" height="205" />
+                        </div> -->';
+        return $html;
+    }
+/*
+    public function getHTML()
+    {
+        $a = '';
         if (!$this->getConfig('AliPay_Status') == 0)
             $a .= '<a class="btn btn-flat waves-attach" id="urlChangeAliPay" type="1" ><img src="/images/alipay.jpg" width="45"></a>';
         if (!$this->getConfig('WxPay_Status') == 0)
@@ -54,6 +86,7 @@ class AliPay
                         </div> -->';
         return $html;
     }
+*/
 
     public static function AliPay_callback($trade, $order)
     {

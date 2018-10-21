@@ -15,7 +15,6 @@ define('PUBLIC_PATH', __DIR__);
 require PUBLIC_PATH.'/../bootstrap.php';
 // Init slim routes
 require BASE_PATH.'/config/routes.php';
-
 }else {
 	header("Location: /error_ip"); 
 			exit;
@@ -23,10 +22,8 @@ require BASE_PATH.'/config/routes.php';
 } else {
 //  PUBLIC_PATH
 define('PUBLIC_PATH', __DIR__);
-
 // Bootstrap
 require PUBLIC_PATH.'/../bootstrap.php';
-
 // Init slim routes
 require BASE_PATH.'/config/routes.php';
 }

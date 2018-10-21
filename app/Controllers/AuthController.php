@@ -406,7 +406,6 @@ class AuthController extends BaseController
 
         $antiXss = new AntiXSS();
 
-
         $user->user_name = $antiXss->xss_clean($email);
         $user->email = $email;
         $user->pass = Hash::passwordHash($passwd);
