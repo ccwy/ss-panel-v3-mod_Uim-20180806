@@ -27,7 +27,7 @@ class AliPay
         foreach (\App\Models\Config::get() as $item) $data[$item->name] = $item->value;
         $this->config = $data;
     }
-
+/*
     public function getHTML()
     {
         $a = '';
@@ -59,7 +59,7 @@ class AliPay
                         </div> -->';
         return $html;
     }
-/*
+*/
     public function getHTML()
     {
         $a = '';
@@ -86,7 +86,7 @@ class AliPay
                         </div> -->';
         return $html;
     }
-*/
+
 
     public static function AliPay_callback($trade, $order)
     {
