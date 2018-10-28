@@ -6188,3 +6188,119 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 		width: 240px
 	}
 }
+
+/* 卡片式商店样式 */
+
+.shop-display {
+	display: none;
+}
+
+.shop-switch {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.switch-btn {
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.shop-switch a {
+	color: #000;
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.shop-switch div.switch-btn:first-of-type a {
+	border-radius: 0 15px 15px 0;
+}
+
+.shop-switch div.switch-btn:last-of-type a {
+	border-radius: 15px 0 0 15px;
+}
+
+.shop-switch a:hover {
+	color: white;
+	background: gray;
+}
+
+.shop-switch a i {
+	position: relative;
+	top: 3px;
+}
+
+.shop-switch .card,.shop-switch .card-inner {
+	margin: 0;
+}
+
+.shop-flex {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.shop-flex .card {
+	width: 24%;
+	text-align: center;
+	min-height: 330px;
+}
+
+.shop-btn,.shop-price,.shop-content {
+    margin-top: 2em;
+}
+
+.shop-content {
+	font-size: 13px;
+}
+
+.shop-name {
+	font-size: 20px;
+}
+
+.shop-btn {
+	padding: 10px 2em;
+}
+
+.flex-fix3,.flex-fix4 {
+    width: 24%;
+}
+
+.page-course img {
+	width: 60%;
+}
+
+@media screen and (max-width: 1600px) {
+	.shop-flex .card,.flex-fix3 {
+		width: 32%;
+	}
+	.flex-fix4 {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.shop-flex .card {
+		width: 48%;
+	}
+	.page-course img {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 715px) {
+	.shop-flex .card {
+		width: 100%;
+	}
+	.page-course img {
+		width: 100%;
+	}
+}
+
+.cust-link.form-control {
+	color: #ff0022;
+	cursor: unset;
+}
+
+.bgc-fix {
+    background: white;
+}
